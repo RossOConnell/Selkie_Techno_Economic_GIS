@@ -14,8 +14,6 @@ A more detailed description of the tool can be found at https://www.selkie-proje
 
 ```
 
-```
-
 A deomnstrational video showing how the tool can be used can be found at https://www.youtube.com/watch?v=21GziHqZ3TY 
 
 
