@@ -16,6 +16,4 @@ A deomnstrational video showing how the tool can be used can be found at https:/
 
 ``` 
 
-## Contributing
-
-Ross O'Connell (Selkie WP4) 
+Developer: Ross O'Connell (Selkie WP4) 
