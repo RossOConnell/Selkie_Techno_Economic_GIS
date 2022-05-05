@@ -1,25 +1,19 @@
 # Selkie Techno-Economic GIS
 
-Selkie WP4 GIS Techno-Economic Tool for Wave and Tidal Energy Project Developers. 
+Selkie GIS Techno-Economic Tool for Wave and Tidal Energy Project Developers. 
 
-## Getting Started
+## About
 
-Start by not writing any code.
-
-```
-Look here some code
-```
-
-This is just an example application, but imagine it doing anything you want. Adding new features is easy too:
+The Selkie Selkie GIS Techno-Economic Tool is a Web-App which can be opened using the URL on any browser. 
 
 ```
-
+The programme was written in html, css and JavaScript using VS Code. 
 ```
 
-The possibilities are endless
+A more detailed description of the tool can be found at https://www.selkie-project.eu/selkie-tools-gis-technoeconomic-model/ 
 
+A deomnstrational video showing how the tool can be used can be found at https://www.youtube.com/watch?v=21GziHqZ3TY 
 
+``` 
 
-## Contributing
-
-Ross O'Connell
+Developer: Ross O'Connell (Selkie WP4) 
