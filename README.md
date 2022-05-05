@@ -12,8 +12,6 @@ The programme was written in html, css and JavaScript using VS Code.
 
 A more detailed description of the tool can be found at https://www.selkie-project.eu/selkie-tools-gis-technoeconomic-model/ 
 
-```
-
 A deomnstrational video showing how the tool can be used can be found at https://www.youtube.com/watch?v=21GziHqZ3TY 
 
 ``` 
