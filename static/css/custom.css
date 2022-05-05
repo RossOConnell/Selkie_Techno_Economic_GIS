@@ -36,7 +36,7 @@ body,
 #bottombar {
     z-index: 99;
     position: absolute;
-    bottom: 20px;
+    bottom: 29px;
     right: 0;
     background: white;
     padding-top: 5px;
@@ -76,6 +76,17 @@ body,
     visibility: hidden;
 }
 
+.button {
+    font-size: 12px;
+    background-color: transparent;
+    border: 0px solid #d3d3d3;
+    color: #6e6e6e;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+}
+
+
 .action-button {
     font-size: 12px;
     background-color: transparent;
@@ -106,6 +117,7 @@ body,
     
 }
 
+
 .column {
     float: left;
     width: 33.33%;
@@ -127,9 +139,9 @@ body,
     color: black; 
     padding-top: 5px;
     padding-right: 5px;
-    padding-bottom: 1px;
+    padding-bottom: 10px;
     padding-left: 15px;
-    width: 426px;
+    width: 420px;
     margin-left: 0px;
   }
 
@@ -142,3 +154,13 @@ body,
     font-size: 14px;
   }
 
+
+
+select {
+    font-size: 14px;
+}
+
+select option {
+    font-size: 14px; 
+    position: sticky;
+}
