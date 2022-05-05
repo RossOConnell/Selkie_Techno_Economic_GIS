@@ -838,7 +838,7 @@ require([
 
     var activeWidget = null;
 
-    const sitesUrl = "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/SiteSelectionCriteria_shp/FeatureServer/0" //Feature Layer rather than Feature Service
+    const sitesUrl = "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/SiteSelectionCriteriaClip/FeatureServer/0" //Feature Layer rather than Feature Service
 
 
     var marineConservationZones = new FeatureLayer({
