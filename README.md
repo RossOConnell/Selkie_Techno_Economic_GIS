@@ -2,7 +2,7 @@
 
 Selkie GIS Techno-Economic Tool for Wave and Tidal Energy Project Developers. 
 
-## Getting Started
+## About
 
 The Selkie Selkie GIS Techno-Economic Tool is a Web-App which can be opened using the URL on any browser. 
 
