@@ -787,6 +787,349 @@ function calc_te2() {
 
 
 
+
+
+
+
+
+
+function calcAep3() {
+
+    let defaultAep_error_message = check_for_float(defaultAep.value, 1, 100000000000);
+    let defaultTec_error_message = check_for_float(defaultTec.value, 0, 1000);
+    // let defaultEff_error_message = check_for_float(defaultEff.value, 0, 100);
+    let defaultAv_error_message = check_for_float(defaultAv.value, 0, 100);
+    let defaultWak_error_message = check_for_float(defaultWak.value, 0, 100);
+    let defaultLin_error_message = check_for_float(defaultLin.value, 0, 100);
+
+
+
+    // wec
+
+    if (
+
+        defaultAep_error_message ||
+        defaultTec_error_message || defaultAv_error_message || defaultWak_error_message || defaultLin_error_message
+
+    ) {
+
+        defaultAep_errors.innerHTML = defaultAep_error_message;
+        defaultTec_errors.innerHTML = defaultTec_error_message;
+        // defaultEff_errors.innerHTML = defaultEff_error_message;
+        defaultAv_errors.innerHTML = defaultAv_error_message;
+        defaultWak_errors.innerHTML = defaultWak_error_message;
+        defaultLin_errors.innerHTML = defaultLin_error_message;
+
+    } else {
+
+        let tecsAep_Final = (parseFloat(defaultAep.value) * parseFloat(defaultScale.value)) * (parseFloat(defaultAv.value) / 100);
+        let farmAep = (parseFloat(tecsAep_Final) * parseFloat(defaultTec.value)) - ((parseFloat(defaultLin.value) / 100) * parseFloat(tecsAep_Final)) - ((parseFloat(defaultWak.value) / 100) * parseFloat(tecsAep_Final));
+        console.log("farmAep: " + farmAep);
+
+        document.getElementById("totaep").value = farmAep.toFixed(0);
+
+    }
+
+}
+
+
+
+
+function calcCapex3() {
+
+    let defaultTec_error_message = check_for_float(defaultTec.value, 0, 100);
+
+    let defaultRating_error_message = check_for_float(defaultRating.value, 0, 500000000);
+
+    let defaultFarmRating_error_message = check_for_float(defaultFarmRating.value, 0, 500000000);
+
+    let defaultPreDevCost_error_message = check_for_float(defaultPreDevCost.value, 0, 500000000);
+
+    let defaultTecCost_error_message = check_for_float(defaultTecCost.value, 0, 500000000);
+
+    // let defaultPto_error_message = check_for_float(defaultPto.value, 0, 500000000);
+    // let defaultGen_error_message = check_for_float(defaultGen.value, 0, 500000000);
+    let defaultMoor_error_message = check_for_float(defaultMoor.value, 0, 500000000);
+    let defaultFound_error_message = check_for_float(defaultFound.value, 0, 500000000);
+    let defaultCableInterLength_error_message = check_for_float(defaultCableInterLength.value, 0, 500000000);
+    let defaultCableInterCost_error_message = check_for_float(defaultCableInterCost.value, 0, 500000000);
+    let defaultCableIntraLength_error_message = check_for_float(defaultCableIntraLength.value, 0, 500000000);
+    let defaultCableIntraCost_error_message = check_for_float(defaultCableIntraCost.value, 0, 500000000);
+    let defaultOnElec_error_message = check_for_float(defaultOnElec.value, 0, 500000000);
+    // let defaultOffSub_error_message = check_for_float(defaultOffSub.value, 0, 500000000);
+
+    let defaultDays_error_message = check_for_float(defaultDays.value, 0, 500000000);
+    let defaultVh_error_message = check_for_float(defaultVh.value, 0, 500000000);
+    let defaultVs_error_message = check_for_float(defaultVs.value, 0, 500000000);
+    let defaultDevicesPerVis_error_message = check_for_float(defaultDevicesPerVis.value, 0, 500000000);
+    let defaultDw_error_message = check_for_float(defaultDw.value, 0, 500000000);
+    let defaultWorkDay_error_message = check_for_float(defaultWorkDay.value, 0, 500000000);
+    let defaultFmInstallCost_error_message = check_for_float(defaultFmInstallCost.value, 0, 500000000);
+    let defaultCtLength_error_message = check_for_float(defaultCtLength.value, 0, 500000000);
+    let defaultCableInstall_error_message = check_for_float(defaultCableInstall.value, 0, 500000000);
+    let defaultDec_error_message = check_for_float(defaultDec.value, 0, 500000000);
+
+
+    if (
+
+        defaultTec_error_message ||
+
+        defaultRating_error_message || defaultFarmRating_error_message ||
+
+        defaultPreDevCost_error_message ||
+
+        defaultTecCost_error_message ||
+
+        defaultMoor_error_message || defaultFound_error_message || // defaultPto_error_message || defaultGen_error_message || 
+        defaultCableInterLength_error_message || defaultCableInterCost_error_message || defaultCableIntraLength_error_message ||
+        defaultCableIntraCost_error_message || defaultOnElec_error_message || // defaultOffSub_error_message ||
+
+        defaultDays_error_message || defaultVh_error_message || defaultVs_error_message || defaultDevicesPerVis_error_message ||
+        defaultDw_error_message || defaultWorkDay_error_message || defaultFmInstallCost_error_message ||
+        defaultCtLength_error_message || defaultCableInstall_error_message ||
+
+        defaultDec_error_message
+
+    ) {
+
+        defaultTec_errors.innerHTML = defaultTec_error_message;
+
+        defaultRating_errors.innerHTML = defaultRating_error_message;
+        defaultFarmRating_errors.innerHTML = defaultFarmRating_error_message;
+
+        defaultPreDevCost_errors.innerHTML = defaultPreDevCost_error_message;
+
+        defaultTecCost_errors.innerHTML = defaultTecCost_error_message;
+
+        // defaultPto_errors.innerHTML = defaultPto_error_message;
+        // defaultGen_errors.innerHTML = defaultGen_error_message;
+        defaultMoor_errors.innerHTML = defaultMoor_error_message;
+        defaultFound_errors.innerHTML = defaultFound_error_message;
+        defaultCableInterLength_errors.innerHTML = defaultCableInterLength_error_message;
+        defaultCableInterCost_errors.innerHTML = defaultCableInterCost_error_message;
+        defaultCableIntraLength_errors.innerHTML = defaultCableIntraLength_error_message;
+        defaultCableIntraCost_errors.innerHTML = defaultCableIntraCost_error_message;
+        defaultOnElec_errors.innerHTML = defaultOnElec_error_message;
+        // defaultOffSub_errors.innerHTML = defaultOffSub_error_message;
+
+        defaultDays_errors.innerHTML = defaultDays_error_message;
+        defaultVh_errors.innerHTML = defaultVh_error_message;
+        defaultVs_errors.innerHTML = defaultVs_error_message;
+        defaultDevicesPerVis_errors.innerHTML = defaultDevicesPerVis_error_message;
+        defaultDw_errors.innerHTML = defaultDw_error_message;
+        defaultWorkDay_errors.innerHTML = defaultWorkDay_error_message;
+        defaultFmInstallCost_errors.innerHTML = defaultFmInstallCost_error_message;
+        defaultCtLength_errors.innerHTML = defaultCtLength_error_message;
+        defaultCableInstall_errors.innerHTML = defaultCableInstall_error_message;
+
+        defaultDec_error_message_errors.innerHTML = defaultDec_error_message_error_message;
+
+
+
+    } else {
+
+        // preliminary parameters 
+
+        var daysToSite = 2 * ((parseFloat(defaultPort.value)) / (parseFloat(defaultVs.value) * parseFloat(defaultWorkDay.value) * parseFloat(defaultDevicesPerVis.value))); //* (defaultVh.value/1000000);
+        console.log("daysToSite: " + daysToSite);
+
+        var predevCosts1 = parseFloat(defaultPreDevCost.value);
+        var predevCosts = Math.round(predevCosts1);
+        console.log("predevCosts: " + predevCosts);
+
+        var deviceCosts1 = parseFloat(defaultTecCost.value) * parseFloat(defaultTec.value);
+        var deviceCosts = Math.round(deviceCosts1);
+        console.log("deviceCosts: " + deviceCosts);
+
+        var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultTec.value)) + (parseFloat(defaultFound.value) * parseFloat(defaultTec.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
+        var plantCosts = Math.round(plantCosts1);
+        console.log("plantCosts: " + plantCosts);
+
+        var installationCosts1 = (parseFloat(defaultDw.value) * parseFloat(defaultDays.value)) + ((parseFloat(defaultDays.value) + parseFloat(daysToSite)) * parseFloat(defaultVh.value)) + (parseFloat(defaultDays.value) * (parseFloat(defaultFmInstallCost.value))) + (parseFloat(defaultCtLength.value) * (parseFloat(defaultCableInstall.value))); // 1000 is random capacity facto
+        var installationCosts = Math.round(installationCosts1);
+        console.log("installationCosts: " + installationCosts);
+
+        var CapEx_k1 = parseInt(predevCosts) + parseInt(deviceCosts) + parseInt(plantCosts) + parseInt(installationCosts);
+        var CapEx_k = Math.round(CapEx_k1);
+        console.log("CapEx_k: " + CapEx_k);
+
+        let Decom_k = installationCosts * (defaultDec.value / 100);
+        console.log(Decom_k);
+
+        document.getElementById("totcapex").value = CapEx_k.toFixed(0);
+
+        document.getElementById("totdecex").value = Decom_k.toFixed(0);
+
+    }
+
+}
+
+
+function calcOpex3() {
+
+
+    let defaultTec_error_message = check_for_float(defaultTec.value, 0, 100);
+
+    let defaultRating_error_message = check_for_float(defaultRating.value, 0, 500000000);
+    let defaultFarmRating_error_message = check_for_float(defaultFarmRating.value, 0, 500000000);
+
+    let defaultFixedOam_error_message = check_for_float(defaultFixedOam.value, 0, 500000000);
+    let defaultFees_error_message = check_for_float(defaultFees.value, 0, 500000000);
+    let defaultVarOam_error_message = check_for_float(defaultVarOam.value, 0, 500000000);
+    let defaultOpsPort_error_message = check_for_float(defaultOpsPort.value, 0, 500000000);
+
+
+
+
+
+
+    if (
+
+        defaultTec_error_message ||
+
+        defaultRating_error_message || defaultFarmRating_error_message ||
+
+        defaultFixedOam_error_message || defaultFees_error_message || defaultVarOam_error_message || defaultOpsPort_error_message
+
+    ) {
+
+        defaultTec_errors.innerHTML = defaultTec_error_message;
+
+        defaultRating_errors.innerHTML = defaultRating_error_message;
+        defaultFarmRating_errors.innerHTML = defaultFarmRating_error_message;
+
+
+        defaultFixedOam_errors.innerHTML = defaultFixedOam_error_message;
+        defaultFees_errors.innerHTML = defaultFees_error_message;
+        defaultVarOam_errors.innerHTML = defaultVarOam_error_message;
+        defaultOpsPort_errors.innerHTML = defaultOpsPort_error_message;
+
+
+    } else {
+
+        let fixedOam = parseFloat(defaultFixedOam.value) * parseFloat(defaultFarmRating.value);
+        let portFees = (parseFloat(defaultFees.value) * parseFloat(defaultFarmRating.value));
+        let varOam = (parseFloat(defaultOpsPort.value)) * (parseFloat(defaultVarOam.value) / 100);
+        let OpEx_k = fixedOam + portFees + varOam;
+
+        console.log("fixedOam: " + fixedOam);
+        console.log("portFees: " + portFees);
+        console.log("varOam: " + varOam);
+        console.log("OpEx_k: " + OpEx_k);
+
+        document.getElementById("totopex").value = OpEx_k.toFixed(0);
+
+    }
+
+}
+
+
+
+function calc_te3() {
+
+    console.log("calculate_lcoe3")
+
+    let n = parseFloat(defaultProjectLife.value);
+    let price = parseFloat(defaultElecPrice.value) / 100;
+    let E = parseFloat(totaep.value);
+    let opex = parseFloat(totopex.value);
+
+
+    // Discounting OPEX and AEP
+
+
+    let opexDiscounted = 0
+    let sumOpexDiscounted = 0
+    let E_Discounted = 0
+    let sumEdiscounted = 0
+
+
+    console.log(n);
+
+
+    for (let yr = 1; yr < n; yr++) {
+
+        console.log(yr);
+
+        opexDiscounted = (parseFloat(opex)) / ((1 + (parseFloat(defaultDiscountRate.value) / 100)) ** yr);
+
+        sumOpexDiscounted = sumOpexDiscounted + opexDiscounted;
+
+        console.log("opexDiscounted " + opexDiscounted);
+
+
+
+
+        E_Discounted = (parseFloat(E)) / ((1 + (parseFloat(defaultDiscountRate.value) / 100)) ** yr);
+
+        sumEdiscounted = sumEdiscounted + E_Discounted;
+
+        console.log("E_Discounted " + E_Discounted);
+
+    }
+
+
+    console.log("sumOpexDiscounted " + sumOpexDiscounted);
+    console.log("sumEdiscounted " + sumEdiscounted);
+
+
+    //Discounting DECEX
+
+    let df = 1 / (1 + (parseFloat(defaultDiscountRate.value) / 100)) ** n;
+    console.log("df: " + df);
+
+    let decexDiscount = parseFloat(totdecex.value) * parseFloat(df);
+    console.log("decexDiscount: " + decexDiscount);
+
+
+    // Totalling LCS Costs
+
+    let LCS_oef = parseFloat(totcapex.value) + parseFloat(sumOpexDiscounted) + parseFloat(decexDiscount);
+    console.log("LCS_oef: " + LCS_oef);
+
+
+    // Totalling Benefits (for NPV)
+
+    benefits = (parseFloat(sumEdiscounted)) * (parseFloat(price) * 1000);
+    console.log("benefits " + benefits);
+
+
+    // Calculate LCOE and NPV 
+
+    LCOElong1 = parseFloat(LCS_oef) / parseFloat(sumEdiscounted);
+    LCOElong2 = LCOElong1 / 10;
+    NPVlong = parseFloat(benefits) - parseFloat(LCS_oef);
+
+    LCOE1 = LCOElong1.toFixed(1);
+    LCOE2 = LCOElong2.toFixed(1);
+    NPV = NPVlong.toFixed(0);
+
+
+    // Adding Project Name 
+
+    let projectName = defaultProjectName.value;
+    console.log("projectName: " + projectName);
+
+    document.getElementById("projectname").value = projectName;
+
+
+    //Assign the Results 
+
+    lcoe1.value =
+        LCOE1;
+
+    lcoe2.value =
+        LCOE2;
+
+    npv.value =
+        NPV;
+
+
+}
+
+
+
+
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -2597,11 +2940,170 @@ require([
     }
 
 
+
+
+
+
+    var template3 = {
+
+        title: '<h3>Techno-Economic Calculator</h3>',
+        outFields: ['gridcode', 'distance_p', 'distance_g', 'distance_h', 'Rating', 'depth'], // <-specify features that are referenced in content
+        content:
+
+            buildPopupContent3 // <- no (), it will parase the fields to the function that are specified in outFields
+    };
+
+    var aepAtlantis2000 = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis2000_SJ/FeatureServer",
+        title: "SIMEC Atlantis 2MW Turbine",
+        visible: false,
+        opacity: 0.75,
+        listMode: "hide-children",
+        popupTemplate: template3
+    });
+
+    var aepAtlantis1700 = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis1700_SJ/FeatureServer",
+        title: "SIMEC Atlantis 1.7MW Turbine",
+        visible: false,
+        opacity: 0.75,
+        listMode: "hide-children",
+        popupTemplate: template3
+    });
+
+    var aepAtlantis1500 = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis1500_SJ/FeatureServer",
+        title: "SIMEC Atlantis 1.5MW Turbine",
+        visible: false,
+        opacity: 0.75,
+        listMode: "hide-children",
+        popupTemplate: template3
+    });
+
+
+    function buildPopupContent3(feature) {
+
+
+        console.log("buildPopupContent3")
+
+
+
+        let div = document.createElement("div");
+
+        var attributes = feature.graphic.attributes // <- The attribute information is here
+
+
+
+        div.innerHTML =
+
+            
+
+            '<table><tr><td><u>Site Information</u></td></tr>' +
+            '<tr><td><i>Annual Energy: </i><td><input type="number" name="defaultAep" id="defaultAep" style="width: 6em" value="' + attributes.gridcode + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultAep_errors"><i> MWh </i></span></td></tr>' +
+            '<tr><td><i>Distance to Port:   </i><td><input type="number" name="defaultPort" id="defaultPort" style="width: 5em" value="' + attributes.distance_p + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultPort_errors"><i> km </i></span></td></tr>' +
+            '<tr><td><i>Distance to <select class="esri-widget" name="myList" id="myList" onchange="exportOptionDist()"><option value="' + attributes.distance_g + '" selected>Grid</option><option value="' + attributes.distance_h + '">H2</option></select>:</i></td><td><input type="number" id="defaultGrid" style="width: 5em" value="' + attributes.distance_g + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultGrid_errors"><i> km </i></span></td></tr>' +
+            '<tr><td><i>Depth to Seabed:   </i><td><input type="number" name="defaultDepth" id="defaultDepth" style="width: 5em" value="' + attributes.depth + '" min=1 /><span id="defaultDepth_errors"><i> m </i></span></td></tr></table>' + '<BR>' +
+
+            '<table><tr><td><u>Project Information</u></td></tr>' +
+            '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep3(); calcCapex3(); calcOpex3()"/></td></tr>' +
+            '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="20" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
+            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep3(); calcCapex3(); calcOpex3()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Elecricity Price: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="20" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
+
+
+
+            '<table><tr><td><u>Technical Information</u></td></tr>' +
+            // '<tr><td><i>TEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>TEC Availability: </i><td><input type="number" name="defaultAv" id="defaultAv" style="width: 5em" value="95" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Number of TECs: </i><td><input type="number" name="defaultTec" id="defaultTec" style="width: 5em" value="4" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep3(); calcCapex3(); calcOpex3()" exportOptionFarmRating()"/><span id="defaultTec_errors"><i> units </i></span></td></tr>' +
+            '<tr><td><i>Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep3(); calcCapex3(); calcOpex3()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
+            '<tr><td><i>Device Rating: </i><td><input type="number" name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()" exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
+            '<tr><td><i>Farm Rating: </i><td><input type="number" name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 4) / 1000 + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
+            '<tr><td><i>Array Losses (IA): </i><td><input type="number" name="defaultWak" id="defaultWak" style="width: 5em" value="0" min=0 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Line Losses (IA): </i><td><input type="number" name="defaultLin" id="defaultLin" style="width: 5em" value="0" min=0 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
+
+
+
+            '<table><tr><td><u>CAPEX</u></td></tr>' +
+
+            '<tr><td><i><u>Pre-Development</u></i></td>' +
+            '<tr><td><i>Development & Consent: </i><td><input type="number" name="defaultPreDevCost" id="defaultPreDevCost" style="width: 6em" value="118500" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultPreDevCost_errors"><i> € </i></span></td></tr>' +
+
+            '<tr><td><i><u>Device</u></i></td>' +
+            '<tr><td><i>TEC Unit: </i><td><input type="number" name="defaultTecCost" id="defaultTecCost" style="width: 6em" value="3000000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultTecCost_errors"><i> €/TEC </i></span></td></tr>' +
+
+            '<tr><td><i><u>Plant</u></i></td></tr>' +
+            '<tr><td><i>Mooring: </i><td><input type="number" name="defaultMoor" id="defaultMoor" style="width: 6em" value="500000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultMoor_errors"><i> €/TEC </i></span></td></tr>' +
+            '<tr><td><i>Foundations/Anchoring: </i><td><input type="number" name="defaultFound" id="defaultFound" style="width: 6em" value="35000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFound_errors"><i> €/TEC </i></span></td></tr>' +
+            '<tr><td><i>Export Cabling Length: </i><td><input type="number" name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
+            '<tr><td><i>Export Cabling Cost <select class="esri-widget" name="myListInter" id="myListInter" onchange="exportOptionInter()"><option value="59000">20 kV</option><option value="173000">38 kV</option><option value="288000" selected>110 kV</option></select>:</i><td><input type="number" name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="288000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
+            '<tr><td><i>Intra-Array Cabling Length: </i><td><input type="number" name="defaultCableIntraLength" id="defaultCableIntraLength" style="width: 6em" value="0" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCableIntraLength_errors"><i> km </i></span></td></tr>' +
+            '<tr><td><i>Intra-Array Cabling Cost <select class="esri-widget" name="myListIntra" id="myListIntra" onchange="exportOptionIntra()"><option value="59000">20 kV</option><option value="173000" selected>38 kV</option><option value="288000">110 kV</option></select>: </i><td><input type="number" name="defaultCableIntraCost" id="defaultCableIntraCost" style="width: 6em" value="173000" min=1 max=50000000000 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultCableIntraCost_errors"><i> €/km </i></span></td></tr>' +
+            '<tr><td><i>Onshore Grid/H2 Connections: </i><td><input type="number" name="defaultOnElec" id="defaultOnElec" style="width: 6em" value="20000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultOnElec_errors"><i> €/MW </i></span></td></tr>' +
+            // '<tr><td><i>Offshore Substation (IA): </i><td><input type="number" name="defaultOffSub" id="defaultOffSub" style="width: 6em" value="1125000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultOffSub_errors"><i> €/MW </i></span></td></tr>' +
+
+            '<tr><td><i><u>Installation and Commissioning</u></i></td></tr>' +
+            '<tr><td><i>Installation Days: </i><td><input type="number" name="defaultDays" id="defaultDays" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultDays_errors"><i> /TEC </i></span></td></tr>' +
+            '<tr><td><i>Working Day: </i><td><input type="number" name="defaultWorkDay" id="defaultWorkDay" style="width: 6em" value="24" min=1 max=24 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultWorkDay_errors"><i> hours </i></span></td></tr>' +
+            '<tr><td><i>Towing Vessel Hire: </i><td><input type="number" name="defaultVh" id="defaultVh" style="width: 6em" value="7500" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultVh_errors"><i> €/Day </i></span></td></tr>' +
+            '<tr><td><i>Towing Vessel Speed: </i><td><input type="number" name="defaultVs" id="defaultVs" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultVs_errors"><i> km/h </i></span></td></tr>' +
+            '<tr><td><i>Devices Delivered Per Visit: </i><td><input type="number" name="defaultDevicesPerVis" id="defaultDevicesPerVis" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultDevicesPerVis_errors"><i> units </i></span></td></tr>' +
+            '<tr><td><i>Diving Work: </i><td><input type="number" name="defaultDw" id="defaultDw" style="width: 6em" value="2500" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultDw_errors"><i> €/Day </i></span></td></tr>' +
+            // '<tr><td><i>F&M Installation Days: </i><td><input type="number" name="defaultFmInstall" id="defaultFmInstall" style="width: 6em" value="1" min=1 max=24 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFmInstall_errors"><i> /TEC </i></span></td></tr>' +
+            '<tr><td><i>F&M Installation Cost: </i><td><input type="number" name="defaultFmInstallCost" id="defaultFmInstallCost" style="width: 6em" value="10000" min=1 max=24 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFmInstallCost_errors"><i> €/Day </i></span></td></tr>' +
+            '<tr><td><i>Cable Intallation Length: </i><td><input type="number" name="defaultCtLength" id="defaultCtLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCtLength_errors"><i> km </i></span></td></tr>' +
+            '<tr><td><i>Cabling Installation Cost: </i><td><input type="number" name="defaultCableInstall" id="defaultCableInstall" style="width: 6em" value="282000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCableInstall_errors"><i> €/km </i></span></td></tr>' +
+            '<tr><td><select class="esri-widget" name="myList3" id="myList3" onchange="exportOptionTrench()"><option value="282000" selected>trenched</option><option value="100000">untrenched</option><option value="939000">rock coverage</option></select></i></td></tr></table>' + '<BR>' +
+
+
+            '<table><tr><td><u>OPEX</u></td></tr>' +
+            '<tr><td><i>Fixed O&M: </i><td><input type="number" name="defaultFixedOam" id="defaultFixedOam" style="width: 6em" value="118000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFixedOam_errors"><i> €/MW </i></span></td>' +
+            '<tr><td><i>Port Fees: </i><td><input type="number" name="defaultFees" id="defaultFees" style="width: 6em" value="4" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFees_errors"><i> €/MW </i></span></td>' +
+            '<tr><td><i>Variable O&M: </i><td><input type="number" name="defaultVarOam" id="defaultVarOam" style="width: 6em" value="7" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultVarOam_errors"><i> €/100km </i></span></td></tr>' +
+            '<tr><td><i>O&M Port Distance: </i><td><input type="number" name="defaultOpsPort" id="defaultOpsPort" style="width: 6em" value="' + attributes.distance_p + '" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultOpsPort_errors"><i> km </i></span></td></tr></table>' + '<BR>' +
+
+            '<table><tr><td><u>DECEX</u></td></tr>' +
+            '<tr><td><i>Decommissioning: </i><td><input type="number" name="defaultDec" id="defaultDec" style="width: 4em" value="88" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultDec_errors"><i> % of installation </i></span></td></tr></table>' +
+
+            '<table><tr><td><u>TOTALS*</u></td></tr>' +
+            '<tr><td><i>Tot. AEP: </i><td><input type="number" name="totaep" id="totaep" style="width: 9em"><span><i> MWh/yr </i></span></td></tr>' + '<BR>' +
+            '<tr><td><i>Tot. CAPEX: </i><td><input type="number" name="totcapex" id="totcapex" style="width: 9em"><span><i> € </i></span></td></tr>' + '<BR>' +
+            '<tr><td><i>Tot. OPEX: </i><td><input type="number" name="totopex" id="totopex" style="width: 9em" <span><i> €/yr </i></span></td></tr>' + '<BR>' +
+            '<tr><td><i>Tot. DECEX: </i><td><input type="number" name="totdecex" id="totdecex" style="width: 9em" <span><i> € </i></span></td></tr>' + '<BR>' +
+            '<tr><td><i>*undiscounted</i></td></tr></table>' + '<BR>' +
+
+
+            '<div id="calculate_lcoe3"><button onclick="calc_te3()">Enter</button></div>' + '<BR>' +
+            '<button></div>' +
+
+
+            '<table><tr><td><i>Project: </i><td><input type="text" name="projectname" id="projectname" style="width: 10em" disabled /></td></tr>' +
+            '<tr><td><i>LCOE (€): </i><td><input type="text" name="lcoe1" id="lcoe1" style="width: 7em" disabled /><i> €/MWh </i></td></tr>' +
+            '<tr><td><i>LCOE (c): </i><td><input type="text" name="lcoe2" id="lcoe2" style="width: 7em" disabled /><i> c/kWh </i></td></tr>' +
+            '<tr><td><i>NPV: </i><td><input type="text" name="npv" id="npv" style="width: 9em" disabled /><i> € </i></td></tr></table><BR>'
+
+
+        return div;
+
+    }
+
+
+
+    var pcurveGroupLayer = new GroupLayer({
+        title: "Power Curve - AEP",
+        visible: true,
+        visibilityMode: "inclusive",
+        layers: [aepAtlantis1500, aepAtlantis1700, aepAtlantis2000],
+    });
+
+
+    
     var tidGroupLayer = new GroupLayer({
         title: "Tidal Energy",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [aepTidal],
+        layers: [aepTidal, pcurveGroupLayer],
     });
 
 
