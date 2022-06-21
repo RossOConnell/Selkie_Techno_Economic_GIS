@@ -87,6 +87,11 @@ function exportOptionTrench() {
     document.getElementById("defaultCableInstall").value = mylist3.options[mylist3.selectedIndex].value;
 }
 
+function exportOptionElecPrice() {
+    var myListElecPrice = document.getElementById("myListElecPrice");
+    document.getElementById("defaultElecPrice").value = myListElecPrice.options[myListElecPrice.selectedIndex].value;
+}
+
 function exportOptionInter() {
     var myListInter = document.getElementById("myListInter");
     document.getElementById("defaultCableInterCost").value = myListInter.options[myListInter.selectedIndex].value;
@@ -2709,7 +2714,7 @@ require([
             '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep1(); calcCapex1(); calcOpex1()"/></td></tr>' +
             '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
             '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
-            '<tr><td><i>Elecricity Price: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="20" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
+            '<tr><td><i>Elecricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep1(); calcCapex1(); calcOpex1()"><option value="29" selected>IRL</option><option value="42">U.K.</option></select>: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="29" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
 
@@ -2857,7 +2862,7 @@ require([
             '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep2(); calcCapex2(); calcOpex2()"/></td></tr>' +
             '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="20" min=1 max=100 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
             '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep2(); calcCapex2(); calcOpex2()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
-            '<tr><td><i>Elecricity Price: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="20" min=1/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
+            '<tr><td><i>Elecricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep2(); calcCapex2(); calcOpex2()"><option value="29" selected>IRL</option><option value="42">U.K.</option></select>: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="29" min=1 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
 
@@ -3008,7 +3013,7 @@ require([
             '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep3(); calcCapex3(); calcOpex3()"/></td></tr>' +
             '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
             '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep3(); calcCapex3(); calcOpex3()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
-            '<tr><td><i>Elecricity Price: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="20" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
+            '<tr><td><i>Elecricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep3(); calcCapex3(); calcOpex3()"><option value="29" selected>IRL</option><option value="42">U.K.</option></select>: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="29" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
 
