@@ -2966,7 +2966,7 @@ require([
 
     var aepAtlantis2000 = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis2000_SJ/FeatureServer",
-        title: "SIMEC Atlantis 2MW Turbine",
+        title: "SIMEC Atlantis 2MW",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2975,7 +2975,7 @@ require([
 
     var aepAtlantis1700 = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis1700_SJ/FeatureServer",
-        title: "SIMEC Atlantis 1.7MW Turbine",
+        title: "SIMEC Atlantis 1.7MW",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2984,7 +2984,7 @@ require([
 
     var aepAtlantis1500 = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis1500_SJ/FeatureServer",
-        title: "SIMEC Atlantis 1.5MW Turbine",
+        title: "SIMEC Atlantis 1.5MW",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
