@@ -2584,7 +2584,7 @@ require([
 
     var aepGeneric = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Generic_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "Generic WEC",
+        title: "Generic",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2594,7 +2594,7 @@ require([
 
     var aepOceanEnergy = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/OceanEnergy_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "OE35 WEC",
+        title: "OE Buoy (OE35)",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2604,7 +2604,7 @@ require([
 
     var aepCorPower = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/CorPower_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "CorPower WEC",
+        title: "CorPower",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2614,7 +2614,7 @@ require([
 
     var aepPontoon = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Pontoon_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "Pontoon WEC",
+        title: "Pontoon",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2624,7 +2624,7 @@ require([
 
     var aepLanglee = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Langlee_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "Langlee WEC",
+        title: "Langlee",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2634,7 +2634,7 @@ require([
 
     var aepWaveBob = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveBob_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "WaveBob WEC",
+        title: "Wavebob",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2644,7 +2644,7 @@ require([
 
     var aepAWS = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AWS_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "AWS WEC",
+        title: "AWS",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2654,7 +2654,7 @@ require([
 
     var aepWaveDragon = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveDragon_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "WaveDragon WEC",
+        title: "Wave Dragon",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2664,7 +2664,7 @@ require([
 
     var aepPelamis = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Pelamis_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "Pelamis WEC",
+        title: "Pelamis",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2674,7 +2674,7 @@ require([
 
     var aepAquaBuoy = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AquaBuoy_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "AquaBuoy WEC",
+        title: "AquaBuOY",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -2684,7 +2684,7 @@ require([
 
     var aepOyster = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Oyster_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "Oyster WEC",
+        title: "Oyster",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
