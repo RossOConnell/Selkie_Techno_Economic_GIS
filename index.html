@@ -130,11 +130,9 @@
                     <tr>
                         <td style = "vertical-align: top">
                             <select class="esri-widget" id="attSelect3">
-                                <option value="MERGE_SRC" selected>Seabed Type</option>
+                                <option value="Substrate" selected>Seabed Classification (Folk-7)</option>
                             </select>
                         </td>
-
-                        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
 
                         <td style = "vertical-align: top">
                             <select class="esri-widget" id="signSelect3" disabled>
@@ -143,14 +141,18 @@
                         </td>
 
                         <td>
-                            <select class="esri-widget" id="valSelect3">
-                                <option value="'Excavating Class'">Soft/Excavatable</option>
-                                <option value="'Not Excavatable'">Hard/Non-Excavatable</option>
+                            <select class="esri-widget" id="valSelect3" size="3" multiple>
+                                <option value="'Fine mud'">Mud</option>
+                                <option value="'Sandy mud'">Sandy Mud</option>
+                                <option value="'Muddy sand'">Muddy Sand</option>
+                                <option value="'Sand'">Sand</option>
+                                <option value="'Mixed sediment'">Mixed Sediment</option>
+                                <option value="'Coarse substrate'">Coarse Substrate</option>
+                                <option value="'Rock or other hard substrata'">Rock/Boulders</option>
                             </select>
                         </td>
                     </tr>
                 </table>
-                <BR>
 
 
                 <button id="doBtn">Enter</button>
