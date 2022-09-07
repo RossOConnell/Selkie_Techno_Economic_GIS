@@ -1425,6 +1425,34 @@ require([
     //     }
     // });
 
+    // var marinePlanAreaWales = new FeatureLayer({
+    //     url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WAL_MPA/FeatureServer",
+    //     title: "Wales' Marine Plan Area",
+    //     visible: false,
+    //     opacity: 1,
+    //     renderer: {
+    //         type: "simple",
+    //         symbol: {
+    //             type: "simple-line",
+    //             color: "orange",
+    //         }
+    //     }
+    // });
+
+    // var marinePlanAreaIreland = new FeatureLayer({
+    //     url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/IRL_MPA/FeatureServer",
+    //     title: "Ireland's Marine Plan Area",
+    //     visible: false,
+    //     opacity: 1,
+    //     renderer: {
+    //         type: "simple",
+    //         symbol: {
+    //             type: "simple-line",
+    //             color: "orange",
+    //         }
+    //     }
+    // });
+
     var selkieTerritorialSeas = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/12NM_Limits_SelkieArea/FeatureServer",
         title: "Territorial Seas (12NM Limit)",
@@ -1475,33 +1503,6 @@ require([
 
 
 
-    var marinePlanAreaWales = new FeatureLayer({
-        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WAL_MPA/FeatureServer",
-        title: "Wales' Marine Plan Area",
-        visible: false,
-        opacity: 1,
-        renderer: {
-            type: "simple",
-            symbol: {
-                type: "simple-line",
-                color: "orange",
-            }
-        }
-    });
-
-    var marinePlanAreaIreland = new FeatureLayer({
-        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/IRL_MPA/FeatureServer",
-        title: "Ireland's Marine Plan Area",
-        visible: false,
-        opacity: 1,
-        renderer: {
-            type: "simple",
-            symbol: {
-                type: "simple-line",
-                color: "orange",
-            }
-        }
-    });
 
     var eezUkandIrl = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/EEZ_IRL_and_UK/FeatureServer",
@@ -1534,7 +1535,7 @@ require([
         title: "Administrative",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [selkieTerritorialSeas, localSeaAreas, selkieArea, selkieStudyArea, marinePlanAreaWales, marinePlanAreaIreland, eezUkandIrl],
+        layers: [localSeaAreas, selkieArea, selkieStudyArea, selkieTerritorialSeas, eezUkandIrl],
     });
 
 
@@ -2680,7 +2681,7 @@ require([
 
     var aepAquaBuoy = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AquaBuoy_WEC_Power_Matrix_AEP/FeatureServer",
-        title: "AquaBuOY",
+        title: "AquaBuoy",
         visible: false,
         opacity: 0.75,
         listMode: "hide-children",
@@ -3582,7 +3583,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Bathymetry")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Water Depth")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(bathyLayer.fullExtent).catch(function (error) {
@@ -3590,23 +3591,52 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Bathymetry")) {
+            } else if ((id === "information") && (event.item.layer.title === "Water Depth")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(bathyLayer.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Bathymetry")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Water Depth")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (bathyLayer.opacity < 1) {
                     bathyLayer.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Bathymetry")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Water Depth")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
                 if (bathyLayer.opacity > 0) {
                     bathyLayer.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "Depth Contours (m)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(bathyContour.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "Depth Contours (m)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(bathyContour.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Depth Contours (m)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (bathyContour.opacity < 1) {
+                    bathyContour.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Depth Contours (m)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (bathyContour.opacity > 0) {
+                    bathyContour.opacity -= 0.25;
                 }
             }
 
@@ -3740,97 +3770,9 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Ireland's Territorial Seas")) {
-                // if the full-extent action is triggered then navigate
-                // to the full extent of the visible layer
-                view.goTo(eireTerritorialSea.fullExtent).catch(function (error) {
-                    if (error.name != "AbortError") {
-                        console.error(error);
-                    }
-                });
-            } else if ((id === "information") && (event.item.layer.title === "Ireland's Territorial Seas")) {
-                // if the information action is triggered, then
-                // open the item details page of the service layer
-                window.open(eireTerritorialSea.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Ireland's Territorial Seas")) {
-                // if the increase-opacity action is triggered, then
-                // increase the opacity of the GroupLayer by 0.25
-
-                if (eireTerritorialSea.opacity < 1) {
-                    eireTerritorialSea.opacity += 0.25;
-                }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Ireland's Territorial Seas")) {
-                // if the decrease-opacity action is triggered, then
-                // decrease the opacity of the GroupLayer by 0.25
-
-                if (eireTerritorialSea.opacity > 0) {
-                    eireTerritorialSea.opacity -= 0.25;
-                }
-            }
 
 
 
-
-            else if ((id === "full-extent") && (event.item.layer.title === "UK's Territorial Seas")) {
-                // if the full-extent action is triggered then navigate
-                // to the full extent of the visible layer
-                view.goTo(ukTerritorialSea.fullExtent).catch(function (error) {
-                    if (error.name != "AbortError") {
-                        console.error(error);
-                    }
-                });
-            } else if ((id === "information") && (event.item.layer.title === "UK's Territorial Seas")) {
-                // if the information action is triggered, then
-                // open the item details page of the service layer
-                window.open(ukTerritorialSea.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "UK's Territorial Seas")) {
-                // if the increase-opacity action is triggered, then
-                // increase the opacity of the GroupLayer by 0.25
-
-                if (ukTerritorialSea.opacity < 1) {
-                    ukTerritorialSea.opacity += 0.25;
-                }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "UK's Territorial Seas")) {
-                // if the decrease-opacity action is triggered, then
-                // decrease the opacity of the GroupLayer by 0.25
-
-                if (ukTerritorialSea.opacity > 0) {
-                    ukTerritorialSea.opacity -= 0.25;
-                }
-            }
-
-
-
-
-
-
-            else if ((id === "full-extent") && (event.item.layer.title === "Isle of Man's Territorial Seas")) {
-                // if the full-extent action is triggered then navigate
-                // to the full extent of the visible layer
-                view.goTo(isleOfManTerritorialSea.fullExtent).catch(function (error) {
-                    if (error.name != "AbortError") {
-                        console.error(error);
-                    }
-                });
-            } else if ((id === "information") && (event.item.layer.title === "Isle of Man's Territorial Seas")) {
-                // if the information action is triggered, then
-                // open the item details page of the service layer
-                window.open(isleOfManTerritorialSea.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Isle of Man's Territorial Seas")) {
-                // if the increase-opacity action is triggered, then
-                // increase the opacity of the GroupLayer by 0.25
-
-                if (isleOfManTerritorialSea.opacity < 1) {
-                    isleOfManTerritorialSea.opacity += 0.25;
-                }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Isle of Man's Territorial Seas")) {
-                // if the decrease-opacity action is triggered, then
-                // decrease the opacity of the GroupLayer by 0.25
-
-                if (isleOfManTerritorialSea.opacity > 0) {
-                    isleOfManTerritorialSea.opacity -= 0.25;
-                }
-            }
 
 
 
@@ -3898,64 +3840,34 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Wales' Marine Plan Area")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Territorial Seas (12NM Limit)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
-                view.goTo(marinePlanAreaWales.fullExtent).catch(function (error) {
+                view.goTo(selkieTerritorialSeas.fullExtent).catch(function (error) {
                     if (error.name != "AbortError") {
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Wales' Marine Plan Area")) {
+            } else if ((id === "information") && (event.item.layer.title === "Territorial Seas (12NM Limit)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
-                window.open(marinePlanAreaWales.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Wales' Marine Plan Area")) {
+                window.open(selkieTerritorialSeas.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Territorial Seas (12NM Limit)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
-                if (marinePlanAreaWales.opacity < 1) {
-                    marinePlanAreaWales.opacity += 0.25;
+                if (selkieTerritorialSeas.opacity < 1) {
+                    selkieTerritorialSeas.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wales' Marine Plan Area")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Territorial Seas (12NM Limit)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
-                if (marinePlanAreaWales.opacity > 0) {
-                    marinePlanAreaWales.opacity -= 0.25;
+                if (selkieTerritorialSeas.opacity > 0) {
+                    selkieTerritorialSeas.opacity -= 0.25;
                 }
             }
 
-
-
-
-            else if ((id === "full-extent") && (event.item.layer.title === "Ireland's Marine Plan Area")) {
-                // if the full-extent action is triggered then navigate
-                // to the full extent of the visible layer
-                view.goTo(marinePlanAreaIreland.fullExtent).catch(function (error) {
-                    if (error.name != "AbortError") {
-                        console.error(error);
-                    }
-                });
-            } else if ((id === "information") && (event.item.layer.title === "Ireland's Marine Plan Area")) {
-                // if the information action is triggered, then
-                // open the item details page of the service layer
-                window.open(marinePlanAreaIreland.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Ireland's Marine Plan Area")) {
-                // if the increase-opacity action is triggered, then
-                // increase the opacity of the GroupLayer by 0.25
-
-                if (marinePlanAreaIreland.opacity < 1) {
-                    marinePlanAreaIreland.opacity += 0.25;
-                }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Ireland's Marine Plan Area")) {
-                // if the decrease-opacity action is triggered, then
-                // decrease the opacity of the GroupLayer by 0.25
-
-                if (marinePlanAreaIreland.opacity > 0) {
-                    marinePlanAreaIreland.opacity -= 0.25;
-                }
-            }
 
 
             else if ((id === "full-extent") && (event.item.layer.title === "EEZ Limits (Eire and UK)")) {
@@ -4000,7 +3912,7 @@ require([
             } else if ((id === "information") && (event.item.layer.title === "Selkie Study Area")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
-                window.open("https://marei.maps.arcgis.com/sharing/rest/content/items/a17a1335d38c4d9fbb3c6b651eb36f63/info/metadata/metadata.xml?format=default&output=html&token=ANHNWhdPc-Ev6pDqD43t0XqGfv74vh-Fa2DIaX7HOJAu-KfK4qaX320xzzln84zUtxvldUnXwxpq5OwrvfGeGiCh34n68Q3mFKfkoiKWtGc9vY9X0s9JB9RXLJNSDulbL--GreXCI7rmSDP3bopzHyZ9q6EXhLwx57_oGpaoAY4aOTps06lU2qq-OFrRoEhkc7OFz1JP4KWmokTlAsiJLnmBB8EXgfO8ef0aUjBITlM");
+                window.open(selkieStudyArea.url);
             } else if ((id === "increase-opacity") && (event.item.layer.title === "Selkie Study Area")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
@@ -4017,6 +3929,34 @@ require([
                 }
             }
 
+
+            else if ((id === "full-extent") && (event.item.layer.title === "UK Wind Power Lease Areas")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(ukWindDeploymentSite.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "UK Wind Power Lease Areas")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(ukWindDeploymentSite.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "UK Wind Power Lease Areas")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (ukWindDeploymentSite.opacity < 1) {
+                    ukWindDeploymentSite.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "UK Wind Power Lease Areas")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (ukWindDeploymentSite.opacity > 0) {
+                    ukWindDeploymentSite.opacity -= 0.25;
+                }
+            }
 
 
 
@@ -5116,7 +5056,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Annual Tidal Power (MWh/m²)")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Annual Tidal Energy (Wh/m²)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(annualTp.fullExtent).catch(function (error) {
@@ -5124,18 +5064,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Annual Tidal Power (MWh/m²)")) {
+            } else if ((id === "information") && (event.item.layer.title === "Annual Tidal Energy (Wh/m²)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(annualTp.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Tidal Power (MWh/m²)")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Tidal Energy (Wh/m²)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (annualTp.opacity < 1) {
                     annualTp.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Tidal Power (MWh/m²)")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Tidal Energy (Wh/m²)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5147,7 +5087,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Annual Spring Tidal Power (MWh/m²)")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Annual Spring Tidal Energy (Wh/m²)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(annualStp.fullExtent).catch(function (error) {
@@ -5155,18 +5095,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Annual Spring Tidal Power (MWh/m²)")) {
+            } else if ((id === "information") && (event.item.layer.title === "Annual Spring Tidal Energy (Wh/m²)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(annualStp.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Spring Tidal Power (MWh/m²)")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Spring Tidal Energy (Wh/m²)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (annualStp.opacity < 1) {
                     annualStp.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Spring Tidal Power (MWh/m²)")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Spring Tidal Energy (Wh/m²)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5178,7 +5118,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Annual Neap Tidal Power (MWh/m²)")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Annual Neap Tidal Energy (Wh/m²)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(annualNtp.fullExtent).catch(function (error) {
@@ -5186,18 +5126,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Annual Neap Tidal Power (MWh/m²)")) {
+            } else if ((id === "information") && (event.item.layer.title === "Annual Neap Tidal Energy (Wh/m²)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(annualNtp.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Neap Tidal Power (MWh/m²)")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Neap Tidal Energy (Wh/m²)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (annualNtp.opacity < 1) {
                     annualNtp.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Neap Tidal Power (MWh/m²)")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Neap Tidal Energy (Wh/m²)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5216,7 +5156,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Generic WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Generic")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepGeneric.fullExtent).catch(function (error) {
@@ -5224,18 +5164,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Generic WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Generic")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepGeneric.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Generic WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Generic")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepGeneric.opacity < 1) {
                     aepGeneric.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Generic WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Generic")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5247,7 +5187,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "OE35 WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "OE Buoy (OE35)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepOceanEnergy.fullExtent).catch(function (error) {
@@ -5255,18 +5195,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "OE35 WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "OE Buoy (OE35)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepOceanEnergy.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "OE35 WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "OE Buoy (OE35)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepOceanEnergy.opacity < 1) {
                     aepOceanEnergy.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "OE35 WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "OE Buoy (OE35)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5278,7 +5218,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "CorPower WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "CorPower")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepCorPower.fullExtent).catch(function (error) {
@@ -5286,18 +5226,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "CorPower WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "CorPower")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepCorPower.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "CorPower WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "CorPower")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepCorPower.opacity < 1) {
                     aepCorPower.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "CorPower WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "CorPower")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5309,7 +5249,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Pontoon WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Pontoon")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepPontoon.fullExtent).catch(function (error) {
@@ -5317,18 +5257,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Pontoon WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Pontoon")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepPontoon.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Pontoon WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Pontoon")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepPontoon.opacity < 1) {
                     aepPontoon.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pontoon WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pontoon")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5340,7 +5280,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Langlee WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Langlee")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepLanglee.fullExtent).catch(function (error) {
@@ -5348,18 +5288,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Langlee WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Langlee")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepLanglee.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Langlee WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Langlee")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepLanglee.opacity < 1) {
                     aepLanglee.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Langlee WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Langlee")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5371,7 +5311,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "WaveBob WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Wavebob")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepWaveBob.fullExtent).catch(function (error) {
@@ -5379,18 +5319,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "WaveBob WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Wavebob")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepWaveBob.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "WaveBob WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Wavebob")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepWaveBob.opacity < 1) {
                     aepWaveBob.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "WaveBob WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wavebob")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5402,7 +5342,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "AWS WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "AWS")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepAWS.fullExtent).catch(function (error) {
@@ -5410,18 +5350,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "AWS WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "AWS")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepAWS.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "AWS WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "AWS")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepAWS.opacity < 1) {
                     aepAWS.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "AWS WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "AWS")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5433,7 +5373,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "WaveDragon WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Wave Dragon")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepWaveDragon.fullExtent).catch(function (error) {
@@ -5441,18 +5381,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "WaveDragon WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Wave Dragon")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepWaveDragon.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "WaveDragon WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Wave Dragon")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepWaveDragon.opacity < 1) {
                     aepWaveDragon.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "WaveDragon WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wave Dragon")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5464,7 +5404,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Pelamis WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Pelamis")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepPelamis.fullExtent).catch(function (error) {
@@ -5472,18 +5412,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Pelamis WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Pelamis")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepPelamis.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Pelamis WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Pelamis")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepPelamis.opacity < 1) {
                     aepPelamis.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pelamis WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pelamis")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5495,7 +5435,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "AquaBuoy WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "AquaBuoy")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepAquaBuoy.fullExtent).catch(function (error) {
@@ -5503,18 +5443,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "AquaBuoy WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "AquaBuoy")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepAquaBuoy.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "AquaBuoy WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "AquaBuoy")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepAquaBuoy.opacity < 1) {
                     aepAquaBuoy.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "AquaBuoy WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "AquaBuoy")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5526,7 +5466,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Oyster WEC")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Oyster")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepOyster.fullExtent).catch(function (error) {
@@ -5534,18 +5474,18 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Oyster WEC")) {
+            } else if ((id === "information") && (event.item.layer.title === "Oyster")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepOyster.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Oyster WEC")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Oyster")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepOyster.opacity < 1) {
                     aepOyster.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Oyster WEC")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Oyster")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
@@ -5557,7 +5497,7 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Annual Tidal Power (MW/m²)")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "Annual Tidal Energy (MWh/m²)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(aepTidal.fullExtent).catch(function (error) {
@@ -5565,23 +5505,111 @@ require([
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Annual Tidal Power (MW/m²)")) {
+            } else if ((id === "information") && (event.item.layer.title === "Annual Tidal Energy (MWh/m²)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
                 window.open(aepTidal.url);
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Tidal Power (MW/m²)")) {
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Tidal Energy (MWh/m²)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
                 if (aepTidal.opacity < 1) {
                     aepTidal.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Tidal Power (MW/m²)")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Tidal Energy (MWh/m²)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
                 if (aepTidal.opacity > 0) {
                     aepTidal.opacity -= 0.25;
+                }
+            }
+
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(aepAtlantis2000.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(aepAtlantis2000.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (aepAtlantis2000.opacity < 1) {
+                    aepAtlantis2000.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (aepAtlantis2000.opacity > 0) {
+                    aepAtlantis2000.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(aepAtlantis1700.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(aepAtlantis1700.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (aepAtlantis1700.opacity < 1) {
+                    aepAtlantis1700.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (aepAtlantis1700.opacity > 0) {
+                    aepAtlantis1700.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(aepAtlantis1500.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(aepAtlantis1500.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (aepAtlantis1500.opacity < 1) {
+                    aepAtlantis1500.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (aepAtlantis1500.opacity > 0) {
+                    aepAtlantis1500.opacity -= 0.25;
                 }
             }
 
