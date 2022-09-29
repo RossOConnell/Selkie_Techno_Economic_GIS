@@ -1,5 +1,8 @@
 html,
 body,
+
+
+
 #viewDiv {
     padding-top: 0px;
     margin: 0;
@@ -69,6 +72,21 @@ body,
     background: white;
     padding: 6px;
 }
+
+
+
+/* .splash{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://www.selkie-project.eu/wp-content/uploads/2020/06/photo-1530426509291-d831d721c7b2.jpeg');
+    z-index: 200;
+    color: white;
+    line-height: 90vh;
+    
+    } */
 
 
 

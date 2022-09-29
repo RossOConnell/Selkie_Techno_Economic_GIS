@@ -1222,6 +1222,8 @@ function calc_te3() {
 
 
 
+
+
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -2805,7 +2807,7 @@ require([
             '<table><tr><td><u>Project Information</u></td></tr>' +
             '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/></td></tr>' +
             '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
-            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="10" min=1 max=50 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
             '<tr><td><i>Elecricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="29" selected>IRL</option><option value="42">U.K.</option></select>: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="29" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
@@ -2817,8 +2819,8 @@ require([
             '<tr><td><i>Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
             '<tr><td><i>Device Rating: </i><td><input type="number" name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()" exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
             '<tr><td><i>Farm Rating: </i><td><input type="number" name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 16) / 1000 + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
-            '<tr><td><i>Array/Wake Losses (IA): </i><td><input type="number" name="defaultWak" id="defaultWak" style="width: 5em" value="0" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
-            '<tr><td><i>Line Losses (IA): </i><td><input type="number" name="defaultLin" id="defaultLin" style="width: 5em" value="0" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Array/Wake Losses (IA): </i><td><input type="number" name="defaultWak" id="defaultWak" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Line Losses (IA): </i><td><input type="number" name="defaultLin" id="defaultLin" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
             '<tr><td><i>Capacity Factor: </i><td><input type="number" name="defaultCapFact" id="defaultCapFact" style="width: 5em" value="0" readonly min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCapFact_errors"><i> % </i></span></td></tr>' +
             '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
             
@@ -2831,7 +2833,7 @@ require([
             '<tr><td><i>Development & Consent: </i><td><input type="number" name="defaultPreDevCost" id="defaultPreDevCost" style="width: 6em" value="118500" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultPreDevCost_errors"><i> € </i></span></td></tr>' +
 
             '<tr><td><i><u>Device</u></i></td>' +
-            '<tr><td><i>Wec Unit: </i><td><input type="number" name="defaultWecCost" id="defaultWecCost" style="width: 6em" value="3000000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWecCost_errors"><i> €/kW </i></span></td></tr>' +
+            '<tr><td><i>Wec Unit: </i><td><input type="number" name="defaultWecCost" id="defaultWecCost" style="width: 6em" value="3116" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWecCost_errors"><i> €/kW </i></span></td></tr>' +
 
             '<tr><td><i><u>Plant</u></i></td></tr>' +
             '<tr><td><i>Mooring: </i><td><input type="number" name="defaultMoor" id="defaultMoor" style="width: 6em" value="500000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultMoor_errors"><i> €/WEC </i></span></td></tr>' +
@@ -2957,7 +2959,7 @@ require([
             '<table><tr><td><u>Project Information</u></td></tr>' +
             '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep2(); exportOptionCapFact2(); calcCapex2(); calcOpex2()"/></td></tr>' +
             '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="20" min=1 max=100 onchange="calcAep2(); exportOptionCapFact2(); calcCapex2(); calcOpex2()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
-            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep2(); exportOptionCapFact2(); calcCapex2(); calcOpex2()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="10" min=1 max=50 onchange="calcAep2(); exportOptionCapFact2(); calcCapex2(); calcOpex2()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
             '<tr><td><i>Elecricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep2(); exportOptionCapFact2(); calcCapex2(); calcOpex2()"><option value="29" selected>IRL</option><option value="42">U.K.</option></select>: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="29" min=1 onchange="calcAep2(); exportOptionCapFact2(); calcCapex2(); calcOpex2()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
@@ -3108,7 +3110,7 @@ require([
             '<table><tr><td><u>Project Information</u></td></tr>' +
             '<tr><td><i>Project Name: </i><td><input type="text" name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/></td></tr>' +
             '<tr><td><i>Project Life: </i><td><input type="number" name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
-            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Discount Rate: </i><td><input type="number" name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="10" min=1 max=50 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
             '<tr><td><i>Elecricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"><option value="29" selected>IRL</option><option value="42">U.K.</option></select>: </i><td><input type="number" name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="29" min=1 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
@@ -3120,8 +3122,8 @@ require([
             '<tr><td><i>Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating3(); calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
             '<tr><td><i>Device Rating: </i><td><input type="number" name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()" exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
             '<tr><td><i>Farm Rating: </i><td><input type="number" name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 4) / 1000 + '" min=1 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
-            '<tr><td><i>Array Losses (IA): </i><td><input type="number" name="defaultWak" id="defaultWak" style="width: 5em" value="0" min=0 max=100 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
-            '<tr><td><i>Line Losses (IA): </i><td><input type="number" name="defaultLin" id="defaultLin" style="width: 5em" value="0" min=0 max=100 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Array Losses (IA): </i><td><input type="number" name="defaultWak" id="defaultWak" style="width: 5em" value="5" min=0 max=100 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
+            '<tr><td><i>Line Losses (IA): </i><td><input type="number" name="defaultLin" id="defaultLin" style="width: 5em" value="5" min=0 max=100 onchange="calcAep3(); exportOptionCapFact3(); calcCapex3(); calcOpex3()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
             '<tr><td><i>Capacity Factor: </i><td><input type="number" name="defaultCapFact" id="defaultCapFact" style="width: 5em" value="0" readonly min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCapFact_errors"><i> % </i></span></td></tr>' +
             '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
 
