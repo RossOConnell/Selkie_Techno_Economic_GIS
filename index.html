@@ -46,6 +46,9 @@
                 </h1>
                 <h1 style="font-weight: lighter; font-size: 32px;">Ocean Energy GIS-TE Platform
 
+                    <a style="float: right; font-weight: lighter; font-size: 12px; color: dimgray; line-height: 55px; padding-right: 12px; text-decoration: none; word-spacing: 3px"
+                        href="https://storymaps.arcgis.com/stories/ca4147a5194e4263a33463f0874eb710" target="_blank">REFERENCES </a>
+
                     <a style="float: right; font-weight: lighter; font-size: 12px; color: dimgray; line-height: 55px; padding-right: 12px; text-decoration: none; word-spacing: 3px; cursor: pointer;"
                         onclick="window.print()">PRINT </a>
                     
@@ -69,13 +72,13 @@
 
             <div class="esri-widget" id="optionsDiv">
 
-                <h2>Site Selection Aid</h2>
+                <h2 title = "Find suitable sites for deployment (within 12NM limit only).">Site Selection Aid</h2>
 
                 <table>
                     <tr>
                         <td>
-                            <select class="esri-widget" id="attSelect0">
-                                <option value="Wave_Power" selected>Wave: Theoretical Power (kWh/m)</option>
+                            <select class="esri-widget" title = "Wave: the minimum theoretical annual average resource (kWh/m) at which you would consider deploying your device. Tidal: the minimum current velocity (m/s) on mean spring tide at which you would consider deploying your device." id="attSelect0">
+                                <option value="Wave_Power" selected>Wave: Theoretical Energy (kWh/m)</option>
                                 <option value="Mean_SPCV_">Tidal: Velocity (m/s) on Mean Springs</option>
                             </select>
                         </td>
@@ -85,13 +88,13 @@
                             </select>
                         </td>
                         <td>
-                            <input type="number" id="valSelect0" style="width: 5em" value="15" min=1 max=100 />
+                            <input type="number" title = "Insert value." id="valSelect0" style="width: 5em" value="15" min=1 max=100 />
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <select class="esri-widget" id="attSelect1">
+                            <select class="esri-widget" title = "Minimum depth at which your device should be deployed." id="attSelect1">
                                 <option value="ContourMin" selected>Minimum Depth (m)</option>
                             </select>
                         </td>
@@ -103,13 +106,13 @@
                         </td>
 
                         <td>
-                            <input type="number" id="valSelect1" style="width: 5em" value="50" min=1 max=300 />
+                            <input type="number" title = "Insert value." id="valSelect1" style="width: 5em" value="50" min=1 max=300 />
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <select class="esri-widget" id="attSelect2">
+                            <select class="esri-widget" title = "Maximum depth at which your device should be deployed." id="attSelect2">
                                 <option value="ContourMax" selected>Maximum Depth (m)</option>
                             </select>
                         </td>
@@ -123,7 +126,7 @@
 
 
                         <td>
-                            <input type="number" id="valSelect2" style="width: 5em" value="100" min=1 max=5000 />
+                            <input type="number" title = "Insert value." id="valSelect2" style="width: 5em" value="100" min=1 max=5000 />
                         </td>
                     </tr>
                 </table>
@@ -132,7 +135,7 @@
                 <table> 
                     <tr>
                         <td style = "vertical-align: top">
-                            <select class="esri-widget" id="attSelect3">
+                            <select class="esri-widget" title = "Desired seabed character (based on the Folk-7 scale) for deployment of your device." id="attSelect3">
                                 <option value="Substrate" selected>Seabed Classification (Folk-7)</option>
                             </select>
                         </td>
@@ -144,7 +147,7 @@
                         </td>
 
                         <td>
-                            <select class="esri-widget" id="valSelect3" size="3" multiple>
+                            <select title = "Hold Ctrl and select all that apply." class="esri-widget" id="valSelect3" size="3" multiple>
                                 <option value="'Fine mud'">Mud</option>
                                 <option value="'Sandy mud'">Sandy Mud</option>
                                 <option value="'Muddy sand'">Muddy Sand</option>
@@ -169,17 +172,17 @@
             <div class="row">
                 <div class="column">
                     <img src="https://www.selkie-project.eu/wp-content/uploads/2020/08/eu1-1024x775.png"
-                        alt="Selkie Sponsor Logo1" style="width:320; height:80px;" />
+                        alt="Selkie Sponsor Logo1" style="width:280; height:60px;" />
                 </div>
 
                 <div class="column">
                     <img src="https://www.selkie-project.eu/wp-content/uploads/2020/08/EU2-1024x775.png"
-                        alt="Selkie Sponsor Logo2" style="width:320; height:80px; " />
+                        alt="Selkie Sponsor Logo2" style="width:280; height:60px; " />
                 </div>
 
                 <div class="column">
                     <img src="https://www.selkie-project.eu/wp-content/uploads/2020/08/EU3-1024x775.png"
-                        alt="Selkie Sponsor Logo3" style="width:320; height:80px;" />
+                        alt="Selkie Sponsor Logo3" style="width:280; height:60px;" />
                 </div>
             </div>
         </div>
