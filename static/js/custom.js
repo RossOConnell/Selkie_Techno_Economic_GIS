@@ -1655,6 +1655,60 @@ require([
         }
     });
 
+
+    var irlWindDeploymentSite = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/windfarm_update2021/FeatureServer",
+        title: "Ireland Wind Energy Projects",
+        visible: false,
+        opacity: 0.8,
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "simple-fill",
+                color: "transparent",
+                outline: {
+                    // autocasts as new SimpleLineSymbol()
+                    color: "crimson",
+                    width: "1px"
+                }
+            }
+        },
+        popupTemplate: {
+            title: "Planned Green H2 Production Plant",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "Name",
+                            label: "Name",
+                        },
+                        {
+                            fieldName: "Location",
+                            label: "Location",
+                        },
+                        {
+                            fieldName: "Type",
+                            label: "Type",
+                        },
+                        {
+                            fieldName: "Capacity",
+                            label: "Capacity",
+                        },
+                        {
+                            fieldName: "Developer",
+                            label: "Developer",
+                        },
+                        {
+                            fieldName: "Link",
+                            label: "Source Link",
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
     var ukWaveDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Offshore_Wave_Site_Agreements_England_Wales__NI/FeatureServer",
         title: "UK Wave Energy Site Agreements",
@@ -1727,7 +1781,7 @@ require([
 
     var westWaveDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_WEC_deployment_zone/FeatureServer",
-        title: "WestWave - Proposed Deployment Site",
+        title: "WestWave - Proposed Deployment Site (Dormant)",
         visible: false,
         renderer: {
             type: "simple",
@@ -1745,7 +1799,7 @@ require([
 
     var westWaveCableCorridor = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_cable_corridor_zone/FeatureServer",
-        title: "WestWave - Proposed Cable Route Corridor",
+        title: "WestWave - Proposed Cable Route Corridor (Dormant)",
         visible: false,
         renderer: {
             type: "simple",
@@ -1759,6 +1813,13 @@ require([
                 }
             }
         }
+    });
+
+    var westernStarWaveDeploymentSite = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WesternStarWEC/FeatureServer",
+        title: "Western Star WEC Project",
+        visible: false,
+        opacity: 1,
     });
 
 
@@ -1804,7 +1865,7 @@ require([
         title: "Sites of Interest",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [ukWindDeploymentSite, ukWaveDeploymentSite, ukTidalDeploymentSite, galwayBayTestSiteCableRoute, galwayBayTestSite, westWaveCableCorridor, westWaveDeploymentSite, ametsCableCorridor, ametsDeploymentSite],
+        layers: [irlWindDeploymentSite, ukWindDeploymentSite, ukWaveDeploymentSite, ukTidalDeploymentSite, galwayBayTestSiteCableRoute, galwayBayTestSite, westernStarWaveDeploymentSite, westWaveCableCorridor, westWaveDeploymentSite, ametsCableCorridor, ametsDeploymentSite],
     });
 
 
@@ -4280,6 +4341,65 @@ require([
 
                 if (westWaveCableCorridor.opacity > 0) {
                     westWaveCableCorridor.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "Western Star WEC Project")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(westernStarWaveDeploymentSite.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "Western Star WEC Project")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(westernStarWaveDeploymentSite.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Western Star WEC Project")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (westernStarWaveDeploymentSite.opacity < 1) {
+                    westernStarWaveDeploymentSite.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Western Star WEC Project")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (westernStarWaveDeploymentSite.opacity > 0) {
+                    westernStarWaveDeploymentSite.opacity -= 0.25;
+                }
+            }
+
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "Ireland Wind Energy Projects")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(irlWindDeploymentSite.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "Ireland Wind Energy Projects")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open(irlWindDeploymentSite.url);
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Ireland Wind Energy Projects")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (irlWindDeploymentSite.opacity < 1) {
+                    irlWindDeploymentSite.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Ireland Wind Energy Projects")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (irlWindDeploymentSite.opacity > 0) {
+                    irlWindDeploymentSite.opacity -= 0.25;
                 }
             }
 
