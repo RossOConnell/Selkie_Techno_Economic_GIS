@@ -457,7 +457,7 @@ function calc_te1() {
     let df = 1 / (1 + (parseFloat(defaultDiscountRate.value) / 100)) ** n;
     console.log("df: " + df);
 
-    let decexDiscount = parseFloat(totdecex.value) * parseFloat(df);
+    let decexDiscount = parseFloat(totdecex.value) + (parseFloat(totdecex.value) * parseFloat(df));
     console.log("decexDiscount: " + decexDiscount);
 
 
@@ -827,7 +827,7 @@ function calc_te2() {
     let df = 1 / (1 + (parseFloat(defaultDiscountRate.value) / 100)) ** n;
     console.log("df: " + df);
 
-    let decexDiscount = parseFloat(totdecex.value) * parseFloat(df);
+    let decexDiscount = parseFloat(totdecex.value) + (parseFloat(totdecex.value) * parseFloat(df));
     console.log("decexDiscount: " + decexDiscount);
 
 
@@ -1195,7 +1195,7 @@ function calc_te3() {
     let df = 1 / (1 + (parseFloat(defaultDiscountRate.value) / 100)) ** n;
     console.log("df: " + df);
 
-    let decexDiscount = parseFloat(totdecex.value) * parseFloat(df);
+    let decexDiscount = parseFloat(totdecex.value) + (parseFloat(totdecex.value) * parseFloat(df));
     console.log("decexDiscount: " + decexDiscount);
 
 
@@ -2016,7 +2016,7 @@ require([
     });
 
     var hydrogenGroupLayer = new GroupLayer({
-        title: "Planned Green Hydrogen Plants",
+        title: "H2",
         visible: false,
         visibilityMode: "inclusive",
         layers: [greenHydrogenDistance, greenHydrogenPlantsSelkie],
