@@ -1732,7 +1732,7 @@ require([
     var ukWaveDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Offshore_Wave_Site_Agreements_England_Wales__NI/FeatureServer",
         title: "UK Wave Energy Site Agreements",
-        visible: true,
+        visible: false,
         opacity: 0.8,
         renderer: {
             type: "simple",
@@ -1751,7 +1751,7 @@ require([
     var ukTidalDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Offshore_Tidal_Stream_Site_Agreements_England_Wales__NI/FeatureServer",
         title: "UK Tidal Stream Site Agreements",
-        visible: true,
+        visible: false,
         opacity: 0.8,
         renderer: {
             type: "simple",
@@ -1770,7 +1770,7 @@ require([
     var galwayBayTestSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Galway_Bay_1_4_Scale_Test_Site_Boundary/FeatureServer",
         title: "SmartBay 1/4 scale Wave Energy Test Site",
-        visible: true,
+        visible: false,
         renderer: {
             type: "simple",
             symbol: {
@@ -1788,7 +1788,7 @@ require([
     var galwayBayTestSiteCableRoute = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Galway_Bay_1_4_Scale_Test_Site_Cable_Route/FeatureServer",
         title: "SmartBay Cable Route",
-        visible: true,
+        visible: false,
         opacity: 1,
         renderer: {
             type: "simple",
@@ -1802,7 +1802,7 @@ require([
     var westWaveDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_WEC_deployment_zone/FeatureServer",
         title: "WestWave - Proposed Deployment Site (Dormant)",
-        visible: true,
+        visible: false,
         renderer: {
             type: "simple",
             symbol: {
@@ -1820,7 +1820,7 @@ require([
     var westWaveCableCorridor = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_cable_corridor_zone/FeatureServer",
         title: "WestWave - Proposed Cable Route Corridor (Dormant)",
-        visible: true,
+        visible: false,
         renderer: {
             type: "simple",
             symbol: {
@@ -1838,7 +1838,7 @@ require([
     var westernStarWaveDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WesternStarWEC/FeatureServer",
         title: "Western Star WEC Project",
-        visible: true,
+        visible: false,
         opacity: 1,
     });
 
@@ -1846,7 +1846,7 @@ require([
     var ametsDeploymentSite = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Atlantic_Marine_Energy_Test_Site_Boundary/FeatureServer",
         title: "AMETS - Deployment Site",
-        visible: true,
+        visible: false,
         renderer: {
             type: "simple",
             symbol: {
@@ -1864,7 +1864,7 @@ require([
     var ametsCableCorridor = new FeatureLayer({
         url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Atlantic_Marine_Energy_Test_Site_Cable_Route/FeatureServer",
         title: "AMETS - Cable Route Corridor",
-        visible: true,
+        visible: false,
         renderer: {
             type: "simple",
             symbol: {
