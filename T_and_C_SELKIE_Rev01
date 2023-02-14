@@ -1,0 +1,93 @@
+<html>
+
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        $('#myModal').modal('show');
+    });
+</script>
+
+</head>
+
+<body>
+<h1>Your main SELKIE Tool HTML goes here</h1>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: darkcyan; color:white; text-align:center">
+        <h3 class="modal-title">Terms and Conditions</h4>
+      </div>
+      <div class="modal-body">
+	    <h4>
+                <b>
+                    Description
+                </b>
+            </h4>
+            <p>
+                The <em>Selkie GIS-TE</em> is an interactive combined site-selection and project-feasibility analysis tool. It was developed at University College Cork’s <a href="https://www.marei.ie/" target="_blank" rel="noopener">MaREI</a> SFI Research Centre for Climate Energy and Marine. More information about the Selkie Project can be found  <a href="https://www.selkie-project.eu/" target="_blank" rel="noopener">here</a>. 
+	    </p>
+                If this is your first visit to the site, we recommend watching the <a href="https://www.youtube.com/watch?v=21GziHqZ3TY" target="_blank" rel="noopener">demo video</a>, which explains how to use the tool.
+            </p>
+	    <p>
+		Please contact us <a href="https://www.selkie-project.eu/contact/" target="_blank" rel="noopener">here</a> with any feedback or questions relating to the tool.
+	    </p>
+            <br>
+
+            <h4>
+                <b>
+                    Disclaimer
+                </b>
+            </h4>
+            <p>
+                We make every effort to keep data within the tool up-to-date. However, we would recommend contacting the data owner to obtain the most recent data.
+            </p>
+            <p>
+                Data within the <em>Selkie GIS-TE</em> tool should be interpreted in the appropriate context. The <em>i</em> note alongside a data layer contains metadata for interpretation and origin information.
+            </p>
+            <p>
+                The Selkie Project or University College Cork are not responsible for any inaccuracies in data provided by other organisations.
+            </p>
+            <p>
+                Datasets are not to be used for navigation.
+            </p>
+            <p>
+                The information on the website does not constitute legal or professional advice or show legal practice. For this, the appropriate legislation should be directly referenced.
+            </p>
+            <br>
+
+      </div>
+
+      <div class="modal-footer">
+	<div class="checkbox">
+    	  <label>
+		<input type="checkbox" 
+			onchange="document.getElementById('submit_button').disabled = !this.checked;"
+			value="">
+		I have read and accepted the terms and conditions.
+	  </label>
+
+	</div>
+          <button id = "submit_button" type="button" class="btn btn-default" data-dismiss="modal" disabled = True>Confirm</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>
