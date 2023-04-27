@@ -9,10 +9,11 @@ function collapseOrShowSelectionAid(){
 }
 
 function initialSetup() {
-$('#TermsAndConditions').modal('show');
+    $('#TermsAndConditions').modal({backdrop: 'static', keyboard: false});  
+    $('#TermsAndConditions').modal('show');
 
-var collapseOptionDiv = document.getElementById("collapseOptionDiv");
-collapseOptionDiv.addEventListener("click", collapseOrShowSelectionAid);
+    var collapseOptionDiv = document.getElementById("collapseOptionDiv");
+    collapseOptionDiv.addEventListener("click", collapseOrShowSelectionAid);
 
 };
 
@@ -205,24 +206,24 @@ function calcAep1() {
 
 
 
-// function exportOptionCapFact1() {
-//     let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 50000000000);
-//     if (
+function exportOptionCapFact1() {
+    let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 50000000000);
+    if (
 
-//         defaultCapFact_error_message
+        defaultCapFact_error_message
 
-//     ) {
+    ) {
 
-//         defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
+        defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
 
-//     } else {
+    } else {
 
-//         var totaep = document.getElementById("totaep");
-//         var defaultFarmRating = document.getElementById("defaultFarmRating"); 
-//         document.getElementById("defaultCapFact").value = (parseFloat(totaep.value) / (parseFloat(defaultFarmRating.value) * 8760)).toFixed(2);
+        var totaep = document.getElementById("totaep");
+        var defaultFarmRating = document.getElementById("defaultFarmRating"); 
+        document.getElementById("defaultCapFact").value = (parseFloat(totaep.value) / (parseFloat(defaultFarmRating.value) * 8760)).toFixed(2);
 
-//     }
-// }
+    }
+}
 
 
 
@@ -235,7 +236,7 @@ function calcCapex1() {
 
   let defaultFarmRating_error_message = check_for_float(defaultFarmRating.value, 0, 500000000);
 
-  // let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 500000000);
+  let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 500000000);
 
   let defaultPreDevCost_error_message = check_for_float(defaultPreDevCost.value, 0, 500000000);
 
@@ -270,7 +271,7 @@ function calcCapex1() {
 
       defaultRating_error_message || defaultFarmRating_error_message ||
 
-      // defaultCapFact_error_message ||
+      defaultCapFact_error_message ||
 
       defaultPreDevCost_error_message ||
 
@@ -293,7 +294,7 @@ function calcCapex1() {
       defaultRating_errors.innerHTML = defaultRating_error_message;
       defaultFarmRating_errors.innerHTML = defaultFarmRating_error_message;
 
-      // defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
+      defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
 
       defaultPreDevCost_errors.innerHTML = defaultPreDevCost_error_message;
 
@@ -1816,48 +1817,48 @@ require([
       }
   });
 
-  var westWaveDeploymentSite = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_WEC_deployment_zone/FeatureServer",
-      title: "WestWave - Proposed Deployment Site (Dormant)",
-      visible: false,
-      renderer: {
-          type: "simple",
-          symbol: {
-              type: "simple-fill",
-              color: "transparent",
-              outline: {
-                  // autocasts as new SimpleLineSymbol()
-                  color: "steelblue",
-                  width: "1px"
-              }
-          }
-      }
-  });
+//   var westWaveDeploymentSite = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_WEC_deployment_zone/FeatureServer",
+//       title: "WestWave - Proposed Deployment Site (Dormant)",
+//       visible: false,
+//       renderer: {
+//           type: "simple",
+//           symbol: {
+//               type: "simple-fill",
+//               color: "transparent",
+//               outline: {
+//                   // autocasts as new SimpleLineSymbol()
+//                   color: "steelblue",
+//                   width: "1px"
+//               }
+//           }
+//       }
+//   });
 
-  var westWaveCableCorridor = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_cable_corridor_zone/FeatureServer",
-      title: "WestWave - Proposed Cable Route Corridor (Dormant)",
-      visible: false,
-      renderer: {
-          type: "simple",
-          symbol: {
-              type: "simple-fill",
-              color: "transparent",
-              outline: {
-                  // autocasts as new SimpleLineSymbol()
-                  color: "green",
-                  width: "1px"
-              }
-          }
-      }
-  });
+//   var westWaveCableCorridor = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WestWave_cable_corridor_zone/FeatureServer",
+//       title: "WestWave - Proposed Cable Route Corridor (Dormant)",
+//       visible: false,
+//       renderer: {
+//           type: "simple",
+//           symbol: {
+//               type: "simple-fill",
+//               color: "transparent",
+//               outline: {
+//                   // autocasts as new SimpleLineSymbol()
+//                   color: "green",
+//                   width: "1px"
+//               }
+//           }
+//       }
+//   });
 
-  var westernStarWaveDeploymentSite = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WesternStarWEC/FeatureServer",
-      title: "Western Star WEC Project",
-      visible: false,
-      opacity: 1,
-  });
+//   var westernStarWaveDeploymentSite = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WesternStarWEC/FeatureServer",
+//       title: "Western Star WEC Project",
+//       visible: false,
+//       opacity: 1,
+//   });
 
 
   var ametsDeploymentSite = new FeatureLayer({
@@ -1902,7 +1903,7 @@ require([
       title: "Sites of Interest",
       visible: true,
       visibilityMode: "inclusive",
-      layers: [irlWindDeploymentSite, ukWindDeploymentSite, ukWaveDeploymentSite, ukTidalDeploymentSite, galwayBayTestSiteCableRoute, galwayBayTestSite, westernStarWaveDeploymentSite, westWaveCableCorridor, westWaveDeploymentSite, ametsCableCorridor, ametsDeploymentSite],
+      layers: [irlWindDeploymentSite, ukWindDeploymentSite, ukWaveDeploymentSite, ukTidalDeploymentSite, galwayBayTestSiteCableRoute, galwayBayTestSite, ametsCableCorridor, ametsDeploymentSite],
   });
 
 
@@ -2403,6 +2404,116 @@ require([
 
 
 
+  
+  var wsWinter = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/NWS_T10_Winter_Selkie/FeatureServer",
+    title: "Winter Mean Wind Speed",
+    visible: false,
+    opacity: 0.75,
+    popupTemplate: {
+        title: "Winter Mean",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "Mean_Spect",
+                        label: "Wave Period (s)",
+                        format: {
+                            digitSeparator: true,
+                            places: 2
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+});
+
+var wsSpring = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/NWS_T10_Spring_Erase/FeatureServer",
+    title: "Spring Mean Wind Speed",
+    visible: false,
+    opacity: 0.75,
+    popupTemplate: {
+        title: "Spring Mean",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "Mean_Spect",
+                        label: "Wave Period (s)",
+                        format: {
+                            digitSeparator: true,
+                            places: 2
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+});
+
+var wsSummer = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/NWS_T10_Summer_Selkie/FeatureServer",
+    title: "Summer Mean Wind Speed",
+    visible: false,
+    opacity: 0.75,
+    popupTemplate: {
+        title: "Summer Mean",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "Mean_Spect",
+                        label: "Wave Period (s)",
+                        format: {
+                            digitSeparator: true,
+                            places: 2
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+});
+
+var wsAutumn = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/NWS_T10_Autumn_Selkie/FeatureServer",
+    title: "Autumn Mean Wind Speed",
+    visible: false,
+    opacity: 0.75,
+    popupTemplate: {
+        title: "Autumn Mean",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "Mean_Spect",
+                        label: "Wave Period (s)",
+                        format: {
+                            digitSeparator: true,
+                            places: 2
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+});
+
+
+
+var windGroupLayer = new GroupLayer({
+    title: "Wind",
+    visible: true,
+    visibilityMode: "inclusive",
+    layers: [],
+});
+
 
 
   var maxSpcv = new FeatureLayer({
@@ -2529,7 +2640,7 @@ require([
           ]
       }
   });
-
+  
   var maxNpcv = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Max_NPCV/FeatureServer",
       title: "Maximum Neap Peak Current Velocity (m/s)",
@@ -2565,6 +2676,10 @@ require([
       visibilityMode: "inclusive",
       layers: [maxSpcv, maxNpcv, maxPcv, meanSpcv, meanNpcv, meanPcv],
   });
+
+
+
+
 
 
 
@@ -2627,19 +2742,14 @@ require([
   //     layers: [liveCur, liveWav],
   // });
 
-  var averageDataGroupLayer = new GroupLayer({
-      title: "Mean Data",
-      visible: true,
-      visibilityMode: "inclusive",
-      layers: [tidesGroupLayer, wavesGroupLayer],
-  });
+
 
 
   var oceanographyGroupLayer = new GroupLayer({
       title: "Oceanography",
       visible: true,
       visibilityMode: "inclusive",
-      layers: [averageDataGroupLayer],
+      layers: [tidesGroupLayer, wavesGroupLayer],
   });
 
 
@@ -2795,7 +2905,7 @@ require([
 
   var aepOceanEnergy = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/OceanEnergy_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "OE Buoy (OE35)",
+      title: "OWC",
       visible: false,
       opacity: 0.75,
       listMode: "hide-children",
@@ -2805,7 +2915,7 @@ require([
 
   var aepCorPower = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/CorPower_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "CorPower (C5)",
+      title: "Point Absorber",
       visible: false,
       opacity: 0.75,
       listMode: "hide-children",
@@ -2813,59 +2923,59 @@ require([
   });
 
 
-  var aepPontoon = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Pontoon_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "Pontoon",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepPontoon = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Pontoon_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "Pontoon",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
-  var aepLanglee = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Langlee_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "Langlee",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepLanglee = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Langlee_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "Langlee",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
-  var aepWaveBob = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveBob_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "Wavebob",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepWaveBob = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveBob_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "Wavebob",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
-  var aepAWS = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AWS_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "AWS",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepAWS = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AWS_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "AWS",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
-  var aepWaveDragon = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveDragon_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "Wave Dragon",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepWaveDragon = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveDragon_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "Wave Dragon",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
   var aepPelamis = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Pelamis_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "Pelamis",
+      title: "Attenuator",
       visible: false,
       opacity: 0.75,
       listMode: "hide-children",
@@ -2873,24 +2983,24 @@ require([
   });
 
 
-  var aepAquaBuoy = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AquaBuoy_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "AquaBuoy",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepAquaBuoy = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/AquaBuoy_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "AquaBuoy",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
-  var aepOyster = new FeatureLayer({
-      url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Oyster_WEC_Power_Matrix_AEP/FeatureServer",
-      title: "Oyster",
-      visible: false,
-      opacity: 0.75,
-      listMode: "hide-children",
-      popupTemplate: template1
-  });
+//   var aepOyster = new FeatureLayer({
+//       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Oyster_WEC_Power_Matrix_AEP/FeatureServer",
+//       title: "Oyster",
+//       visible: false,
+//       opacity: 0.75,
+//       listMode: "hide-children",
+//       popupTemplate: template1
+//   });
 
 
 
@@ -2910,30 +3020,30 @@ require([
       div.innerHTML =
   
           '<table><tr><td><u>Site Information</u></td></tr>' +
-          '<tr><td><i title = "The annual average energy that this WEC will produce at the site you have selected.">Annual Energy (per device): </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultAep" id="defaultAep" style="width: 6em" value="' + attributes.gridcode + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultAep_errors"><i> MWh </i></span></td></tr>' +
-          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to Port:   </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultPort" id="defaultPort" style="width: 5em" value="' + attributes.distance_p + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultPort_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "The euclidean distance to the nearest existing grid, or Planned H2 poroduction plant (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to <select class="esri-widget" name="myList" id="myList" onchange="exportOptionDist(); calcAep1(); calcCapex1(); calcOpex1()"><option value="' + attributes.distance_g + '" selected>Grid</option><option value="' + attributes.distance_h + '">H2</option></select>:</i></td><td><input type="number" title = "Value is based on the site you have selected." id="defaultGrid" style="width: 5em" value="' + attributes.distance_g + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultGrid_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "The annual average energy that this WEC will produce at the site you have selected.">Annual Energy (per device): </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultAep" id="defaultAep" style="width: 6em" value="' + attributes.gridcode + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultAep_errors"><i> MWh </i></span></td></tr>' +
+          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to Port:   </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultPort" id="defaultPort" style="width: 5em" value="' + attributes.distance_p + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultPort_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "The euclidean distance to the nearest existing grid, or Planned H2 poroduction plant (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to <select class="esri-widget" name="myList" id="myList" onchange="exportOptionDist(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="' + attributes.distance_g + '" selected>Grid</option><option value="' + attributes.distance_h + '">H2</option></select>:</i></td><td><input type="number" title = "Value is based on the site you have selected." id="defaultGrid" style="width: 5em" value="' + attributes.distance_g + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultGrid_errors"><i> km </i></span></td></tr>' +
           '<tr><td><i title = "The depth to seabed at the site you have selected based on EMODnet bathymetry data.">Depth to Seabed:   </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultDepth" id="defaultDepth" style="width: 5em" value="' + attributes.depth + '" readonly min=1 /><span id="defaultDepth_errors"><i> m </i></span></td></tr></table>' + '<BR>' +
 
           '<table><tr><td><u>Project Information</u></td></tr>' +
-          '<tr><td><i title = "Choose a name for your project.">Project Name: </i><td><input type="text" title = "It is mandatory to enter a project name." name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep1(); calcCapex1(); calcOpex1()"/></td></tr>' +
-          '<tr><td><i title = "The number of years it is expected that the project will be operational.">Project Life: </i><td><input type="number" title ="Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
-          '<tr><td><i title = "The discount rate refers to the interest rate used to determine the present value of future cash flows.">Discount Rate: </i><td><input type="number" title = "Default value reference: McAuliffe, Noonan and Murphy (2021)." name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "The electricity price at the project start date. Value given is for 2022."> Electricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep1(); calcCapex1(); calcOpex1()"><option value="43" selected>IRL</option><option value="39">U.K.</option></select>: </i><td><input type="number" title = "Default value references: Electric Ireland (2022) and UK Government (2022)." name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="43" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
+          '<tr><td><i title = "Choose a name for your project.">Project Name: </i><td><input type="text" title = "It is mandatory to enter a project name." name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/></td></tr>' +
+          '<tr><td><i title = "The number of years it is expected that the project will be operational.">Project Life: </i><td><input type="number" title ="Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
+          '<tr><td><i title = "The discount rate refers to the interest rate used to determine the present value of future cash flows.">Discount Rate: </i><td><input type="number" title = "Default value reference: McAuliffe, Noonan and Murphy (2021)." name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "The electricity price at the project start date. Value given is for 2022."> Electricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="43" selected>IRL</option><option value="39">U.K.</option></select>: </i><td><input type="number" title = "Default value references: Electric Ireland (2022) and UK Government (2022)." name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="43" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
 
           '<table><tr><td><u>Technical Information</u></td></tr>' +
-          // '<tr><td><i>WEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">WEC Availability <select class="esri-widget" name="myListAvailability" id="myListAvailability" onchange="exportOptionAvailability(); calcAep1(); calcCapex1(); calcOpex1()"><option value="75" selected>IRL</option><option value="88">U.K.</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultAv" id="defaultAv" style="width: 5em" value="75" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "The number of Wave Energy Converters to be deployed.">Number of WECs: </i><td><input type="number" title = "Default reference value: Simply Blue Group (2022)." name="defaultWec" id="defaultWec" style="width: 5em" value="16" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWec_errors"><i> units </i></span></td></tr>' +
-          '<tr><td><i title = "The scale of the device.">Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep1(); calcCapex1(); calcOpex1()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
-          '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1(); exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
-          '<tr><td><i title = "This is the total power rating for the farm.">Farm Rating: </i><td><input type="number" title = "Value is based on the device and number of WECs you have selected." name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 16) / 1000 + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
-          '<tr><td><i title = "Losses due to array/wake interference within the farm.">Array/Wake Losses (IA): </i><td><input type="number" title = "No reference." name="defaultWak" id="defaultWak" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "Losses incurred during transmission of electricity to export.">Line Losses (IA): </i><td><input type="number" title = "No reference." name="defaultLin" id="defaultLin" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
-          //'<tr><td><i title = "The average power output divided by the maximum power capability.">Capacity Factor: </i><td><input type="number" title = "Value is based on your previous inputs." name="defaultCapFact" id="defaultCapFact" style="width: 5em" value="0" readonly min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCapFact_errors"><i></i></span></td></tr>' +
-          '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
+          // '<tr><td><i>WEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">WEC Availability <select class="esri-widget" name="myListAvailability" id="myListAvailability" onchange="exportOptionAvailability(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="75" selected>IRL</option><option value="88">U.K.</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultAv" id="defaultAv" style="width: 5em" value="75" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "The number of Wave Energy Converters to be deployed.">Number of WECs: </i><td><input type="number" title = "Default reference value: Simply Blue Group (2022)." name="defaultWec" id="defaultWec" style="width: 5em" value="16" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWec_errors"><i> units </i></span></td></tr>' +
+          '<tr><td><i title = "The scale of the device.">Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
+          '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1(); exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
+          '<tr><td><i title = "This is the total power rating for the farm.">Farm Rating: </i><td><input type="number" title = "Value is based on the device and number of WECs you have selected." name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 16) / 1000 + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
+          '<tr><td><i title = "Losses due to array/wake interference within the farm.">Array/Wake Losses (IA): </i><td><input type="number" title = "No reference." name="defaultWak" id="defaultWak" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "Losses incurred during transmission of electricity to export.">Line Losses (IA): </i><td><input type="number" title = "No reference." name="defaultLin" id="defaultLin" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "The average power output divided by the maximum power capability.">Capacity Factor: </i><td><input type="number" title = "Value is based on your previous inputs." name="defaultCapFact" id="defaultCapFact" style="width: 5em" value="0" readonly min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCapFact_errors"><i></i></span></td></tr>' +
+          '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
           
 
 
@@ -2941,43 +3051,43 @@ require([
           '<table><tr><td><u>CAPEX</u></td></tr>' +
 
           '<tr><td><i><u>Pre-Development</u></i></td>' +
-          '<tr><td><i title = "Costs incurred before anything is put in the water. This includes environmental surveys, seabed surveys, development services, etc.">Development & Consent: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultPreDevCost" id="defaultPreDevCost" style="width: 6em" value="118500" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultPreDevCost_errors"><i> € </i></span></td></tr>' +
+          '<tr><td><i title = "Costs incurred before anything is put in the water. This includes environmental surveys, seabed surveys, development services, etc.">Development & Consent: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultPreDevCost" id="defaultPreDevCost" style="width: 6em" value="118500" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultPreDevCost_errors"><i> € </i></span></td></tr>' +
 
           '<tr><td><i><u>Device</u></i></td>' +
-          '<tr><td><i title = "The cost of each Wave Energy Converter (structure and prime mover).">Wec Unit: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultWecCost" id="defaultWecCost" style="width: 6em" value="3116" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWecCost_errors"><i> €/kW </i></span></td></tr>' +
+          '<tr><td><i title = "The cost of each Wave Energy Converter (structure and prime mover).">Wec Unit: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultWecCost" id="defaultWecCost" style="width: 6em" value="3116" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWecCost_errors"><i> €/kW </i></span></td></tr>' +
 
           '<tr><td><i><u>Plant</u></i></td></tr>' +
-          '<tr><td><i title = "Cost of plant for mooring each WEC.">Mooring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultMoor" id="defaultMoor" style="width: 6em" value="500000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultMoor_errors"><i> €/WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultFound" id="defaultFound" style="width: 6em" value="35000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFound_errors"><i> €/WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000">38 kV</option><option value="288000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="288000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
-          '<tr><td><i title = "Length of cabling within the farm.">Intra-Array Cabling Length: </i><td><input type="number" title = "No reference." name="defaultCableIntraLength" id="defaultCableIntraLength" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraLength_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of cabling within the farm.">Intra-Array Cabling Cost <select class="esri-widget" name="myListIntra" id="myListIntra" onchange="exportOptionIntra(); calcAep1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000" selected>38 kV</option><option value="288000">110 kV</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableIntraCost" id="defaultCableIntraCost" style="width: 6em" value="173000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraCost_errors"><i> €/km </i></span></td></tr>' +
-          '<tr><td><i title = "Costs associted with connecting to onshore infrastructure for export.">Onshore Grid/H2 Connections: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultOnElec" id="defaultOnElec" style="width: 6em" value="20000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultOnElec_errors"><i> €/MW </i></span></td></tr>' +
-          // '<tr><td><i>Offshore Substation (IA): </i><td><input type="number" name="defaultOffSub" id="defaultOffSub" style="width: 6em" value="1125000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultOffSub_errors"><i> €/MW </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of plant for mooring each WEC.">Mooring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultMoor" id="defaultMoor" style="width: 6em" value="500000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultMoor_errors"><i> €/WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultFound" id="defaultFound" style="width: 6em" value="35000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFound_errors"><i> €/WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000">38 kV</option><option value="288000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="288000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
+          '<tr><td><i title = "Length of cabling within the farm.">Intra-Array Cabling Length: </i><td><input type="number" title = "No reference." name="defaultCableIntraLength" id="defaultCableIntraLength" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraLength_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of cabling within the farm.">Intra-Array Cabling Cost <select class="esri-widget" name="myListIntra" id="myListIntra" onchange="exportOptionIntra(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000" selected>38 kV</option><option value="288000">110 kV</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableIntraCost" id="defaultCableIntraCost" style="width: 6em" value="173000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraCost_errors"><i> €/km </i></span></td></tr>' +
+          '<tr><td><i title = "Costs associted with connecting to onshore infrastructure for export.">Onshore Grid/H2 Connections: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultOnElec" id="defaultOnElec" style="width: 6em" value="20000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultOnElec_errors"><i> €/MW </i></span></td></tr>' +
+          // '<tr><td><i>Offshore Substation (IA): </i><td><input type="number" name="defaultOffSub" id="defaultOffSub" style="width: 6em" value="1125000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultOffSub_errors"><i> €/MW </i></span></td></tr>' +
 
           '<tr><td><i><u>Installation and Commissioning</u></i></td></tr>' +
-          '<tr><td><i title = "Number of days required to install each WEC.">Installation Days: </i><td><input type="number" title = "No reference." name="defaultDays" id="defaultDays" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDays_errors"><i> /WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Length of working day during installation phase.">Working Day: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultWorkDay" id="defaultWorkDay" style="width: 6em" value="24" min=1 max=24 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWorkDay_errors"><i> hours </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of installation vessel.">Towing Vessel <select class="esri-widget" name="myListVessel" id="myListVessel" onchange="exportOptionVessel(); calcAep1(); calcCapex1(); calcOpex1()"><option value="4755" selected>Tug</option><option value="95103">Crane Barge</option><option value="47551">Heavy Lift</option></select>: </i><td><input type="number" title = "Default value reference: Jiang (2021)." name="defaultVh" id="defaultVh" style="width: 6em" value="4755" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultVh_errors"><i> €/Day </i></span></td></tr>' +
-          '<tr><td><i title = "Speed of the installation vessel.">Towing Vessel Speed: </i><td><input type="number" title  = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVs" id="defaultVs" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultVs_errors"><i> km/h </i></span></td></tr>' +
-          '<tr><td><i title = "The number of WECs that can be brought to site on a single visit.">Devices Delivered Per Visit: </i><td><input type="number" title = "No reference." name="defaultDevicesPerVis" id="defaultDevicesPerVis" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDevicesPerVis_errors"><i> units </i></span></td></tr>' +
-          '<tr><td><i title = "Any diving work required during the installation phase.">Diving Work: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultDw" id="defaultDw" style="width: 6em" value="2500" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDw_errors"><i> €/Day </i></span></td></tr>' +
-          // '<tr><td><i>F&M Installation Days: </i><td><input type="number" name="defaultFmInstall" id="defaultFmInstall" style="width: 6em" value="1" min=1 max=24 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstall_errors"><i> /WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of installing the foundations and mooring.">F&M Installation Cost: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultFmInstallCost" id="defaultFmInstallCost" style="width: 6em" value="10000" min=1 max=24 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstallCost_errors"><i> €/Day </i></span></td></tr>' +
-          '<tr><td><i title = "Length of cabling to be installed to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Cable Installation Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCtLength" id="defaultCtLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCtLength_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of installing the cabling to point of export (i.e. grid/H2).">Cabling Installation Cost: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInstall" id="defaultCableInstall" style="width: 6em" value="282000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInstall_errors"><i> €/km </i></span></td></tr>' +
-          '<tr><td><select class="esri-widget" name="myList3" id="myList3" onchange="exportOptionTrench(); calcAep1(); calcCapex1(); calcOpex1()"><option value="282000" selected>trenched</option><option value="100000">untrenched</option><option value="939000">rock coverage</option></select></td></tr></table>' + '<BR>' +
+          '<tr><td><i title = "Number of days required to install each WEC.">Installation Days: </i><td><input type="number" title = "No reference." name="defaultDays" id="defaultDays" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDays_errors"><i> /WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Length of working day during installation phase.">Working Day: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultWorkDay" id="defaultWorkDay" style="width: 6em" value="24" min=1 max=24 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWorkDay_errors"><i> hours </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of installation vessel.">Towing Vessel <select class="esri-widget" name="myListVessel" id="myListVessel" onchange="exportOptionVessel(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="4755" selected>Tug</option><option value="95103">Crane Barge</option><option value="47551">Heavy Lift</option></select>: </i><td><input type="number" title = "Default value reference: Jiang (2021)." name="defaultVh" id="defaultVh" style="width: 6em" value="4755" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultVh_errors"><i> €/Day </i></span></td></tr>' +
+          '<tr><td><i title = "Speed of the installation vessel.">Towing Vessel Speed: </i><td><input type="number" title  = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVs" id="defaultVs" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultVs_errors"><i> km/h </i></span></td></tr>' +
+          '<tr><td><i title = "The number of WECs that can be brought to site on a single visit.">Devices Delivered Per Visit: </i><td><input type="number" title = "No reference." name="defaultDevicesPerVis" id="defaultDevicesPerVis" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDevicesPerVis_errors"><i> units </i></span></td></tr>' +
+          '<tr><td><i title = "Any diving work required during the installation phase.">Diving Work: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultDw" id="defaultDw" style="width: 6em" value="2500" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDw_errors"><i> €/Day </i></span></td></tr>' +
+          // '<tr><td><i>F&M Installation Days: </i><td><input type="number" name="defaultFmInstall" id="defaultFmInstall" style="width: 6em" value="1" min=1 max=24 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstall_errors"><i> /WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of installing the foundations and mooring.">F&M Installation Cost: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultFmInstallCost" id="defaultFmInstallCost" style="width: 6em" value="10000" min=1 max=24 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstallCost_errors"><i> €/Day </i></span></td></tr>' +
+          '<tr><td><i title = "Length of cabling to be installed to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Cable Installation Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCtLength" id="defaultCtLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCtLength_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of installing the cabling to point of export (i.e. grid/H2).">Cabling Installation Cost: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInstall" id="defaultCableInstall" style="width: 6em" value="282000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInstall_errors"><i> €/km </i></span></td></tr>' +
+          '<tr><td><select class="esri-widget" name="myList3" id="myList3" onchange="exportOptionTrench(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="282000" selected>trenched</option><option value="100000">untrenched</option><option value="939000">rock coverage</option></select></td></tr></table>' + '<BR>' +
 
 
           '<table><tr><td><u>OPEX</u></td></tr>' +
-          '<tr><td><i title = "All project operation and maintenance expenses regardless of the energy produced.">Fixed O&M: </i><td><input type="number" title = "Default value reference: Allan, Gilmartin, McGregor and Swales (2011)." name="defaultFixedOam" id="defaultFixedOam" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFixedOam_errors"><i> €/MWh </i></span></td>' +
-          '<tr><td><i title = "Dues owed at operation and maintenance base.">Port Fees: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultFees" id="defaultFees" style="width: 6em" value="4" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFees_errors"><i> €/MWh </i></span></td>' +
-          '<tr><td><i title = "Costs arising due to constant maintenance contracts. This may include periodic inspections, replacement/repair of system components, disposal of residuals and auxilary materials, etc.">Variable O&M: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVarOam" id="defaultVarOam" style="width: 6em" value="7" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultVarOam_errors"><i> €/100km </i></span></td></tr>' +
-          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">O&M Port Distance: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultOpsPort" id="defaultOpsPort" style="width: 6em" value="' + attributes.distance_p + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultOpsPort_errors"><i> km </i></span></td></tr></table>' + '<BR>' +
+          '<tr><td><i title = "All project operation and maintenance expenses regardless of the energy produced.">Fixed O&M: </i><td><input type="number" title = "Default value reference: Allan, Gilmartin, McGregor and Swales (2011)." name="defaultFixedOam" id="defaultFixedOam" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFixedOam_errors"><i> €/MWh </i></span></td>' +
+          '<tr><td><i title = "Dues owed at operation and maintenance base.">Port Fees: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultFees" id="defaultFees" style="width: 6em" value="4" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFees_errors"><i> €/MWh </i></span></td>' +
+          '<tr><td><i title = "Costs arising due to constant maintenance contracts. This may include periodic inspections, replacement/repair of system components, disposal of residuals and auxilary materials, etc.">Variable O&M: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVarOam" id="defaultVarOam" style="width: 6em" value="7" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultVarOam_errors"><i> €/100km </i></span></td></tr>' +
+          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">O&M Port Distance: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultOpsPort" id="defaultOpsPort" style="width: 6em" value="' + attributes.distance_p + '" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultOpsPort_errors"><i> km </i></span></td></tr></table>' + '<BR>' +
 
           '<table><tr><td><u>DECEX</u></td></tr>' +
-          '<tr><td><i title = "Costs associated with dismantling the farm at end of life.">Decommissioning: </i><td><input type="number" title = "Default value reference: Opera (2019)." name="defaultDec" id="defaultDec" style="width: 4em" value="88" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDec_errors"><i> % of installation </i></span></td></tr></table>' + '<BR>' + '<BR>' + '<BR>' +
+          '<tr><td><i title = "Costs associated with dismantling the farm at end of life.">Decommissioning: </i><td><input type="number" title = "Default value reference: Opera (2019)." name="defaultDec" id="defaultDec" style="width: 4em" value="88" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDec_errors"><i> % of installation </i></span></td></tr></table>' + '<BR>' + '<BR>' + '<BR>' +
 
           '<table><tr><td><u>TOTALS*</u></td></tr>' +
           '<tr><td><i title = "Total Annual Energy Production.">Tot. AEP: </i><td><input type="number" title = "Value is based on your previous inputs."  name="totaep" id="totaep" style="width: 9em"><span><i> MWh/yr </i></span></td></tr>' + '<BR>' +
@@ -3006,7 +3116,7 @@ require([
       title: "Power Matrix - AEP",
       visible: true,
       visibilityMode: "inclusive",
-      layers: [aepWaveDragon, aepWaveBob, aepPontoon, aepPelamis, aepOyster, aepOceanEnergy, aepLanglee, aepGeneric, aepCorPower, aepAWS, aepAquaBuoy],
+      layers: [aepGeneric, aepPelamis, aepOceanEnergy, aepCorPower],
   });
 
   var wavGroupLayer = new GroupLayer({
@@ -3170,7 +3280,7 @@ require([
 
   var aepAtlantis2000 = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis2000_SJ/FeatureServer",
-      title: "SIMEC Atlantis 2MW",
+      title: "Fixed Bottom 2MW",
       visible: false,
       opacity: 0.75,
       listMode: "hide-children",
@@ -3179,7 +3289,7 @@ require([
 
   var aepAtlantis1700 = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis1700_SJ/FeatureServer",
-      title: "SIMEC Atlantis 1.7MW",
+      title: "Fixed Bottom 1.7MW",
       visible: false,
       opacity: 0.75,
       listMode: "hide-children",
@@ -3188,7 +3298,7 @@ require([
 
   var aepAtlantis1500 = new FeatureLayer({
       url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PTEC_Atlantis1500_SJ/FeatureServer",
-      title: "SIMEC Atlantis 1.5MW",
+      title: "Fixed Bottom 1.5MW",
       visible: false,
       opacity: 0.75,
       listMode: "hide-children",
@@ -3635,7 +3745,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Marine Conservation Zones")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(marineConservationZones.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=866227b062d841e7983d4908404dfe03");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Marine Conservation Zones")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3666,7 +3776,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Coastal and Marine SPAs")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(marineSPAs.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=89fa258e46cd47528c6ca3c000f8a3a2");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Coastal and Marine SPAs")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3697,7 +3807,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Coastal and Marine SACs")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(marineSACs.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=f380baa78c8548d88f903b2059303cca");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Coastal and Marine SACs")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3729,7 +3839,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Excavatable to Shore")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(excavatableToShore.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=76266a1bebe348feb8ad758e17dce1fa");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Excavatable to Shore")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3760,7 +3870,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Substrate")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(seabedSubstrate.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=46d5221a84644f09bbd2b0a54cf0722f");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Substrate")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3791,7 +3901,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Water Depth")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(bathyLayer.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=2022fe30f48645a18a7b4d23ee3b7765");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Water Depth")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3820,7 +3930,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Depth Contours (m)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(bathyContour.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=bb90268620f74fe2b97d6378248eb755");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Depth Contours (m)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3852,7 +3962,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Ferry Routes")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(ferryRoutes.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=f254fffa74da44a7ac61e169fdd763c7");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Ferry Routes")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3885,7 +3995,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Fishing Vessel Density (AIS)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(fishingDensity.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=8c6e1094bff744ecaac0912b2064d759");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Fishing Vessel Density (AIS)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3917,7 +4027,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Shipping Traffic Density (AIS)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(shippingDensity.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=d965a463d367486da301bb126f65e28f");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Shipping Traffic Density (AIS)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3947,7 +4057,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Traffic Seperation Scheme (TSS)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(tSs.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=6821136c5b00489793fffc2596bd900e");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Traffic Seperation Scheme (TSS)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -3985,7 +4095,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Selkie Project Regions")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(selkieArea.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=67a08e2a9ed34f6cbdc6e227adbf0b6c");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Selkie Project Regions")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4016,7 +4126,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Local Sea Areas")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(localSeaAreas.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=81f05e87a42e493988248c66e2677175");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Local Sea Areas")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4048,7 +4158,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Territorial Seas (12NM Limit)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(selkieTerritorialSeas.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=2c50a8443c2d477881d8d05b22889923");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Territorial Seas (12NM Limit)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4078,7 +4188,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "EEZ Limits (Eire and UK)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(eezUkandIrl.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=4893160eac90469baee4c3a27af6cecd");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "EEZ Limits (Eire and UK)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4109,7 +4219,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Selkie Study Area")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(selkieStudyArea.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=a17a1335d38c4d9fbb3c6b651eb36f63");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Selkie Study Area")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4127,7 +4237,7 @@ require([
           }
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "OREDP Assessment Zones")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "Ireland's OREDP Assessment Zones")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
               view.goTo(oredpAssessmentZones.fullExtent).catch(function (error) {
@@ -4135,18 +4245,18 @@ require([
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "OREDP Assessment Zones")) {
+          } else if ((id === "information") && (event.item.layer.title === "Ireland's OREDP Assessment Zones")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(oredpAssessmentZones.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "OREDP Assessment Zones")) {
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=d0e6f26b10f84dce8c5aef6d97ae22df");
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "Ireland's OREDP Assessment Zones")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (oredpAssessmentZones.opacity < 1) {
                   oredpAssessmentZones.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "OREDP Assessment Zones")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Ireland's OREDP Assessment Zones")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
@@ -4170,7 +4280,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "UK Wind Power Lease Areas")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(ukWindDeploymentSite.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=b12e1978ca044dc3b474747c405fac70");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "UK Wind Power Lease Areas")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4201,7 +4311,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "UK Wave Energy Site Agreements")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(ukWaveDeploymentSite.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=c7b727cb0a7345a890fd5eaa0a33f05e");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "UK Wave Energy Site Agreements")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4234,7 +4344,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "UK Tidal Stream Site Agreements")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(ukTidalDeploymentSite.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=697e749bf305499a8bd800624dea3841");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "UK Tidal Stream Site Agreements")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4267,7 +4377,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "SmartBay 1/4 scale Wave Energy Test Site")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(galwayBayTestSite.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=722a5e8665a94a3d9427adbafd1ea065");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "SmartBay 1/4 scale Wave Energy Test Site")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4299,7 +4409,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "SmartBay Cable Route")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(galwayBayTestSiteCableRoute.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=4b918bbee7f346bab7802fcd803598d8");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "SmartBay Cable Route")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4321,94 +4431,94 @@ require([
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(westWaveDeploymentSite.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(westWaveDeploymentSite.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
+        //   else if ((id === "full-extent") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(westWaveDeploymentSite.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(westWaveDeploymentSite.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
 
-              if (westWaveDeploymentSite.opacity < 1) {
-                  westWaveDeploymentSite.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
+        //       if (westWaveDeploymentSite.opacity < 1) {
+        //           westWaveDeploymentSite.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "WestWave - Proposed Deployment Site")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
 
-              if (westWaveDeploymentSite.opacity > 0) {
-                  westWaveDeploymentSite.opacity -= 0.25;
-              }
-          }
-
-
+        //       if (westWaveDeploymentSite.opacity > 0) {
+        //           westWaveDeploymentSite.opacity -= 0.25;
+        //       }
+        //   }
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(westWaveCableCorridor.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(westWaveCableCorridor.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
-
-              if (westWaveCableCorridor.opacity < 1) {
-                  westWaveCableCorridor.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
-
-              if (westWaveCableCorridor.opacity > 0) {
-                  westWaveCableCorridor.opacity -= 0.25;
-              }
-          }
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "Western Star WEC Project")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(westernStarWaveDeploymentSite.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "Western Star WEC Project")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(westernStarWaveDeploymentSite.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Western Star WEC Project")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
+        //   else if ((id === "full-extent") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(westWaveCableCorridor.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(westWaveCableCorridor.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
 
-              if (westernStarWaveDeploymentSite.opacity < 1) {
-                  westernStarWaveDeploymentSite.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Western Star WEC Project")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
+        //       if (westWaveCableCorridor.opacity < 1) {
+        //           westWaveCableCorridor.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "WestWave - Proposed Cable Route Corridor")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
 
-              if (westernStarWaveDeploymentSite.opacity > 0) {
-                  westernStarWaveDeploymentSite.opacity -= 0.25;
-              }
-          }
+        //       if (westWaveCableCorridor.opacity > 0) {
+        //           westWaveCableCorridor.opacity -= 0.25;
+        //       }
+        //   }
+
+
+        //   else if ((id === "full-extent") && (event.item.layer.title === "Western Star WEC Project")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(westernStarWaveDeploymentSite.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "Western Star WEC Project")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(westernStarWaveDeploymentSite.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "Western Star WEC Project")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
+
+        //       if (westernStarWaveDeploymentSite.opacity < 1) {
+        //           westernStarWaveDeploymentSite.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "Western Star WEC Project")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
+
+        //       if (westernStarWaveDeploymentSite.opacity > 0) {
+        //           westernStarWaveDeploymentSite.opacity -= 0.25;
+        //       }
+        //   }
 
 
 
@@ -4423,7 +4533,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Ireland Wind Energy Projects")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(irlWindDeploymentSite.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=8d6774ea558549cfaa657c4736ab9ab9");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Ireland Wind Energy Projects")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4453,7 +4563,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "AMETS - Deployment Site")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(ametsDeploymentSite.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=fa1230e504df4e1d9bef8b7b7cc38b59");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "AMETS - Deployment Site")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4485,7 +4595,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "AMETS - Cable Route Corridor")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(ametsCableCorridor.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=26a02a12bd66472a849e2522521eb931");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "AMETS - Cable Route Corridor")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4517,7 +4627,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Sub-Sea Cable Routes")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(cableRoutes.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=efa2403e8f3542088fb6f5177a561ee0");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Sub-Sea Cable Routes")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4550,7 +4660,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Major Road Network")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(roadNetwork.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=3cca9644c34b4899b9178a6ba0584887");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Major Road Network")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4580,7 +4690,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Rail Network")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(railNetwork.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=628721cf5e4040f1929c6ccc62a28f55");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Rail Network")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4612,7 +4722,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Airports")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(airportsIrlUk.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=d64ca9bb44814804a3d20d8f97ecafdb");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Airports")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4644,7 +4754,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Substation Proximity")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(coastalSubstationsIrlUKDistance.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=286854bafe45462697bebaf7d5eeb23b");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Substation Proximity")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4675,7 +4785,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Coastal Substations (≥ 110 kV)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(coastalSubstationsIrlUK.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=2c2a4a6631e94508bdc399d405cd0f1f");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Coastal Substations (≥ 110 kV)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4705,7 +4815,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "ORE Port Proximity")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(mrePortsDistance.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=e8cdc488c80a4c67b8ed5c9fe9e8e687");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "ORE Port Proximity")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4736,7 +4846,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "ORE Ports")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(mrePorts.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=2b665fad15044705b05c388931b8f2be");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "ORE Ports")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4766,7 +4876,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Green H2 Proximity")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(greenHydrogenDistance.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=87e9294bdaf1417f853cc818c014f8cb");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Green H2 Proximity")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4797,7 +4907,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Planned Green H2 Production Plants")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(greenHydrogenPlantsSelkie.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=d9e9d1120f0c49c08de045f064bad69d");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Planned Green H2 Production Plants")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4828,7 +4938,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Hs Winter Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(swhWinter.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=9f5674d21a4a45e9973f12d1e3d24a52");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Hs Winter Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4859,7 +4969,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Hs Spring Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(swhSpring.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=c4a4a288d3c24ee4ade8816bd59ba31d");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Hs Spring Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4890,7 +5000,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Hs Summer Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(swhSummer.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=9f5674d21a4a45e9973f12d1e3d24a52");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Hs Summer Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4922,7 +5032,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Hs Autumn Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(swhAutumn.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=80f5c85c1b7145f7b3acb0a2d4cf60ef");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Hs Autumn Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4954,7 +5064,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Te Winter Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(mwpWinter.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=8655dea05ed44c0094f461cf045ea95b");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Te Winter Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -4985,7 +5095,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Te Spring Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(mwpSpring.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=671eb347999e49fb8c4387564bbf749c");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Te Spring Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5015,7 +5125,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Te Summer Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(mwpSummer.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=6341c30306744301aec6217936d24eb3");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Te Summer Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5046,7 +5156,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Te Autumn Mean")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(mwpAutumn.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=56b022714b044329bb3badcfb4f0111b");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Te Autumn Mean")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5076,7 +5186,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Maximum Spring Peak Current Velocity (m/s)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(maxSpcv.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=26dc9660093a4294ba1f19241bdd1f29");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Maximum Spring Peak Current Velocity (m/s)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5107,7 +5217,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Mean Spring Peak Current Velocity (m/s)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(meanSpcv.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=f58711ab708245c099330e7c6211d5be");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Mean Spring Peak Current Velocity (m/s)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5138,7 +5248,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Mean Peak Current Velocity (m/s)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(meanPcv.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=cc0d788b3d304c4ca93afe0899b30194");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Mean Peak Current Velocity (m/s)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5169,7 +5279,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Mean Neap Peak Current Velocity (m/s)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(meanNpcv.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=57baed578c234145a80aeeacd695f0cc");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Mean Neap Peak Current Velocity (m/s)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5200,7 +5310,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Maximum Peak Current Velocity (m/s)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(maxPcv.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=d0f023f3b63b4538b5105121b025a9b4");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Maximum Peak Current Velocity (m/s)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5231,7 +5341,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Maximum Neap Peak Current Velocity (m/s)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(maxNpcv.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=e28c4935beaf4c43aa86beda30a52dbe");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Maximum Neap Peak Current Velocity (m/s)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5324,7 +5434,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Mean Annual Wave Energy (kW/m)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(meanAnnualWaveResourceSelkie.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=9c1c755a71174208a31829a038dc39df");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Mean Annual Wave Energy (kW/m)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5355,7 +5465,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Annual Tidal Energy (Wh/m²)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(annualTp.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=c43501531bc54148a2391a30a5b56c2d");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Tidal Energy (Wh/m²)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5386,7 +5496,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Annual Spring Tidal Energy (Wh/m²)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(annualStp.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=331408c4fcce41e191213603c2bd4537");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Spring Tidal Energy (Wh/m²)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5417,7 +5527,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Annual Neap Tidal Energy (Wh/m²)")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(annualNtp.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=9af10ee213de4f58a7be9f96ce06a4c9");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Neap Tidal Energy (Wh/m²)")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5455,7 +5565,7 @@ require([
           } else if ((id === "information") && (event.item.layer.title === "Generic")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepGeneric.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=7a121ef377f54accab0fe6ad8e43b806");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Generic")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5475,7 +5585,7 @@ require([
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "OE Buoy (OE35)")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "OWC")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
               view.goTo(aepOceanEnergy.fullExtent).catch(function (error) {
@@ -5483,18 +5593,18 @@ require([
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "OE Buoy (OE35)")) {
+          } else if ((id === "information") && (event.item.layer.title === "OWC")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepOceanEnergy.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "OE Buoy (OE35)")) {
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=df66eb91bcbe450681b27c8fcc524c1a");
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "OWC")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (aepOceanEnergy.opacity < 1) {
                   aepOceanEnergy.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "OE Buoy (OE35)")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "OWC")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
@@ -5506,26 +5616,26 @@ require([
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "CorPower (C5)")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "Point Absorber")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
-              view.goTo(aepCorPower.fullExtent).catch(function (error) {
+              view.goTo("https://marei.maps.arcgis.com/home/item.html?id=e2eda83e65994cf6999ac1a541033dee").catch(function (error) {
                   if (error.name != "AbortError") {
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "CorPower (C5)")) {
+          } else if ((id === "information") && (event.item.layer.title === "Point Absorber")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
               window.open(aepCorPower.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "CorPower (C5)")) {
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "Point Absorber")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (aepCorPower.opacity < 1) {
                   aepCorPower.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "CorPower (C5)")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Point Absorber")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
@@ -5692,7 +5802,7 @@ require([
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "Pelamis")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "Attenuator")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
               view.goTo(aepPelamis.fullExtent).catch(function (error) {
@@ -5700,18 +5810,18 @@ require([
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "Pelamis")) {
+          } else if ((id === "information") && (event.item.layer.title === "Attenuator")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepPelamis.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Pelamis")) {
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=b7936cec6c2542449378a1d2017eaa14");
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "Attenuator")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (aepPelamis.opacity < 1) {
                   aepPelamis.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pelamis")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Attenuator")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
@@ -5815,7 +5925,7 @@ require([
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "Fixed Bottom 2MW")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
               view.goTo(aepAtlantis2000.fullExtent).catch(function (error) {
@@ -5823,18 +5933,18 @@ require([
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+          } else if ((id === "information") && (event.item.layer.title === "Fixed Bottom 2MW")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepAtlantis2000.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=a6e475ef14194938b93af62aad064a76");
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "Fixed Bottom 2MW")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (aepAtlantis2000.opacity < 1) {
                   aepAtlantis2000.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "SIMEC Atlantis 2MW")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Fixed Bottom 2MW")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
@@ -5844,7 +5954,7 @@ require([
           }
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "Fixed Bottom 1.7MW")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
               view.goTo(aepAtlantis1700.fullExtent).catch(function (error) {
@@ -5852,18 +5962,18 @@ require([
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+          } else if ((id === "information") && (event.item.layer.title === "Fixed Bottom 1.7MW")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepAtlantis1700.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=aa9df8f4bc4e41808727cce661876090");
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "Fixed Bottom 1.7MW")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (aepAtlantis1700.opacity < 1) {
                   aepAtlantis1700.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.7MW")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Fixed Bottom 1.7MW")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
@@ -5873,7 +5983,7 @@ require([
           }
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+          else if ((id === "full-extent") && (event.item.layer.title === "Fixed Bottom 1.5MW")) {
               // if the full-extent action is triggered then navigate
               // to the full extent of the visible layer
               view.goTo(aepAtlantis1500.fullExtent).catch(function (error) {
@@ -5881,18 +5991,18 @@ require([
                       console.error(error);
                   }
               });
-          } else if ((id === "information") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+          } else if ((id === "information") && (event.item.layer.title === "Fixed Bottom 1.5MW")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepAtlantis1500.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=3da97b98e5094ae6a279d08081db013b");
+          } else if ((id === "increase-opacity") && (event.item.layer.title === "Fixed Bottom 1.5MW")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
 
               if (aepAtlantis1500.opacity < 1) {
                   aepAtlantis1500.opacity += 0.25;
               }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "SIMEC Atlantis 1.5MW")) {
+          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Fixed Bottom 1.5MW")) {
               // if the decrease-opacity action is triggered, then
               // decrease the opacity of the GroupLayer by 0.25
 
