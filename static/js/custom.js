@@ -206,24 +206,24 @@ function calcAep1() {
 
 
 
-function exportOptionCapFact1() {
-    let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 50000000000);
-    if (
+// function exportOptionCapFact1() {
+//     let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 50000000000);
+//     if (
 
-        defaultCapFact_error_message
+//         defaultCapFact_error_message
 
-    ) {
+//     ) {
 
-        defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
+//         defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
 
-    } else {
+//     } else {
 
-        var totaep = document.getElementById("totaep");
-        var defaultFarmRating = document.getElementById("defaultFarmRating"); 
-        document.getElementById("defaultCapFact").value = (parseFloat(totaep.value) / (parseFloat(defaultFarmRating.value) * 8760)).toFixed(2);
+//         var totaep = document.getElementById("totaep");
+//         var defaultFarmRating = document.getElementById("defaultFarmRating"); 
+//         document.getElementById("defaultCapFact").value = (parseFloat(totaep.value) / (parseFloat(defaultFarmRating.value) * 8760)).toFixed(2);
 
-    }
-}
+//     }
+// }
 
 
 
@@ -236,7 +236,7 @@ function calcCapex1() {
 
   let defaultFarmRating_error_message = check_for_float(defaultFarmRating.value, 0, 500000000);
 
-  let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 500000000);
+//   let defaultCapFact_error_message = check_for_float(defaultCapFact.value, 0, 500000000);
 
   let defaultPreDevCost_error_message = check_for_float(defaultPreDevCost.value, 0, 500000000);
 
@@ -271,7 +271,7 @@ function calcCapex1() {
 
       defaultRating_error_message || defaultFarmRating_error_message ||
 
-      defaultCapFact_error_message ||
+    //   defaultCapFact_error_message ||
 
       defaultPreDevCost_error_message ||
 
@@ -294,7 +294,7 @@ function calcCapex1() {
       defaultRating_errors.innerHTML = defaultRating_error_message;
       defaultFarmRating_errors.innerHTML = defaultFarmRating_error_message;
 
-      defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
+    //   defaultCapFact_errors.innerHTML = defaultCapFact_error_message;
 
       defaultPreDevCost_errors.innerHTML = defaultPreDevCost_error_message;
 
@@ -2883,10 +2883,11 @@ var windGroupLayer = new GroupLayer({
 
 
 
+
   var template1 = {
 
       title: '<h2 style="color:black; font-size: 16px">Techno-Economic Calculator</h2>',
-      outFields: ['GRIDCODE_1', 'gridcode', 'distance_p', 'distance_g', 'distance_h', 'Rating', 'depth'], // <-specify features that are referenced in content
+      outFields: ['GRIDCODE_1', 'gridcode', 'distance_p', 'distance_g', 'distance_h', 'Rating', 'depth', 'Avail'], // <-specify features that are referenced in content
       content:
 
           buildPopupContent1 // <- no (), it will parase the fields to the function that are specified in outFields
@@ -3003,6 +3004,45 @@ var windGroupLayer = new GroupLayer({
 //   });
 
 
+var lcoeGeneric = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/GEN105_LCOE/FeatureServer",
+    title: "Generic",
+    visible: false,
+    opacity: 0.75,
+    listMode: "hide-children",
+    popupTemplate: template1
+});
+
+
+var lcoeOwc = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/OWC105_LCOE/FeatureServer",
+    title: "OWC",
+    visible: false,
+    opacity: 0.75,
+    listMode: "hide-children",
+    popupTemplate: template1
+});
+
+
+var lcoeAtt = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/ATT105_LCOE/FeatureServer",
+    title: "Attenuator",
+    visible: false,
+    opacity: 0.75,
+    listMode: "hide-children",
+    popupTemplate: template1
+});
+
+var lcoePa = new FeatureLayer({
+    url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/PA105_LCOE/FeatureServer",
+    title: "Point Absorber",
+    visible: false,
+    opacity: 0.75,
+    listMode: "hide-children",
+    popupTemplate: template1
+});
+
+
 
   function buildPopupContent1(feature) {
 
@@ -3020,30 +3060,30 @@ var windGroupLayer = new GroupLayer({
       div.innerHTML =
   
           '<table><tr><td><u>Site Information</u></td></tr>' +
-          '<tr><td><i title = "The annual average energy that this WEC will produce at the site you have selected.">Annual Energy (per device): </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultAep" id="defaultAep" style="width: 6em" value="' + attributes.gridcode + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultAep_errors"><i> MWh </i></span></td></tr>' +
-          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to Port:   </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultPort" id="defaultPort" style="width: 5em" value="' + attributes.distance_p + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultPort_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "The euclidean distance to the nearest existing grid, or Planned H2 poroduction plant (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to <select class="esri-widget" name="myList" id="myList" onchange="exportOptionDist(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="' + attributes.distance_g + '" selected>Grid</option><option value="' + attributes.distance_h + '">H2</option></select>:</i></td><td><input type="number" title = "Value is based on the site you have selected." id="defaultGrid" style="width: 5em" value="' + attributes.distance_g + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultGrid_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "The annual average energy that this WEC will produce at the site you have selected.">Annual Energy (per device): </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultAep" id="defaultAep" style="width: 6em" value="' + attributes.gridcode + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultAep_errors"><i> MWh </i></span></td></tr>' +
+          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to Port:   </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultPort" id="defaultPort" style="width: 5em" value="' + attributes.distance_p + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultPort_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "The euclidean distance to the nearest existing grid, or Planned H2 poroduction plant (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">Distance to <select class="esri-widget" name="myList" id="myList" onchange="exportOptionDist(); calcAep1(); calcCapex1(); calcOpex1()"><option value="' + attributes.distance_g + '" selected>Grid</option><option value="' + attributes.distance_h + '">H2</option></select>:</i></td><td><input type="number" title = "Value is based on the site you have selected." id="defaultGrid" style="width: 5em" value="' + attributes.distance_g + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultGrid_errors"><i> km </i></span></td></tr>' +
           '<tr><td><i title = "The depth to seabed at the site you have selected based on EMODnet bathymetry data.">Depth to Seabed:   </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultDepth" id="defaultDepth" style="width: 5em" value="' + attributes.depth + '" readonly min=1 /><span id="defaultDepth_errors"><i> m </i></span></td></tr></table>' + '<BR>' +
 
           '<table><tr><td><u>Project Information</u></td></tr>' +
-          '<tr><td><i title = "Choose a name for your project.">Project Name: </i><td><input type="text" title = "It is mandatory to enter a project name." name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/></td></tr>' +
-          '<tr><td><i title = "The number of years it is expected that the project will be operational.">Project Life: </i><td><input type="number" title ="Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
-          '<tr><td><i title = "The discount rate refers to the interest rate used to determine the present value of future cash flows.">Discount Rate: </i><td><input type="number" title = "Default value reference: McAuliffe, Noonan and Murphy (2021)." name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "The electricity price at the project start date. Value given is for 2022."> Electricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="43" selected>IRL</option><option value="39">U.K.</option></select>: </i><td><input type="number" title = "Default value references: Electric Ireland (2022) and UK Government (2022)." name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="43" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
+          '<tr><td><i title = "Choose a name for your project.">Project Name: </i><td><input type="text" title = "It is mandatory to enter a project name." name="defaultProjectName" id="defaultProjectName" style="width: 10em" value="" onchange="calcAep1(); calcCapex1(); calcOpex1()"/></td></tr>' +
+          '<tr><td><i title = "The number of years it is expected that the project will be operational.">Project Life: </i><td><input type="number" title ="Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultProjectLife" id="defaultProjectLife" style="width: 4em" value="25" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultProjectLife_errors"><i> yrs </i></span></td></tr>' +
+          '<tr><td><i title = "The discount rate refers to the interest rate used to determine the present value of future cash flows.">Discount Rate: </i><td><input type="number" title = "Default value reference: McAuliffe, Noonan and Murphy (2021)." name="defaultDiscountRate" id="defaultDiscountRate" style="width: 4em" value="5" min=1 max=50 onchange="calcAep1(); calcCapex1(); calcOpex1()" /><span id="defaultDiscountRate_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "The electricity price at the project start date. Value given is for 2022."> Electricity Price <select class="esri-widget" name="myListElecPrice" id="myListElecPrice" onchange="exportOptionElecPrice(); calcAep1(); calcCapex1(); calcOpex1()"><option value="43" selected>IRL</option><option value="39">U.K.</option></select>: </i><td><input type="number" title = "Default value references: Electric Ireland (2022) and UK Government (2022)." name="defaultElecPrice" id="defaultElecPrice" style="width: 4em" value="43" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultElecPrice_errors"><i> c/kWh </i></span></td></tr></table>' + '<BR>' +
 
 
 
           '<table><tr><td><u>Technical Information</u></td></tr>' +
-          // '<tr><td><i>WEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">WEC Availability <select class="esri-widget" name="myListAvailability" id="myListAvailability" onchange="exportOptionAvailability(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="75" selected>IRL</option><option value="88">U.K.</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultAv" id="defaultAv" style="width: 5em" value="75" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "The number of Wave Energy Converters to be deployed.">Number of WECs: </i><td><input type="number" title = "Default reference value: Simply Blue Group (2022)." name="defaultWec" id="defaultWec" style="width: 5em" value="16" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWec_errors"><i> units </i></span></td></tr>' +
-          '<tr><td><i title = "The scale of the device.">Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
-          '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1(); exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
-          '<tr><td><i title = "This is the total power rating for the farm.">Farm Rating: </i><td><input type="number" title = "Value is based on the device and number of WECs you have selected." name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 16) / 1000 + '" min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
-          '<tr><td><i title = "Losses due to array/wake interference within the farm.">Array/Wake Losses (IA): </i><td><input type="number" title = "No reference." name="defaultWak" id="defaultWak" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "Losses incurred during transmission of electricity to export.">Line Losses (IA): </i><td><input type="number" title = "No reference." name="defaultLin" id="defaultLin" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "The average power output divided by the maximum power capability.">Capacity Factor: </i><td><input type="number" title = "Value is based on your previous inputs." name="defaultCapFact" id="defaultCapFact" style="width: 5em" value="0" readonly min=1 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCapFact_errors"><i></i></span></td></tr>' +
-          '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
+          // '<tr><td><i>WEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">WEC Availability <td><input type="number" title = "Value is based on the site you have selected considering CTV operational limits of 1.5m Hs and 20m/s wind speed")." name="defaultAv" id="defaultAv" style="width: 5em" value="' + attributes.Avail + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "The number of Wave Energy Converters to be deployed.">Number of WECs: </i><td><input type="number" title = "Default reference value: Simply Blue Group (2022)." name="defaultWec" id="defaultWec" style="width: 5em" value="16" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWec_errors"><i> units </i></span></td></tr>' +
+          '<tr><td><i title = "The scale of the device.">Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep1(); calcCapex1(); calcOpex1()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
+          '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1(); exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
+          '<tr><td><i title = "This is the total power rating for the farm.">Farm Rating: </i><td><input type="number" title = "Value is based on the device and number of WECs you have selected." name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="' + (attributes.Rating * 16) / 1000 + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
+          '<tr><td><i title = "Losses due to array/wake interference within the farm.">Array/Wake Losses (IA): </i><td><input type="number" title = "No reference." name="defaultWak" id="defaultWak" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWak_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "Losses incurred during transmission of electricity to export.">Line Losses (IA): </i><td><input type="number" title = "No reference." name="defaultLin" id="defaultLin" style="width: 5em" value="5" min=0 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultLin_errors"><i> % </i></span></td></tr>' +
+          // '<tr><td><i title = "The average power output divided by the maximum power capability.">Capacity Factor: </i><td><input type="number" title = "Value is based on your previous inputs." name="defaultCapFact" id="defaultCapFact" style="width: 5em" value="0" readonly min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCapFact_errors"><i></i></span></td></tr>' +
+          '<tr><td><input type="number" name="defaultHiddenRating" id="defaultHiddenRating" style="display:none;" value="' + attributes.Rating + '" min=1 max=100 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultHiddenRating_errors"></span></td></tr></table>' + '<BR>' +
           
 
 
@@ -3051,43 +3091,43 @@ var windGroupLayer = new GroupLayer({
           '<table><tr><td><u>CAPEX</u></td></tr>' +
 
           '<tr><td><i><u>Pre-Development</u></i></td>' +
-          '<tr><td><i title = "Costs incurred before anything is put in the water. This includes environmental surveys, seabed surveys, development services, etc.">Development & Consent: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultPreDevCost" id="defaultPreDevCost" style="width: 6em" value="118500" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultPreDevCost_errors"><i> € </i></span></td></tr>' +
+          '<tr><td><i title = "Costs incurred before anything is put in the water. This includes environmental surveys, seabed surveys, development services, etc.">Development & Consent: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultPreDevCost" id="defaultPreDevCost" style="width: 6em" value="118500" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultPreDevCost_errors"><i> € </i></span></td></tr>' +
 
           '<tr><td><i><u>Device</u></i></td>' +
-          '<tr><td><i title = "The cost of each Wave Energy Converter (structure and prime mover).">Wec Unit: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultWecCost" id="defaultWecCost" style="width: 6em" value="3116" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWecCost_errors"><i> €/kW </i></span></td></tr>' +
+          '<tr><td><i title = "The cost of each Wave Energy Converter (structure and prime mover).">Wec Unit: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultWecCost" id="defaultWecCost" style="width: 6em" value="3116" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWecCost_errors"><i> €/kW </i></span></td></tr>' +
 
           '<tr><td><i><u>Plant</u></i></td></tr>' +
-          '<tr><td><i title = "Cost of plant for mooring each WEC.">Mooring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultMoor" id="defaultMoor" style="width: 6em" value="500000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultMoor_errors"><i> €/WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultFound" id="defaultFound" style="width: 6em" value="35000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFound_errors"><i> €/WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000">38 kV</option><option value="288000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="288000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
-          '<tr><td><i title = "Length of cabling within the farm.">Intra-Array Cabling Length: </i><td><input type="number" title = "No reference." name="defaultCableIntraLength" id="defaultCableIntraLength" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraLength_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of cabling within the farm.">Intra-Array Cabling Cost <select class="esri-widget" name="myListIntra" id="myListIntra" onchange="exportOptionIntra(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000" selected>38 kV</option><option value="288000">110 kV</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableIntraCost" id="defaultCableIntraCost" style="width: 6em" value="173000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraCost_errors"><i> €/km </i></span></td></tr>' +
-          '<tr><td><i title = "Costs associted with connecting to onshore infrastructure for export.">Onshore Grid/H2 Connections: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultOnElec" id="defaultOnElec" style="width: 6em" value="20000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultOnElec_errors"><i> €/MW </i></span></td></tr>' +
-          // '<tr><td><i>Offshore Substation (IA): </i><td><input type="number" name="defaultOffSub" id="defaultOffSub" style="width: 6em" value="1125000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultOffSub_errors"><i> €/MW </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of plant for mooring each WEC.">Mooring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultMoor" id="defaultMoor" style="width: 6em" value="500000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultMoor_errors"><i> €/WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Selkie WP5 Foundation and Mooring Model and Pilot Applications." name="defaultFound" id="defaultFound" style="width: 6em" value="35000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFound_errors"><i> €/WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000">38 kV</option><option value="288000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="288000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
+          '<tr><td><i title = "Length of cabling within the farm.">Intra-Array Cabling Length: </i><td><input type="number" title = "No reference." name="defaultCableIntraLength" id="defaultCableIntraLength" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraLength_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of cabling within the farm.">Intra-Array Cabling Cost <select class="esri-widget" name="myListIntra" id="myListIntra" onchange="exportOptionIntra(); calcAep1(); calcCapex1(); calcOpex1()"><option value="59000">20 kV</option><option value="173000" selected>38 kV</option><option value="288000">110 kV</option></select>: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableIntraCost" id="defaultCableIntraCost" style="width: 6em" value="173000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableIntraCost_errors"><i> €/km </i></span></td></tr>' +
+          '<tr><td><i title = "Costs associted with connecting to onshore infrastructure for export.">Onshore Grid/H2 Connections: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultOnElec" id="defaultOnElec" style="width: 6em" value="20000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultOnElec_errors"><i> €/MW </i></span></td></tr>' +
+          // '<tr><td><i>Offshore Substation (IA): </i><td><input type="number" name="defaultOffSub" id="defaultOffSub" style="width: 6em" value="1125000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultOffSub_errors"><i> €/MW </i></span></td></tr>' +
 
           '<tr><td><i><u>Installation and Commissioning</u></i></td></tr>' +
-          '<tr><td><i title = "Number of days required to install each WEC.">Installation Days: </i><td><input type="number" title = "No reference." name="defaultDays" id="defaultDays" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDays_errors"><i> /WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Length of working day during installation phase.">Working Day: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultWorkDay" id="defaultWorkDay" style="width: 6em" value="24" min=1 max=24 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultWorkDay_errors"><i> hours </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of installation vessel.">Towing Vessel <select class="esri-widget" name="myListVessel" id="myListVessel" onchange="exportOptionVessel(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="4755" selected>Tug</option><option value="95103">Crane Barge</option><option value="47551">Heavy Lift</option></select>: </i><td><input type="number" title = "Default value reference: Jiang (2021)." name="defaultVh" id="defaultVh" style="width: 6em" value="4755" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultVh_errors"><i> €/Day </i></span></td></tr>' +
-          '<tr><td><i title = "Speed of the installation vessel.">Towing Vessel Speed: </i><td><input type="number" title  = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVs" id="defaultVs" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultVs_errors"><i> km/h </i></span></td></tr>' +
-          '<tr><td><i title = "The number of WECs that can be brought to site on a single visit.">Devices Delivered Per Visit: </i><td><input type="number" title = "No reference." name="defaultDevicesPerVis" id="defaultDevicesPerVis" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDevicesPerVis_errors"><i> units </i></span></td></tr>' +
-          '<tr><td><i title = "Any diving work required during the installation phase.">Diving Work: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultDw" id="defaultDw" style="width: 6em" value="2500" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDw_errors"><i> €/Day </i></span></td></tr>' +
-          // '<tr><td><i>F&M Installation Days: </i><td><input type="number" name="defaultFmInstall" id="defaultFmInstall" style="width: 6em" value="1" min=1 max=24 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstall_errors"><i> /WEC </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of installing the foundations and mooring.">F&M Installation Cost: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultFmInstallCost" id="defaultFmInstallCost" style="width: 6em" value="10000" min=1 max=24 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstallCost_errors"><i> €/Day </i></span></td></tr>' +
-          '<tr><td><i title = "Length of cabling to be installed to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Cable Installation Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCtLength" id="defaultCtLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCtLength_errors"><i> km </i></span></td></tr>' +
-          '<tr><td><i title = "Cost of installing the cabling to point of export (i.e. grid/H2).">Cabling Installation Cost: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInstall" id="defaultCableInstall" style="width: 6em" value="282000" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInstall_errors"><i> €/km </i></span></td></tr>' +
-          '<tr><td><select class="esri-widget" name="myList3" id="myList3" onchange="exportOptionTrench(); calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"><option value="282000" selected>trenched</option><option value="100000">untrenched</option><option value="939000">rock coverage</option></select></td></tr></table>' + '<BR>' +
+          '<tr><td><i title = "Number of days required to install each WEC.">Installation Days: </i><td><input type="number" title = "No reference." name="defaultDays" id="defaultDays" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDays_errors"><i> /WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Length of working day during installation phase.">Working Day: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultWorkDay" id="defaultWorkDay" style="width: 6em" value="24" min=1 max=24 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultWorkDay_errors"><i> hours </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of installation vessel.">Towing Vessel <select class="esri-widget" name="myListVessel" id="myListVessel" onchange="exportOptionVessel(); calcAep1(); calcCapex1(); calcOpex1()"><option value="4755" selected>Tug</option><option value="95103">Crane Barge</option><option value="47551">Heavy Lift</option></select>: </i><td><input type="number" title = "Default value reference: Jiang (2021)." name="defaultVh" id="defaultVh" style="width: 6em" value="4755" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultVh_errors"><i> €/Day </i></span></td></tr>' +
+          '<tr><td><i title = "Speed of the installation vessel.">Towing Vessel Speed: </i><td><input type="number" title  = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVs" id="defaultVs" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultVs_errors"><i> km/h </i></span></td></tr>' +
+          '<tr><td><i title = "The number of WECs that can be brought to site on a single visit.">Devices Delivered Per Visit: </i><td><input type="number" title = "No reference." name="defaultDevicesPerVis" id="defaultDevicesPerVis" style="width: 6em" value="1" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDevicesPerVis_errors"><i> units </i></span></td></tr>' +
+          '<tr><td><i title = "Any diving work required during the installation phase.">Diving Work: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultDw" id="defaultDw" style="width: 6em" value="2500" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDw_errors"><i> €/Day </i></span></td></tr>' +
+          // '<tr><td><i>F&M Installation Days: </i><td><input type="number" name="defaultFmInstall" id="defaultFmInstall" style="width: 6em" value="1" min=1 max=24 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstall_errors"><i> /WEC </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of installing the foundations and mooring.">F&M Installation Cost: </i><td><input type="number" title = "Default value reference: BIMEP (2018)." name="defaultFmInstallCost" id="defaultFmInstallCost" style="width: 6em" value="10000" min=1 max=24 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFmInstallCost_errors"><i> €/Day </i></span></td></tr>' +
+          '<tr><td><i title = "Length of cabling to be installed to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Cable Installation Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCtLength" id="defaultCtLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCtLength_errors"><i> km </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of installing the cabling to point of export (i.e. grid/H2).">Cabling Installation Cost: </i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInstall" id="defaultCableInstall" style="width: 6em" value="282000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInstall_errors"><i> €/km </i></span></td></tr>' +
+          '<tr><td><select class="esri-widget" name="myList3" id="myList3" onchange="exportOptionTrench(); calcAep1(); calcCapex1(); calcOpex1()"><option value="282000" selected>trenched</option><option value="100000">untrenched</option><option value="939000">rock coverage</option></select></td></tr></table>' + '<BR>' +
 
 
           '<table><tr><td><u>OPEX</u></td></tr>' +
-          '<tr><td><i title = "All project operation and maintenance expenses regardless of the energy produced.">Fixed O&M: </i><td><input type="number" title = "Default value reference: Allan, Gilmartin, McGregor and Swales (2011)." name="defaultFixedOam" id="defaultFixedOam" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFixedOam_errors"><i> €/MWh </i></span></td>' +
-          '<tr><td><i title = "Dues owed at operation and maintenance base.">Port Fees: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultFees" id="defaultFees" style="width: 6em" value="4" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultFees_errors"><i> €/MWh </i></span></td>' +
-          '<tr><td><i title = "Costs arising due to constant maintenance contracts. This may include periodic inspections, replacement/repair of system components, disposal of residuals and auxilary materials, etc.">Variable O&M: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVarOam" id="defaultVarOam" style="width: 6em" value="7" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultVarOam_errors"><i> €/100km </i></span></td></tr>' +
-          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">O&M Port Distance: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultOpsPort" id="defaultOpsPort" style="width: 6em" value="' + attributes.distance_p + '" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultOpsPort_errors"><i> km </i></span></td></tr></table>' + '<BR>' +
+          '<tr><td><i title = "All project operation and maintenance expenses regardless of the energy produced.">Fixed O&M: </i><td><input type="number" title = "Default value reference: Allan, Gilmartin, McGregor and Swales (2011)." name="defaultFixedOam" id="defaultFixedOam" style="width: 6em" value="20" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFixedOam_errors"><i> €/MWh </i></span></td>' +
+          '<tr><td><i title = "Dues owed at operation and maintenance base.">Port Fees: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultFees" id="defaultFees" style="width: 6em" value="4" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFees_errors"><i> €/MWh </i></span></td>' +
+          '<tr><td><i title = "Costs arising due to constant maintenance contracts. This may include periodic inspections, replacement/repair of system components, disposal of residuals and auxilary materials, etc.">Variable O&M: </i><td><input type="number" title = "Default value reference: Cavazzi and Dutton (2015)." name="defaultVarOam" id="defaultVarOam" style="width: 6em" value="7" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultVarOam_errors"><i> €/100km </i></span></td></tr>' +
+          '<tr><td><i title = "The euclidean distance to the nearest ORE port (see ORE Ports layer for reference). Use measure tool to override this value for greater accuracy if desired.">O&M Port Distance: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultOpsPort" id="defaultOpsPort" style="width: 6em" value="' + attributes.distance_p + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultOpsPort_errors"><i> km </i></span></td></tr></table>' + '<BR>' +
 
           '<table><tr><td><u>DECEX</u></td></tr>' +
-          '<tr><td><i title = "Costs associated with dismantling the farm at end of life.">Decommissioning: </i><td><input type="number" title = "Default value reference: Opera (2019)." name="defaultDec" id="defaultDec" style="width: 4em" value="88" min=1 max=50000000000 onchange="calcAep1(); exportOptionCapFact1(); calcCapex1(); calcOpex1()"/><span id="defaultDec_errors"><i> % of installation </i></span></td></tr></table>' + '<BR>' + '<BR>' + '<BR>' +
+          '<tr><td><i title = "Costs associated with dismantling the farm at end of life.">Decommissioning: </i><td><input type="number" title = "Default value reference: Opera (2019)." name="defaultDec" id="defaultDec" style="width: 4em" value="88" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultDec_errors"><i> % of installation </i></span></td></tr></table>' + '<BR>' + '<BR>' + '<BR>' +
 
           '<table><tr><td><u>TOTALS*</u></td></tr>' +
           '<tr><td><i title = "Total Annual Energy Production.">Tot. AEP: </i><td><input type="number" title = "Value is based on your previous inputs."  name="totaep" id="totaep" style="width: 9em"><span><i> MWh/yr </i></span></td></tr>' + '<BR>' +
@@ -3119,11 +3159,18 @@ var windGroupLayer = new GroupLayer({
       layers: [aepGeneric, aepPelamis, aepOceanEnergy, aepCorPower],
   });
 
+  var lcoeGroupLayer = new GroupLayer({
+    title: "Precalculated LCOE",
+    visible: true,
+    visibilityMode: "inclusive",
+    layers: [lcoeGeneric, lcoeAtt, lcoeOwc, lcoePa],
+});
+
   var wavGroupLayer = new GroupLayer({
       title: "Wave Energy",
       visible: true,
       visibilityMode: "inclusive",
-      layers: [pmatrixGroupLayer],
+      layers: [lcoeGroupLayer, pmatrixGroupLayer],
   });
 
 
@@ -3137,7 +3184,7 @@ var windGroupLayer = new GroupLayer({
   var template2 = {
 
       title: '<h2 style="color:black; font-size: 16px">Techno-Economic Calculator</h2>',
-      outFields: ['MWh_per_m2', 'distance_p', 'distance_g', 'distance_h', 'depth'], // <-specify features that are referenced in content
+      outFields: ['MWh_per_m2', 'distance_p', 'distance_g', 'distance_h', 'depth', 'Avail'], // <-specify features that are referenced in content
       content:
 
           buildPopupContent2 // <- no (), it will parase the fields to the function that are specified in outFields
@@ -3188,7 +3235,7 @@ var windGroupLayer = new GroupLayer({
           '<table><tr><td><u>Technical Information</u></td></tr>' +
           '<tr><td><i title = "The swept area of the Tidal Energy Converter(s) to be deployed.">TEC Swept Area: </i><td><input type="number" title = "Default value reference: Coles (2021)." name="defaultSa" id="defaultSa" style="width: 5em" value="254.5" min=1 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultSa_errors"><i> m² </i></span></td></tr>' +
           '<tr><td><i title = "The efficiency of the Tidal Energy Converter is the primary energy absorbed by the device as a perentage of the theoretical energy resource available to it at the site you have selected.">TEC Efficiency: </i><td><input type="number" title = "Default value reference: Hagerman et al. (2016)." name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">TEC Availability: </i><td><input type="number" title = "Default value reference: Hagerman et al. (2016) and Coles (2021)." name="defaultAv" id="defaultAv" style="width: 5em" value="95" min=1 max=100 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">TEC Availability <td><input type="number" title = "Value is based on the site you have selected considering CTV operational limits of 1.5m Hs and 20m/s wind speed")." name="defaultAv" id="defaultAv" style="width: 5em" value="' + attributes.Avail + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
           '<tr><td><i title = "The number of Tidal Energy Converters to be deployed.">Number of TECs: </i><td><input type="number" title = "Default value reference: Coles (2021)." name="defaultTec" id="defaultTec" style="width: 5em" value="4" min=1 max=1000 onchange="exportOptionFarmRating2(); calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultTec_errors"><i> units </i></span></td></tr>' +
           '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="1.5" min=1 onchange="calcAep2(); calcCapex2(); calcOpex2(); exportOptionFarmRating2()"/><span id="defaultRating_errors"><i> MW </i></span></td></tr>' +
           '<tr><td><i title = "This is the total power rating for the farm.">Farm Rating: </i><td><input type="number" title = "Value is based on the device and number of TECs you have selected." name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="6" min=1 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
@@ -3272,7 +3319,7 @@ var windGroupLayer = new GroupLayer({
   var template3 = {
 
       title: '<h2 style="color:black; font-size: 16px">Techno-Economic Calculator</h2>',
-      outFields: ['gridcode', 'distance_p', 'distance_g', 'distance_h', 'Rating', 'depth'], // <-specify features that are referenced in content
+      outFields: ['gridcode', 'distance_p', 'distance_g', 'distance_h', 'Rating', 'depth', 'Avail'], // <-specify features that are referenced in content
       content:
 
           buildPopupContent3 // <- no (), it will parase the fields to the function that are specified in outFields
@@ -3338,7 +3385,7 @@ var windGroupLayer = new GroupLayer({
 
           '<table><tr><td><u>Technical Information</u></td></tr>' +
           // '<tr><td><i>TEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">TEC Availability: </i><td><input type="number" title = "Default value reference: Hagerman et al. (2016) and Coles (2021)." name="defaultAv" id="defaultAv" style="width: 5em" value="95" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
+          '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">TEC Availability <td><input type="number" title = "Value is based on the site you have selected considering CTV operational limits of 1.5m Hs and 20m/s wind speed")." name="defaultAv" id="defaultAv" style="width: 5em" value="' + attributes.Avail + '" min=1 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
           '<tr><td><i title = "The number of Tidal Energy Converters to be deployed.">Number of TECs: </i><td><input type="number" title = "Default value reference: Coles (2021)." name="defaultTec" id="defaultTec" style="width: 5em" value="4" min=1 max=1000 onchange="exportOptionFarmRating3(); calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultTec_errors"><i> units </i></span></td></tr>' +
           '<tr><td><i title = "The scale of the device.">Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating3(); calcAep3(); calcCapex3(); calcOpex3()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
           '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating/1000 + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3(); exportOptionFarmRating3()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
