@@ -5674,7 +5674,7 @@ var lcoePa = new FeatureLayer({
           } else if ((id === "information") && (event.item.layer.title === "Point Absorber")) {
               // if the information action is triggered, then
               // open the item details page of the service layer
-              window.open(aepCorPower.url);
+              window.open("https://marei.maps.arcgis.com/home/item.html?id=e2eda83e65994cf6999ac1a541033dee");
           } else if ((id === "increase-opacity") && (event.item.layer.title === "Point Absorber")) {
               // if the increase-opacity action is triggered, then
               // increase the opacity of the GroupLayer by 0.25
@@ -5694,157 +5694,157 @@ var lcoePa = new FeatureLayer({
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "Pontoon")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepPontoon.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "Pontoon")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepPontoon.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Pontoon")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
+        //   else if ((id === "full-extent") && (event.item.layer.title === "Pontoon")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepPontoon.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "Pontoon")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepPontoon.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "Pontoon")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
 
-              if (aepPontoon.opacity < 1) {
-                  aepPontoon.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pontoon")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
+        //       if (aepPontoon.opacity < 1) {
+        //           aepPontoon.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "Pontoon")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
 
-              if (aepPontoon.opacity > 0) {
-                  aepPontoon.opacity -= 0.25;
-              }
-          }
-
-
-
-
-          else if ((id === "full-extent") && (event.item.layer.title === "Langlee")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepLanglee.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "Langlee")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepLanglee.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Langlee")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
-
-              if (aepLanglee.opacity < 1) {
-                  aepLanglee.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Langlee")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
-
-              if (aepLanglee.opacity > 0) {
-                  aepLanglee.opacity -= 0.25;
-              }
-          }
+        //       if (aepPontoon.opacity > 0) {
+        //           aepPontoon.opacity -= 0.25;
+        //       }
+        //   }
 
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "Wavebob")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepWaveBob.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "Wavebob")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepWaveBob.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Wavebob")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
+        //   else if ((id === "full-extent") && (event.item.layer.title === "Langlee")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepLanglee.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "Langlee")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepLanglee.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "Langlee")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
 
-              if (aepWaveBob.opacity < 1) {
-                  aepWaveBob.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wavebob")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
+        //       if (aepLanglee.opacity < 1) {
+        //           aepLanglee.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "Langlee")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
 
-              if (aepWaveBob.opacity > 0) {
-                  aepWaveBob.opacity -= 0.25;
-              }
-          }
-
-
-
-
-          else if ((id === "full-extent") && (event.item.layer.title === "AWS")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepAWS.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "AWS")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepAWS.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "AWS")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
-
-              if (aepAWS.opacity < 1) {
-                  aepAWS.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "AWS")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
-
-              if (aepAWS.opacity > 0) {
-                  aepAWS.opacity -= 0.25;
-              }
-          }
+        //       if (aepLanglee.opacity > 0) {
+        //           aepLanglee.opacity -= 0.25;
+        //       }
+        //   }
 
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "Wave Dragon")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepWaveDragon.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "Wave Dragon")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepWaveDragon.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Wave Dragon")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
+        //   else if ((id === "full-extent") && (event.item.layer.title === "Wavebob")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepWaveBob.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "Wavebob")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepWaveBob.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "Wavebob")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
 
-              if (aepWaveDragon.opacity < 1) {
-                  aepWaveDragon.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wave Dragon")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
+        //       if (aepWaveBob.opacity < 1) {
+        //           aepWaveBob.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wavebob")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
 
-              if (aepWaveDragon.opacity > 0) {
-                  aepWaveDragon.opacity -= 0.25;
-              }
-          }
+        //       if (aepWaveBob.opacity > 0) {
+        //           aepWaveBob.opacity -= 0.25;
+        //       }
+        //   }
+
+
+
+
+        //   else if ((id === "full-extent") && (event.item.layer.title === "AWS")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepAWS.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "AWS")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepAWS.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "AWS")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
+
+        //       if (aepAWS.opacity < 1) {
+        //           aepAWS.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "AWS")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
+
+        //       if (aepAWS.opacity > 0) {
+        //           aepAWS.opacity -= 0.25;
+        //       }
+        //   }
+
+
+
+
+        //   else if ((id === "full-extent") && (event.item.layer.title === "Wave Dragon")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepWaveDragon.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "Wave Dragon")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepWaveDragon.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "Wave Dragon")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
+
+        //       if (aepWaveDragon.opacity < 1) {
+        //           aepWaveDragon.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "Wave Dragon")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
+
+        //       if (aepWaveDragon.opacity > 0) {
+        //           aepWaveDragon.opacity -= 0.25;
+        //       }
+        //   }
 
 
 
@@ -5880,64 +5880,64 @@ var lcoePa = new FeatureLayer({
 
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "AquaBuoy")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepAquaBuoy.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "AquaBuoy")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepAquaBuoy.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "AquaBuoy")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
+        //   else if ((id === "full-extent") && (event.item.layer.title === "AquaBuoy")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepAquaBuoy.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "AquaBuoy")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepAquaBuoy.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "AquaBuoy")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
 
-              if (aepAquaBuoy.opacity < 1) {
-                  aepAquaBuoy.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "AquaBuoy")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
+        //       if (aepAquaBuoy.opacity < 1) {
+        //           aepAquaBuoy.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "AquaBuoy")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
 
-              if (aepAquaBuoy.opacity > 0) {
-                  aepAquaBuoy.opacity -= 0.25;
-              }
-          }
-
-
+        //       if (aepAquaBuoy.opacity > 0) {
+        //           aepAquaBuoy.opacity -= 0.25;
+        //       }
+        //   }
 
 
-          else if ((id === "full-extent") && (event.item.layer.title === "Oyster")) {
-              // if the full-extent action is triggered then navigate
-              // to the full extent of the visible layer
-              view.goTo(aepOyster.fullExtent).catch(function (error) {
-                  if (error.name != "AbortError") {
-                      console.error(error);
-                  }
-              });
-          } else if ((id === "information") && (event.item.layer.title === "Oyster")) {
-              // if the information action is triggered, then
-              // open the item details page of the service layer
-              window.open(aepOyster.url);
-          } else if ((id === "increase-opacity") && (event.item.layer.title === "Oyster")) {
-              // if the increase-opacity action is triggered, then
-              // increase the opacity of the GroupLayer by 0.25
 
-              if (aepOyster.opacity < 1) {
-                  aepOyster.opacity += 0.25;
-              }
-          } else if ((id === "decrease-opacity") && (event.item.layer.title === "Oyster")) {
-              // if the decrease-opacity action is triggered, then
-              // decrease the opacity of the GroupLayer by 0.25
 
-              if (aepOyster.opacity > 0) {
-                  aepOyster.opacity -= 0.25;
-              }
-          }
+        //   else if ((id === "full-extent") && (event.item.layer.title === "Oyster")) {
+        //       // if the full-extent action is triggered then navigate
+        //       // to the full extent of the visible layer
+        //       view.goTo(aepOyster.fullExtent).catch(function (error) {
+        //           if (error.name != "AbortError") {
+        //               console.error(error);
+        //           }
+        //       });
+        //   } else if ((id === "information") && (event.item.layer.title === "Oyster")) {
+        //       // if the information action is triggered, then
+        //       // open the item details page of the service layer
+        //       window.open(aepOyster.url);
+        //   } else if ((id === "increase-opacity") && (event.item.layer.title === "Oyster")) {
+        //       // if the increase-opacity action is triggered, then
+        //       // increase the opacity of the GroupLayer by 0.25
+
+        //       if (aepOyster.opacity < 1) {
+        //           aepOyster.opacity += 0.25;
+        //       }
+        //   } else if ((id === "decrease-opacity") && (event.item.layer.title === "Oyster")) {
+        //       // if the decrease-opacity action is triggered, then
+        //       // decrease the opacity of the GroupLayer by 0.25
+
+        //       if (aepOyster.opacity > 0) {
+        //           aepOyster.opacity -= 0.25;
+        //       }
+        //   }
 
 
 
