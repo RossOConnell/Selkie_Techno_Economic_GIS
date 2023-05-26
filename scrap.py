@@ -22,7 +22,7 @@
 # OPEX Solution
 # per farm
 # ((Vessel Cost) * ((1 - Scaling Factor)**(Number of WECs / 2)) + (Equipment + Technicians + Fuel)) / Farm Capacity 
-((10000) + ("%NumberWECs%"*((1.8*(12+2*"%Port_Proxim_Raster_Clip%"/33)/24) *5000))) + (("%NumberWECs%"*1.8*12000) + ("%NumberWECs%"*1.8*((12+2*"%Port_Proxim_Raster_Clip%"/33)*100*0.6)) + ("%NumberWECs%"*1.8*5*125*60)) + (10000 * "%Farm_MW.tif%")
+((10000) + ("%NumberWECs%"*((1.8*(12+2*"%Port_Proxim_Raster_Clip%"/33)/24) *5000))) + (("%NumberWECs%"*1.8*12000) + ("%NumberWECs%"*1.8*((12+2*"%Port_Proxim_Raster_Clip%"/33)*100*0.6)) + ("%NumberWECs%"*1.8*5*125*12)) + (10000 * "%Farm_MW.tif%")
 
 
 # DECEX Solution
