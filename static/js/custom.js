@@ -1200,7 +1200,7 @@ function calcCapex3() {
         var predevCosts = Math.round(predevCosts1);
         console.log("predevCosts: " + predevCosts);
   
-        var deviceCosts1 = (parseFloat(defaultTecCost.value) * parseFloat(defaultFarmRating.value)) * ((1-0.15)**(Math.log(parseFloat(defaultTec.value))/Math.log(2)));
+        var deviceCosts1 = (parseFloat(defaultTecCost.value) * parseFloat(defaultFarmRating.value));
         var deviceCosts = Math.round(deviceCosts1);
         console.log("deviceCosts: " + deviceCosts);
   
@@ -1217,7 +1217,7 @@ function calcCapex3() {
         var installationCosts = Math.round(installationCosts1);
         console.log("installationCosts: " + installationCosts);
   
-        var CapEx_k1 = parseInt(predevCosts) + parseInt(deviceCosts) + parseInt(plantCosts) + parseInt(installationCosts);
+        var CapEx_k1 = (parseInt(predevCosts) + parseInt(deviceCosts) + parseInt(plantCosts) + parseInt(installationCosts)) * ((1-0.19)**(Math.log(parseFloat(defaultTec.value))/Math.log(2)));
         var CapEx_k = Math.round(CapEx_k1);
         console.log("CapEx_k: " + CapEx_k);
   
