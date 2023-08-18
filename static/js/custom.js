@@ -294,7 +294,7 @@ function calcCapex1() {
 
       defaultPort_error_message || 
 
-      defaultMoor_error_message || defaultFound_error_message || defaultFmInstall_error_message || 
+      defaultMoor_error_message || defaultMoor_error_message || defaultFound_error_message || defaultFmInstall_error_message || 
       defaultCableInterLength_error_message || defaultCableInterCost_error_message || defaultCableIntraLength_error_message ||
       defaultCableIntraCost_error_message || defaultOnElec_error_message || // defaultOffSub_error_message ||
 
@@ -329,6 +329,7 @@ function calcCapex1() {
       defaultFmInstall_errors.innerHTML = defaultFmInstall_error_message;
       // defaultGen_errors.innerHTML = defaultGen_error_message;
       defaultMoor_errors.innerHTML = defaultMoor_error_message;
+      defaultMoorLength_errors.innerHTML = defaultMoorLength_error_message;
       defaultFound_errors.innerHTML = defaultFound_error_message;
       defaultCableInterLength_errors.innerHTML = defaultCableInterLength_error_message;
       defaultCableInterCost_errors.innerHTML = defaultCableInterCost_error_message;
@@ -369,11 +370,11 @@ function calcCapex1() {
       var predevCosts = Math.round(predevCosts1);
       console.log("predevCosts: " + predevCosts);
 
-      var deviceCosts1 = (parseFloat(defaultWecCost.value) * parseFloat(defaultFarmRating.value)) * ((1-0.15)**(Math.log(parseFloat(defaultWec.value))/Math.log(2)));
+      var deviceCosts1 = (parseFloat(defaultWecCost.value) * parseFloat(defaultFarmRating.value));
       var deviceCosts = Math.round(deviceCosts1);
       console.log("deviceCosts: " + deviceCosts);
 
-      var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultDepth.value) * (4 * parseFloat(defaultWec.value))) + (parseFloat(defaultFound.value) * parseFloat(defaultFarmRating.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
+      var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultMoorLength.value) * parseFloat(defaultWec.value)) + (parseFloat(defaultFound.value) * parseFloat(defaultFarmRating.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
       var plantCosts = Math.round(plantCosts1);
       console.log("plantCosts: " + plantCosts);
 
@@ -685,6 +686,7 @@ function calcCapex2() {
   // let defaultPto_error_message = check_for_float(defaultPto.value, 0, 500000000);
   // let defaultGen_error_message = check_for_float(defaultGen.value, 0, 500000000);
   let defaultMoor_error_message = check_for_float(defaultMoor.value, 0, 500000000);
+  let defaultMoorLength_error_message = check_for_float(defaultMoorLength.value, 0, 500000000);
   let defaultFound_error_message = check_for_float(defaultFound.value, 0, 500000000);
   let defaultCableInterLength_error_message = check_for_float(defaultCableInterLength.value, 0, 500000000);
   let defaultCableInterCost_error_message = check_for_float(defaultCableInterCost.value, 0, 500000000);
@@ -724,7 +726,7 @@ function calcCapex2() {
 
       defaultTecCost_error_message ||
 
-      defaultMoor_error_message || defaultFound_error_message || // defaultPto_error_message || defaultGen_error_message || 
+      defaultMoor_error_message || defaultMoorLength_error_message || defaultFound_error_message || // defaultPto_error_message || defaultGen_error_message || 
       defaultCableInterLength_error_message || defaultCableInterCost_error_message || defaultCableIntraLength_error_message ||
       defaultCableIntraCost_error_message || defaultOnElec_error_message || // defaultOffSub_error_message ||
 
@@ -751,6 +753,7 @@ function calcCapex2() {
       // defaultPto_errors.innerHTML = defaultPto_error_message;
       // defaultGen_errors.innerHTML = defaultGen_error_message;
       defaultMoor_errors.innerHTML = defaultMoor_error_message;
+      defaultMoorLength_errors.innerHTML = defaultMoorLength_error_message;
       defaultFound_errors.innerHTML = defaultFound_error_message;
       defaultCableInterLength_errors.innerHTML = defaultCableInterLength_error_message;
       defaultCableInterCost_errors.innerHTML = defaultCableInterCost_error_message;
@@ -798,7 +801,7 @@ function calcCapex2() {
       var deviceCosts = Math.round(deviceCosts1);
       console.log("deviceCosts: " + deviceCosts);
 
-      var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultDepth.value)) + (parseFloat(defaultFound.value) * parseFloat(defaultFarmRating.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
+      var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultMoorLength.value) * parseFloat(defaultTec.value)) + (parseFloat(defaultFound.value) * parseFloat(defaultFarmRating.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
       var plantCosts = Math.round(plantCosts1);
       console.log("plantCosts: " + plantCosts);
 
@@ -1079,6 +1082,7 @@ function calcCapex3() {
   
   
     let defaultMoor_error_message = check_for_float(defaultMoor.value, 0, 500000000);
+    let defaultMoorLength_error_message = check_for_float(defaultMoorLength.value, 0, 500000000);
     let defaultFound_error_message = check_for_float(defaultFound.value, 0, 500000000);
     let defaultCableInterLength_error_message = check_for_float(defaultCableInterLength.value, 0, 500000000);
     let defaultCableInterCost_error_message = check_for_float(defaultCableInterCost.value, 0, 500000000);
@@ -1125,7 +1129,7 @@ function calcCapex3() {
   
         defaultPort_error_message || 
   
-        defaultMoor_error_message || defaultFound_error_message || defaultFmInstall_error_message || 
+        defaultMoor_error_message || defaultMoorLength_error_message || defaultFound_error_message || defaultFmInstall_error_message || 
         defaultCableInterLength_error_message || defaultCableInterCost_error_message || defaultCableIntraLength_error_message ||
         defaultCableIntraCost_error_message || defaultOnElec_error_message || // defaultOffSub_error_message ||
   
@@ -1160,6 +1164,7 @@ function calcCapex3() {
         defaultFmInstall_errors.innerHTML = defaultFmInstall_error_message;
         // defaultGen_errors.innerHTML = defaultGen_error_message;
         defaultMoor_errors.innerHTML = defaultMoor_error_message;
+        defaultMoorLength_errors.innerHTML = defaultMoorLength_error_message;
         defaultFound_errors.innerHTML = defaultFound_error_message;
         defaultCableInterLength_errors.innerHTML = defaultCableInterLength_error_message;
         defaultCableInterCost_errors.innerHTML = defaultCableInterCost_error_message;
@@ -1204,7 +1209,7 @@ function calcCapex3() {
         var deviceCosts = Math.round(deviceCosts1);
         console.log("deviceCosts: " + deviceCosts);
   
-        var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultDepth.value) * (4 * parseFloat(defaultTec.value))) + (parseFloat(defaultFound.value) * parseFloat(defaultFarmRating.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
+        var plantCosts1 = (parseFloat(defaultMoor.value) * parseFloat(defaultMoorLength.value) * parseFloat(defaultTec.value)) + (parseFloat(defaultFound.value) * parseFloat(defaultFarmRating.value)) + (parseFloat(defaultCableInterLength.value) * parseFloat(defaultCableInterCost.value)) + (parseFloat(defaultCableIntraLength.value) * parseFloat(defaultCableIntraCost.value)) + (parseFloat(defaultOnElec.value) * parseFloat(defaultFarmRating.value)); // (parseFloat(defaultPto.value) + parseFloat(defaultGen.value) 
         var plantCosts = Math.round(plantCosts1);
         console.log("plantCosts: " + plantCosts);
   
@@ -1217,7 +1222,7 @@ function calcCapex3() {
         var installationCosts = Math.round(installationCosts1);
         console.log("installationCosts: " + installationCosts);
   
-        var CapEx_k1 = (parseInt(predevCosts) + parseInt(deviceCosts) + parseInt(plantCosts) + parseInt(installationCosts)) * ((1-0.19)**(Math.log(parseFloat(defaultTec.value))/Math.log(2)));
+        var CapEx_k1 = (parseInt(predevCosts) + parseInt(deviceCosts) + parseInt(plantCosts) + parseInt(installationCosts));
         var CapEx_k = Math.round(CapEx_k1);
         console.log("CapEx_k: " + CapEx_k);
   
@@ -3254,6 +3259,7 @@ var lcoePa = new FeatureLayer({
 
           '<tr><td><i><u>Plant</u></i></td></tr>' +
           '<tr><td><i title = "Cost of plant for mooring each WEC.">Mooring: </i><td><input type="number" title = "Default value reference: Harris, Johanning and Wolfram (2004)." name="defaultMoor" id="defaultMoor" style="width: 6em" value="400" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultMoor_errors"><i> €/m </i></span></td></tr>' +
+          '<tr><td><i title = "Length of mooring for each WEC.">Mooring Length: </i><td><input type="number" title = "Default value reference: N/A." name="defaultMoorLength" id="defaultMoorLength" style="width: 6em" value="0" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultMoorLength_errors"><i> m </i></span></td></tr>' +
           '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultFound" id="defaultFound" style="width: 6em" value="727000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultFound_errors"><i> €/MW </i></span></td></tr>' +
           '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
           '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep1(); calcCapex1(); calcOpex1()"><option value="87000">20 kV</option><option value="256000">38 kV</option><option value="427000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="427000" min=1 max=50000000000 onchange="calcAep1(); calcCapex1(); calcOpex1()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
@@ -3434,6 +3440,7 @@ var lcoePa = new FeatureLayer({
 
           '<tr><td><i><u>Plant</u></i></td></tr>' +
           '<tr><td><i title = "Cost of plant for mooring each TEC.">Mooring: </i><td><input type="number" title = "Default value reference: Harris, Johanning and Wolfram (2004)." name="defaultMoor" id="defaultMoor" style="width: 6em" value="400" min=1 max=50000000000 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultMoor_errors"><i> €/m </i></span></td></tr>' +
+          '<tr><td><i title = "Length of mooring for each TEC.">Mooring Length: </i><td><input type="number" title = "Default value reference: N/A." name="defaultMoorLength" id="defaultMoorLength" style="width: 6em" value="0" min=1 max=50000000000 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultMoorLength_errors"><i> m </i></span></td></tr>' +
           '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultFound" id="defaultFound" style="width: 6em" value="727000" min=1 max=50000000000 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultFound_errors"><i> €/MW </i></span></td></tr>' +
           '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
           '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep2(); calcCapex2(); calcOpex2()"><option value="87000">20 kV</option><option value="256000">38 kV</option><option value="427000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="427000" min=1 max=50000000000 onchange="calcAep2(); calcCapex2(); calcOpex2()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +
@@ -3583,7 +3590,7 @@ var lcoePa = new FeatureLayer({
           '<table><tr><td><u>Technical Information</u></td></tr>' +
           // '<tr><td><i>TEC Efficiency: </i><td><input type="number" name="defaultEff" id="defaultEff" style="width: 5em" value="40" min=1 max=100 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultEff_errors"><i> % </i></span></td></tr>' +
           '<tr><td><i title = "Availability is defined as the amount of time the device is on hand to produce power and is affected by a number of factors including device reliability and the ability of the device to be accessed for maintenance.">TEC Availability <td><input type="number" title = "Value is based on the site you have selected considering CTV operational limits of 1.5m Hs and 20m/s wind speed")." name="defaultAv" id="defaultAv" style="width: 5em" value="' + attributes.Avail + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultAv_errors"><i> % </i></span></td></tr>' +
-          '<tr><td><i title = "The number of Wave Energy Converters to be deployed.">Number of TECs: </i><td><input type="number" title = "Default reference value: N/A." name="defaultTec" id="defaultTec" style="width: 5em" value="' + Math.round(105 / (attributes.Rating/1000)) + '" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultTec_errors"><i> units </i></span></td></tr>' +
+          '<tr><td><i title = "The number of Tidal Energy Converters to be deployed.">Number of TECs: </i><td><input type="number" title = "Default reference value: N/A." name="defaultTec" id="defaultTec" style="width: 5em" value="' + Math.round(105 / (attributes.Rating/1000)) + '" min=1 max=1000 onchange="exportOptionFarmRating(); calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultTec_errors"><i> units </i></span></td></tr>' +
           '<tr><td><i title = "The scale of the device.">Scale: <td><select class="esri-widget" name="defaultScale" id="defaultScale" onchange="exportOptionRating(); exportOptionFarmRating(); calcAep3(); calcCapex3(); calcOpex3()"><option value="1">1:1</option><option value="0.5">1:2</option><option value="0.25">1:4</option></select></td></tr>' +
           '<tr><td><i title = "This is the power rating (highest power output) of the device you have selected.">Device Rating: </i><td><input type="number" title = "Value is based on the device you have selected." name="defaultRating" id="defaultRating" style="width: 5em" value="' + attributes.Rating + '" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3(); exportOptionFarmRating()"/><span id="defaultRating_errors"><i> kW </i></span></td></tr>' +
           '<tr><td><i title = "This is the total power rating for the farm.">Farm Rating: </i><td><input type="number" title = "Value is based on the device and number of TECs you have selected." name="defaultFarmRating" id="defaultFarmRating" style="width: 5em" value="105" min=1 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFarmRating_errors"><i> MW </i></span></td></tr>' +
@@ -3604,7 +3611,8 @@ var lcoePa = new FeatureLayer({
           '<tr><td><i title = "The cost of each Wave Energy Converter (structure and prime mover).">TEC Unit: </i><td><input type="number" title = "Default value reference: N/A." name="defaultTecCost" id="defaultTecCost" style="width: 6em" value="18000000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultTecCost_errors"><i> €/MW </i></span></td></tr>' +
 
           '<tr><td><i><u>Plant</u></i></td></tr>' +
-          '<tr><td><i title = "Cost of plant for mooring each TEC.">Mooring: </i><td><input type="number" title = "Default value reference: Harris, Johanning and Wolfram (2004)." name="defaultMoor" id="defaultMoor" style="width: 6em" value="400" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultMoor_errors"><i> €/m </i></span></td></tr>' +
+          '<tr><td><i title = "Cost of plant for mooring each TEC.">Mooring Cost: </i><td><input type="number" title = "Default value reference: Harris, Johanning and Wolfram (2004)." name="defaultMoor" id="defaultMoor" style="width: 6em" value="400" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultMoor_errors"><i> €/m </i></span></td></tr>' +
+          '<tr><td><i title = "Length of mooring for each TEC.">Mooring Length: </i><td><input type="number" title = "Default value reference: N/A." name="defaultMoorLength" id="defaultMoorLength" style="width: 6em" value="0" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultMoorLength_errors"><i> m </i></span></td></tr>' +
           '<tr><td><i title = "Cost of plant for foundations and anchoring at seabed.">Foundations/Anchoring: </i><td><input type="number" title = "Default value reference: Têtu and Fernandez Chozas (2021)." name="defaultFound" id="defaultFound" style="width: 6em" value="727000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultFound_errors"><i> €/MW </i></span></td></tr>' +
           '<tr><td><i title = "Length of cabling to point of export (i.e. grid/H2). Use measure tool to override this value for greater accuracy if desired.">Export Cabling Length: </i><td><input type="number" title = "Value is based on the site you have selected." name="defaultCableInterLength" id="defaultCableInterLength" style="width: 6em" value="' + attributes.distance_g + '" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCableInterLength_errors"><i> km </i></span></td></tr>' +
           '<tr><td><i title = "Cost of cabling to point of export (i.e. grid/H2).">Export Cabling Cost <select class="esri-widget" title = "Default value reference: OConnor et al. (2013)." name="myListInter" id="myListInter" onchange="exportOptionInter(); calcAep3(); calcCapex3(); calcOpex3()"><option value="87000">20 kV</option><option value="256000">38 kV</option><option value="427000" selected>110 kV</option></select>:</i><td><input type="number" title = "Default value reference: OConnor et al. (2013)." name="defaultCableInterCost" id="defaultCableInterCost" style="width: 6em" value="427000" min=1 max=50000000000 onchange="calcAep3(); calcCapex3(); calcOpex3()"/><span id="defaultCableInterCost_errors"><i> €/km </i></span></td></tr>' +

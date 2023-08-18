@@ -9,8 +9,6 @@
 # ((Diving Work * Number of WECs) + ((WEC Install Vessel Mobilisation Costs and WEC Install Vessel Daily Costs and WEC Install Vessel Fuel Costs) + (F&M Install Vessel Mobilisation Costs and F&M Install Vessel Daily Costs and F&M Install Vessel Fuel Costs) + (Number of WECs * Mooring Installation Cost) + (Cabling Installation Cost * Distance to Grid) + (Cabling Installation Cost * Number of WECs) + (Onshore Installation * Farm Rating) + (Offshore Logistics * Farm Rating) + (Offshore Installation * Farm Rating[removed]) + (Other * Farm Rating [removed]) 
 
 
-
-
 #105MW Farm Revised
 (166000 * "%Farm_MW.tif%")  +  
 ((18000000 * "%Farm_MW.tif%") * ((1-0.15)**(math.log(140)/math.log(2)))) +  
