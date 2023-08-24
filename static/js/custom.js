@@ -1317,6 +1317,8 @@ function calc_te3() {
     let E = parseFloat(totaep.value) * parseFloat(defaultProjectLife.value);
     let opex = parseFloat(totopex.value);
 
+    console.log("TotalEnergy: " + E);
+
 
     // Discounting OPEX and AEP
 
