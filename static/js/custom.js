@@ -1312,12 +1312,14 @@ function calc_te3() {
 
     console.log("calculate_lcoe1")
 
+    let totalcapex = parseFloat(totcapex.value);
     let n = parseFloat(defaultProjectLife.value);
     let price = parseFloat(defaultElecPrice.value) / 100;
     let E = parseFloat(totaep.value) * parseFloat(defaultProjectLife.value);
     let opex = parseFloat(totopex.value);
 
     console.log("TotalEnergy: " + E);
+    console.log("TotalCapex" + totalcapex); 
 
 
     // Discounting OPEX and AEP
@@ -1363,7 +1365,7 @@ function calc_te3() {
 
     // Totalling LCS Costs
 
-    let LCS_oef = parseFloat(totcapex.value) + parseFloat(sumOpexDiscounted) + parseFloat(decexDiscount);
+    let LCS_oef = parseFloat(totalcapex) + parseFloat(sumOpexDiscounted) + parseFloat(decexDiscount);
     console.log("LCS_oef: " + LCS_oef);
 
 
@@ -2887,14 +2889,85 @@ require([
     // });
 
 
+    var meanAnnualAvailability_1pt5m_2ms = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Availability_at_Hs1pt5m_and_Wind20ms/FeatureServer",
+        title: "Annual Availability (%): 1.5m Hs and 20 m/s wind",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "Annual Availability (%)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "Avail",
+                            label: "Annual Availability (%)",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+    var availabilityGroupLayer = new GroupLayer({
+        title: "Availability",
+        visible: true,
+        visibilityMode: "inclusive",
+        layers: [meanAnnualAvailability_1pt5m_2ms],
+    });
+
+
+
+
+    var meanAnnualAccessibility_1pt5m_2ms = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/Access_Hs1pt5_Wind20_PolyClip/FeatureServer",
+        title: "Annual Accessibility (%): 1.5m Hs and 20 m/s wind",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "Annual Accessibility (%)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "Annual Accessibility (%)",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+
+    var accessibilityGroupLayer = new GroupLayer({
+        title: "Accessibility",
+        visible: true,
+        visibilityMode: "inclusive",
+        layers: [meanAnnualAccessibility_1pt5m_2ms],
+    });
 
 
     var oceanographyGroupLayer = new GroupLayer({
-        title: "Oceanography",
+        title: "Met-Ocean",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [tidesGroupLayer, wavesGroupLayer],
+        layers: [tidesGroupLayer, wavesGroupLayer, availabilityGroupLayer, accessibilityGroupLayer],
     });
+
+
+
 
 
     var meanAnnualWaveResourceSelkie = new FeatureLayer({
@@ -5179,6 +5252,69 @@ require([
 
 
 
+            else if ((id === "full-extent") && (event.item.layer.title === "Annual Accessibility (%): 1.5m Hs and 20 m/s wind")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(meanAnnualAccessibility_1pt5m_2ms.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "Annual Accessibility (%): 1.5m Hs and 20 m/s wind")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=3aacdfe76cc948178916476d387c3b8a");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Accessibility (%): 1.5m Hs and 20 m/s wind")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (meanAnnualAccessibility_1pt5m_2ms.opacity < 1) {
+                    meanAnnualAccessibility_1pt5m_2ms.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Accessibility (%): 1.5m Hs and 20 m/s wind")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (meanAnnualAccessibility_1pt5m_2ms.opacity > 0) {
+                    meanAnnualAccessibility_1pt5m_2ms.opacity -= 0.25;
+                }
+            }
+
+
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "Annual Availability (%): 1.5m Hs and 20 m/s wind")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(meanAnnualAvailability_1pt5m_2ms.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "Annual Availability (%): 1.5m Hs and 20 m/s wind")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=e3c62b6c2c47431eb05d1c9c2bf7cb0b");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "Annual Availability (%): 1.5m Hs and 20 m/s wind")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (meanAnnualAvailability_1pt5m_2ms.opacity < 1) {
+                    meanAnnualAvailability_1pt5m_2ms.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Annual Availability (%): 1.5m Hs and 20 m/s wind")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (meanAnnualAvailability_1pt5m_2ms.opacity > 0) {
+                    meanAnnualAvailability_1pt5m_2ms.opacity -= 0.25;
+                }
+            }
+
+
+
+            
+            
             else if ((id === "full-extent") && (event.item.layer.title === "Hs Winter Mean")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
