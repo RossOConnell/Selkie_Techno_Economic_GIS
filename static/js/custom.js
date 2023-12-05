@@ -490,10 +490,12 @@ function calc_te1() {
 
     console.log("calculate_lcoe1")
 
+
     let n = parseFloat(defaultProjectLife.value);
     let price = parseFloat(defaultElecPrice.value) / 100;
-    let E = parseFloat(totaep.value);
+    let E = parseFloat(totaep.value) * parseFloat(defaultProjectLife.value);
     let opex = parseFloat(totopex.value);
+
 
     // Discounting OPEX and AEP
 
