@@ -3026,7 +3026,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "gridcode",
+                            fieldName: "ContourMin",
                             label: "Metres",
                             format: {
                                 digitSeparator: true,
@@ -3052,7 +3052,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "gridcode",
+                            fieldName: "ContourMin",
                             label: "Metres",
                             format: {
                                 digitSeparator: true,
@@ -3078,7 +3078,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "gridcode",
+                            fieldName: "ContourMin",
                             label: "Metres",
                             format: {
                                 digitSeparator: true,
@@ -3118,12 +3118,117 @@ require([
     });
 
 
+    var extreme100yrWind = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WindExtrema_100yr_RP_PolyClip_shp/FeatureServer",
+        title: "100 yr return wind speed (m/s)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "100 yr return wind speed (m/s)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "m/s",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var extreme50yrWind = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WindExtrema_50yr_RP_PolyClip_shp/FeatureServer",
+        title: "50 yr return wind speed (m/s)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "50 yr return wind speed (m/s)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "m/s",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var extreme10yrWind = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WindExtrema_10yr_RP_PolyClip_shp/FeatureServer",
+        title: "10 yr return wind speed (m/s)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "10 yr return wind speed (m/s)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "m/s",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var extreme1yrWind = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WindExtrema_1yr_RP_PolyClip_shp/FeatureServer",
+        title: "1 yr return wind speed (m/s)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "1 yr return wind speed (m/s)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "m/s",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+
 
     var extremesGroupLayer = new GroupLayer({
         title: "Extremes",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [extreme100yrHs, extreme50yrHs, extreme10yrHs, extreme1yrHs],
+        layers: [extreme100yrHs, extreme50yrHs, extreme10yrHs, extreme1yrHs, extreme100yrWind, extreme50yrWind, extreme10yrWind, extreme1yrWind],
     });
 
 
@@ -6065,6 +6170,125 @@ require([
                     extreme100yrHs.opacity -= 0.25;
                 }
             }
+
+
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "1 yr return wind speed (m/s)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme1yrWind.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "1 yr return wind speed (m/s)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=062cfd98ab93432d8adee624a8191766");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "1 yr return wind speed (m/s)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme1yrWind.opacity < 1) {
+                    extreme1yrWind.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "1 yr return wind speed (m/s)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme1yrWind.opacity > 0) {
+                    extreme1yrWind.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "10 yr return wind speed (m/s)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme10yrWind.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "10 yr return wind speed (m/s)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=1dab7e4e2f5b4b6a9709547be819d24d");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "10 yr return wind speed (m/s)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme10yrWind.opacity < 1) {
+                    extreme10yrWind.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "10 yr return wind speed (m/s)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme10yrWind.opacity > 0) {
+                    extreme10yrWind.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "50 yr return wind speed (m/s)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme50yrWind.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "50 yr return wind speed (m/s)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=43bce718112e4387ba49889f68451307");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "50 yr return wind speed (m/s)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme50yrWind.opacity < 1) {
+                    extreme50yrWind.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "50 yr return wind speed (m/s)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme50yrWind.opacity > 0) {
+                    extreme50yrWind.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "100 yr return wind speed (m/s)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme100yrWind.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "100 yr return wind speed (m/s)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=d94425f9d58a484abc52cc77b9b4d76b");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "100 yr return wind speed (m/s)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme100yrWind.opacity < 1) {
+                    extreme100yrWind.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "100 yr return wind speed (m/s)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme100yrWind.opacity > 0) {
+                    extreme100yrWind.opacity -= 0.25;
+                }
+            }
+
 
 
 
