@@ -23,6 +23,8 @@
 ((10000) + ("%NumberWECs%"*((1.8*(12+2*"%Port_Proxim_Raster_Clip%"/33)/24) *5000))) + (("%NumberWECs%"*1.8*12000) + ("%NumberWECs%"*1.8*((12+2*"%Port_Proxim_Raster_Clip%"/33)*100*0.6)) + ("%NumberWECs%"*1.8*5*125*12)) + (10000 * "%Farm_MW.tif%")
 
 
+
+
 # DECEX Solution
 # per farm
 # (Installation Cost * Scaling Factor) * 0.88 
@@ -70,3 +72,14 @@
 ((2500*"%NumberTECs%") + ("%NumberTECs%" * ((12+2*"%Port_Proxim_Raster_Clip%"/22)/24) * 20000) + ("%NumberTECs%"*(12+2*"%Port_Proxim_Raster_Clip%"/22)*300*0.5) + ("%NumberTECs%" * 100000) + (282000 * "%Substations_Proxim_Raster_Clip%") + (282000 * "%NumberTECs%")) * ((1-0.19)**(math.log(12)/math.log(2))) * 0.88
 
 ((( "%farmAEP%" + "%farmAEP2_int%" + "%farmAEP3_int%" + "%farmAEP4_int%" + "%farmAEP5_int%" + "%farmAEP6_int%" + "%farmAEP7_int%" + "%farmAEP8_int%" + "%farmAEP9_int%" + "%farmAEP10_int%" + "%farmAEP11_int%" + "%farmAEP12_int%" + "%farmAEP13_int%" + "%farmAEP14_int%" + "%farmAEP15_int%" + "%farmAEP16_int%" + "%farmAEP17_int%" + "%farmAEP18_int%" + "%farmAEP19_int%" + "%farmAEP20_int%" + "%farmAEP21_int%" + "%farmAEP22_int%" + "%farmAEP23_int%" + "%farmAEP24_int%" + "%farmAEP25_int%") * (410)) - (("%farmCAPEX.tif%") + ("%farmOPEX1.tif%" + "%farmOPEX2_int%" + "%farmOPEX3_int%" + "%farmOPEX4_int%" + "%farmOPEX5_int%" + "%farmOPEX6_int%" + "%farmOPEX7_int%" + "%farmOPEX8_int%" + "%farmOPEX9_int%" + "%farmOPEX10int%" + "%farmOPEX11int%" + "%farmOPEX12int%" + "%farmOPEX13int%" + "%farmOPEX14int%" + "%farmOPEX15int%" + "%farmOPEX16int%" + "%farmOPEX17int%" + "%farmOPEX18int%" + "%farmOPEX19int%" + "%farmOPEX20int%" + "%farmOPEX21int%" + "%farmOPEX22int%" + "%farmOPEX23int%" + "%farmOPEX24int%" + "%farmOPEX25int%")+ ("%farmDECEX_discounted.tif%")))/1000000
+
+  
+((166000 * "%Farm_MW.tif%") + (2462545 * "%Farm_MW.tif%") + ((350 + "%int_bathy_se%") * (6 * "%NumberWECs%")) + (76203 * "%Farm_MW.tif%") + ("%Substations_Proxim_Raster_Clip%" * 754000) + ((1500 * "%NumberWECs%") * 220) + (42000 * "%Farm_MW.tif%") + (3909 * "%Farm_MW.tif%")) + ((3500 * "%NumberWECs%") + ((175000) + ("%NumberWECs%" * ((24+2 * "%Port_Proxim_Raster_Clip%"/9)/24) * 70000) + ("%NumberWECs%"*(12+2*"%Port_Proxim_Raster_Clip%"/9)*850*1.85)) + ((240000) + ("%NumberWECs%" * ((48+2*"%Port_Proxim_Raster_Clip%"/18)/24) * 960000) + ("%NumberWECs%"*(48+2*"%Port_Proxim_Raster_Clip%"/18)*1046*1.85)) + ("%NumberWECs%" * 76203) + (360738 * "%Substations_Proxim_Raster_Clip%") + (310 * 1500 * "%NumberWECs%") + (3909 * "%Farm_MW.tif%") + (304000 * "%Farm_MW.tif%")) 
+
+((30000) + ("%NumberWECs%"*((1.8*(12+2*"%Port_Proxim_Raster_Clip%"/33)/24) *6000))) + (("%NumberWECs%"*1.2*12000) + ("%NumberWECs%"*1.8*((12+2*"%Port_Proxim_Raster_Clip%"/33)*305*1.85)) + ("%NumberWECs%"*1.8*5*125*12)) + (45540 * "%Farm_MW.tif%") + (32000 * "%Farm_MW.tif%") 
+
+
+
+((1033160 * "%Farm_MW.tif%") + (2462545 * "%Farm_MW.tif%") + ((350 * "%int_bathy_se%" * (6 * "%NumberWECs%")) + (76203 * "%Farm_MW.tif%") + ("%Substations_Proxim_Raster_Clip%" * 754000) + ((1500 * "%NumberWECs%") * 220) + (360173 * "%Farm_MW.tif%") + (3909 * "%Farm_MW.tif%") + (166000 * "%Farm_MW.tif%")) + ((3500 * "%NumberWECs%") + ((175000) + ("%NumberWECs%" * ((24+2 * "%Port_Proxim_Raster_Clip%"/9)/24) * 70000) + ("%NumberWECs%"*(12+2*"%Port_Proxim_Raster_Clip%"/9)*850*1.85)) + ((240000) + ("%NumberWECs%" * ((48+2*"%Port_Proxim_Raster_Clip%"/18)/24) * 960000) + ("%NumberWECs%"*(48+2*"%Port_Proxim_Raster_Clip%"/18)*1046*1.85)) + ("%NumberWECs%" * 76203) + (360738 * "%Substations_Proxim_Raster_Clip%") + (310 * 1500 * "%NumberWECs%") + (3909 * "%Farm_MW.tif%") + (304000 * "%Farm_MW.tif%"))) /  "%Farm_MW.tif%" 
+
+(1033160 * "%Farm_MW.tif%") + (2462545 * "%Farm_MW.tif%") + ((350 * "%int_bathy_se%" * (6 * "%NumberWECs%")) + (76203 * "%Farm_MW.tif%") + ("%Substations_Proxim_Raster_Clip%" * 754000) + ((1500 * "%NumberWECs%") * 220) + (360173 * "%Farm_MW.tif%") + (3909 * "%Farm_MW.tif%") + (166000 * "%Farm_MW.tif%")) + ((3500 * "%NumberWECs%") + ((175000) + ("%NumberWECs%" * ((24+2 * "%Port_Proxim_Raster_Clip%"/9)/24) * 70000) + ("%NumberWECs%"*(12+2*"%Port_Proxim_Raster_Clip%"/9)*850*1.85)) + ((240000) + ("%NumberWECs%" * ((48+2*"%Port_Proxim_Raster_Clip%"/18)/24) * 960000) + ("%NumberWECs%"*(48+2*"%Port_Proxim_Raster_Clip%"/18)*1046*1.85)) + ("%NumberWECs%" * 76203) + (360738 * "%Substations_Proxim_Raster_Clip%") + (310 * 1500 * "%NumberWECs%") + (3909 * "%Farm_MW.tif%") + (304000 * "%Farm_MW.tif%")) 

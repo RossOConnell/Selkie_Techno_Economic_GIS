@@ -3014,11 +3014,126 @@ require([
 
 
 
+    var extreme100yrHs = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveExtrema_100yr_RP_ContClip/FeatureServer",
+        title: "100 yr return Hs (m)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "100 yr return Hs (m)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "Metres",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var extreme50yrHs = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveExtrema_50yr_RP_ContClip/FeatureServer",
+        title: "50 yr return Hs (m)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "50 yr return Hs (m)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "Metres",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var extreme10yrHs = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveExtrema_10yr_RP_ContClip/FeatureServer",
+        title: "10 yr return Hs (m)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "10 yr return Hs (m)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "gridcode",
+                            label: "Metres",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var extreme1yrHs = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WaveExtrema_1yr_RP_ContClip/FeatureServer",
+        title: "1 yr return Hs (m)",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "1 yr return Hs (m)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "ContourMin",
+                            label: "Metres",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+
+    var extremesGroupLayer = new GroupLayer({
+        title: "Extremes",
+        visible: true,
+        visibilityMode: "inclusive",
+        layers: [extreme100yrHs, extreme50yrHs, extreme10yrHs, extreme1yrHs],
+    });
+
+
+
+
     var oceanographyGroupLayer = new GroupLayer({
         title: "Met-Ocean",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [tidesGroupLayer, wavesGroupLayer, availabilityGroupLayer, accessibilityGroupLayer],
+        layers: [extremesGroupLayer, tidesGroupLayer, wavesGroupLayer, availabilityGroupLayer, accessibilityGroupLayer],
     });
 
 
@@ -5836,33 +5951,121 @@ require([
 
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Maximum Neap Peak Current Velocity (m/s)")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "1 yr return Hs (m)")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
-                view.goTo(maxNpcv.fullExtent).catch(function (error) {
+                view.goTo(extreme1yrHs.fullExtent).catch(function (error) {
                     if (error.name != "AbortError") {
                         console.error(error);
                     }
                 });
-            } else if ((id === "information") && (event.item.layer.title === "Maximum Neap Peak Current Velocity (m/s)")) {
+            } else if ((id === "information") && (event.item.layer.title === "1 yr return Hs (m)")) {
                 // if the information action is triggered, then
                 // open the item details page of the service layer
-                window.open("https://marei.maps.arcgis.com/home/item.html?id=e28c4935beaf4c43aa86beda30a52dbe");
-            } else if ((id === "increase-opacity") && (event.item.layer.title === "Maximum Neap Peak Current Velocity (m/s)")) {
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=9a25adc597db4957bd2b598a718311cf");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "1 yr return Hs (m)")) {
                 // if the increase-opacity action is triggered, then
                 // increase the opacity of the GroupLayer by 0.25
 
-                if (maxNpcv.opacity < 1) {
-                    maxNpcv.opacity += 0.25;
+                if (extreme1yrHs.opacity < 1) {
+                    extreme1yrHs.opacity += 0.25;
                 }
-            } else if ((id === "decrease-opacity") && (event.item.layer.title === "Maximum Neap Peak Current Velocity (m/s)")) {
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "1 yr return Hs (m)")) {
                 // if the decrease-opacity action is triggered, then
                 // decrease the opacity of the GroupLayer by 0.25
 
-                if (maxNpcv.opacity > 0) {
-                    maxNpcv.opacity -= 0.25;
+                if (extreme1yrHs.opacity > 0) {
+                    extreme1yrHs.opacity -= 0.25;
                 }
             }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "10 yr return Hs (m)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme10yrHs.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "10 yr return Hs (m)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=8b9f9ff7833340abb1211ca35e93fbe6");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "10 yr return Hs (m)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme10yrHs.opacity < 1) {
+                    extreme10yrHs.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "10 yr return Hs (m)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme10yrHs.opacity > 0) {
+                    extreme10yrHs.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "50 yr return Hs (m)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme50yrHs.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "50 yr return Hs (m)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=a2574de8dc3d4f819a73e13f16705ccb");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "50 yr return Hs (m)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme50yrHs.opacity < 1) {
+                    extreme50yrHs.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "50 yr return Hs (m)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme50yrHs.opacity > 0) {
+                    extreme50yrHs.opacity -= 0.25;
+                }
+            }
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "100 yr return Hs (m)")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(extreme100yrHs.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "100 yr return Hs (m)")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=5d2e0e5a12ed496c8cd614c031917d9f");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "100 yr return Hs (m)")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (extreme100yrHs.opacity < 1) {
+                    extreme100yrHs.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "100 yr return Hs (m)")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (extreme100yrHs.opacity > 0) {
+                    extreme100yrHs.opacity -= 0.25;
+                }
+            }
+
 
 
 
