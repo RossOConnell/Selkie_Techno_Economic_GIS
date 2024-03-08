@@ -2336,7 +2336,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Signi",
+                            fieldName: "Mean_Significant_Wave_Height_m",
                             label: "Significant Wave Height (m)",
                             format: {
                                 digitSeparator: true,
@@ -2361,7 +2361,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Signi",
+                            fieldName: "Mean_Significant_Wave_Height_m",
                             label: "Significant Wave Height (m)",
                             format: {
                                 digitSeparator: true,
@@ -2386,7 +2386,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Signi",
+                            fieldName: "Mean_Significant_Wave_Height_m",
                             label: "Significant Wave Height (m)",
                             format: {
                                 digitSeparator: true,
@@ -2411,7 +2411,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Signi",
+                            fieldName: "Mean_Significant_Wave_Height_m",
                             label: "Significant Wave Height (m)",
                             format: {
                                 digitSeparator: true,
@@ -2440,7 +2440,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Spect",
+                            fieldName: "Mean_Spectral_Wave_Period_s",
                             label: "Wave Period (s)",
                             format: {
                                 digitSeparator: true,
@@ -2465,7 +2465,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Spect",
+                            fieldName: "Mean_Spectral_Wave_Period_s",
                             label: "Wave Period (s)",
                             format: {
                                 digitSeparator: true,
@@ -2490,7 +2490,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Spect",
+                            fieldName: "Mean_Spectral_Wave_Period_s",
                             label: "Wave Period (s)",
                             format: {
                                 digitSeparator: true,
@@ -2515,7 +2515,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Mean_Spect",
+                            fieldName: "Mean_Spectral_Wave_Period_s",
                             label: "Wave Period (s)",
                             format: {
                                 digitSeparator: true,
@@ -2903,7 +2903,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Avail",
+                            fieldName: "gridcode",
                             label: "Annual Availability (%)",
                             format: {
                                 digitSeparator: true,
@@ -2928,7 +2928,7 @@ require([
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "Avail",
+                            fieldName: "gridcode",
                             label: "Annual Availability (%)",
                             format: {
                                 digitSeparator: true,
