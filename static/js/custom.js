@@ -3658,8 +3658,8 @@ require([
 
             '<table><tr><td><i title = "The name of the project.">Project: </i><td><input type="text" title = "Value is based on your previous inputs." name="projectname" id="projectname" style="width: 10em" disabled /></td></tr>' +
             '<tr><td><i title = "Levelised Cost of Energy (LCOE) in Euro.">LCOE (€): </i><td><input type="text" title = "Value is based on your previous inputs." name="lcoe1" id="lcoe1" style="width: 7em" disabled /><i> €/MWh </i></td></tr>' +
-            '<tr><td><i title = "Levelised Cost of Energy (LCOE) in Cents.">LCOE (c): </i><td><input type="text" title = "Value is based on your previous inputs." name="lcoe2" id="lcoe2" style="width: 7em" disabled /><i> c/kWh </i></td></tr>' +
-            '<tr><td><i title = "Net Present Value (NPV) in Euro.">NPV: </i><td><input type="text" title = "Value is based on your previous inputs." name="npv" id="npv" style="width: 9em" disabled /><i> € </i></td></tr></table><BR>'
+            '<tr><td><i title = "Levelised Cost of Energy (LCOE) in Cents.">LCOE (c): </i><td><input type="text" title = "Value is based on your previous inputs." name="lcoe2" id="lcoe2" style="width: 7em" disabled /><i> c/kWh </i></td></tr></table><BR>' 
+            //'<tr><td><i title = "Net Present Value (NPV) in Euro.">NPV: </i><td><input type="text" title = "Value is based on your previous inputs." name="npv" id="npv" style="width: 9em" disabled /><i> € </i></td></tr></table><BR>'
 
 
         return div;
