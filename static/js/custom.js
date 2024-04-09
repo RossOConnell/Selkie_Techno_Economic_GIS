@@ -1860,7 +1860,7 @@ require([
             }
         },
         popupTemplate: {
-            title: "Planned Green H2 Production Plant",
+            title: "Planned Offshore Wind Projects (Ireland)",
             content: [
                 {
                     type: "fields",
