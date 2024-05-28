@@ -3012,6 +3012,94 @@ require([
     });
 
 
+    
+    var weatherWindow_1pt5m_10ms = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WW_Hs1pt5m_Wind10ms_6hr_Annual/FeatureServer",
+        title: "6 hr Weather Window (%): 1.5m Hs and 10 m/s wind",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "Weather Window (%)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "ContourMin",
+                            label: "Weather Window (%)",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+    
+    
+    var weatherWindow_2m_10ms = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WW_Hs2m_Wind10ms_6hr_Annual/FeatureServer",
+        title: "6 hr Weather Window (%): 2m Hs and 10 m/s wind",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "Weather Window (%)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "ContourMin",
+                            label: "Weather Window (%)",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+    var weatherWindow_2pt5m_10ms = new FeatureLayer({
+        url: "https://services6.arcgis.com/59pPgTnLCRBan6mn/arcgis/rest/services/WW_Hs2pt5_Wind10ms_6hr_Annual/FeatureServer",
+        title: "6 hr Weather Window (%): 2.5m Hs and 10 m/s wind",
+        visible: false,
+        opacity: 0.75,
+        popupTemplate: {
+            title: "Weather Window (%)",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "ContourMin",
+                            label: "Weather Window (%)",
+                            format: {
+                                digitSeparator: true,
+                                places: 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
+
+
+    var weatherWindowGroupLayer = new GroupLayer({
+        title: "Weather Windows",
+        visible: true,
+        visibilityMode: "inclusive",
+        layers: [weatherWindow_2pt5m_10ms, weatherWindow_2m_10ms, weatherWindow_1pt5m_10ms],
+    });
+
+
 
 
     var extreme100yrHs = new FeatureLayer({
@@ -3238,7 +3326,7 @@ require([
         title: "Met-Ocean",
         visible: true,
         visibilityMode: "inclusive",
-        layers: [extremesGroupLayer, tidesGroupLayer, wavesGroupLayer, availabilityGroupLayer, accessibilityGroupLayer],
+        layers: [extremesGroupLayer, tidesGroupLayer, wavesGroupLayer, weatherWindowGroupLayer, availabilityGroupLayer, accessibilityGroupLayer],
     });
 
 
@@ -5525,9 +5613,95 @@ require([
             }
 
 
+            else if ((id === "full-extent") && (event.item.layer.title === "6 hr Weather Window (%): 1.5m Hs and 10 m/s wind")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(weatherWindow_1pt5m_10ms.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "6 hr Weather Window (%): 1.5m Hs and 10 m/s wind")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=a41cb6b5669e4ebbadd77d10a10ff63a");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "6 hr Weather Window (%): 1.5m Hs and 10 m/s wind")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (weatherWindow_1pt5m_10ms.opacity < 1) {
+                    weatherWindow_1pt5m_10ms.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "6 hr Weather Window (%): 1.5m Hs and 10 m/s wind")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (weatherWindow_1pt5m_10ms.opacity > 0) {
+                    weatherWindow_1pt5m_10ms.opacity -= 0.25;
+                }
+            }
 
 
-            else if ((id === "full-extent") && (event.item.layer.title === "Annual Accessibility (%): 1.5m Hs and 20 m/s wind")) {
+            else if ((id === "full-extent") && (event.item.layer.title === "6 hr Weather Window (%): 2m Hs and 10 m/s wind")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(weatherWindow_2m_10ms.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "6 hr Weather Window (%): 2m Hs and 10 m/s wind")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=41ddf8870bdd4c2c9e34fe813179d510");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "6 hr Weather Window (%): 2m Hs and 10 m/s wind")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (weatherWindow_2m_10ms.opacity < 1) {
+                    weatherWindow_2m_10ms.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "6 hr Weather Window (%): 2m Hs and 10 m/s wind")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (weatherWindow_2m_10ms.opacity > 0) {
+                    weatherWindow_2m_10ms.opacity -= 0.25;
+                }
+            }
+
+            else if ((id === "full-extent") && (event.item.layer.title === "6 hr Weather Window (%): 2.5m Hs and 10 m/s wind")) {
+                // if the full-extent action is triggered then navigate
+                // to the full extent of the visible layer
+                view.goTo(weatherWindow_2pt5m_10ms.fullExtent).catch(function (error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            } else if ((id === "information") && (event.item.layer.title === "6 hr Weather Window (%): 2.5m Hs and 10 m/s wind")) {
+                // if the information action is triggered, then
+                // open the item details page of the service layer
+                window.open("https://marei.maps.arcgis.com/home/item.html?id=25c1b6b1744b4ce4a2df5bef311ba1a1");
+            } else if ((id === "increase-opacity") && (event.item.layer.title === "6 hr Weather Window (%): 2.5m Hs and 10 m/s wind")) {
+                // if the increase-opacity action is triggered, then
+                // increase the opacity of the GroupLayer by 0.25
+
+                if (weatherWindow_2pt5m_10ms.opacity < 1) {
+                    weatherWindow_2pt5m_10ms.opacity += 0.25;
+                }
+            } else if ((id === "decrease-opacity") && (event.item.layer.title === "6 hr Weather Window (%): 2.5m Hs and 10 m/s wind")) {
+                // if the decrease-opacity action is triggered, then
+                // decrease the opacity of the GroupLayer by 0.25
+
+                if (weatherWindow_2pt5m_10ms.opacity > 0) {
+                    weatherWindow_2pt5m_10ms.opacity -= 0.25;
+                }
+            }
+
+
+
+
+            else if ((id === "full-extent") && (event.item.layer.title === "6 hr Weather Window (%): 2.5m Hs and 10 m/s wind")) {
                 // if the full-extent action is triggered then navigate
                 // to the full extent of the visible layer
                 view.goTo(meanAnnualAccessibility_1pt5m_20ms.fullExtent).catch(function (error) {
